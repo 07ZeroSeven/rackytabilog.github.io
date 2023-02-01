@@ -1,0 +1,42 @@
+//importing partial _file
+@import 'color';
+@import 'font';
+
+
+//mixing - creating a mixing to be re-use later
+@mixin border-padding{
+padding-top: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+*{
+    background-color: $primary-color;
+    font-family: $primary-font;
+}
+
+//nesting - lets you nest CSS selectors in the same way
+.container{
+p{
+    @include border-padding;
+    background-color: $secondary-color;
+    color:$default-color;
+}
+button{
+    @include border-padding;
+    background-color: $button-color;
+    color:$default-color;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+input{
+    //extend - lets you share a set of CSS properties from one selector to another.
+    @extend button;
+    font-style: italic;
+    //mapping - instead of searching of through all css change 1 only
+    font-size: map-get($font-size,large);
+}
+
+}
