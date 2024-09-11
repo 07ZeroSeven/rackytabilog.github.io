@@ -1,53 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Racky</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    
 <body>
-    <!-- Header Section -->
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="Logo">
-                <h1>NETVOICE</h1>
-                <p>CONNECT.CONVERGE.COMMUNICATE</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#voice">Voice</a></li>
-                    <li><a href="#sms">SMS</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#solutions">Customized Solutions</a></li>
-                </ul>
-            </nav>
-            <div class="contact-button">
-                <a href="#contact" class="btn">Contact</a>
-            </div>
+            <h1>Racky</h1>
+            <p>Full Stack Web Developer | Cloud Enthusiast </p>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h2>The easier way to <span class="highlight">connect</span> to the rest of the world.</h2>
-                <p>
-                    Talk to anyone, anywhere in the world at affordable rates. We provide <span class="highlight">communication solutions</span> to maximize productivity and efficiency at home and in the workplace.
-                </p>
-                <a href="#contact" class="btn-cta">Let us discuss together!</a>
-                <p class="contact-info">Phone: <span class="highlight">+632-304-9700</span></p>
-            </div>
-            <div class="hero-image">
-                <img src="hero-image.png" alt="Communication Illustration">
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
@@ -60,62 +28,97 @@
         </div>
     </section>
 
-    <!-- Skills & Expertise Section -->
-    <section id="skills-expertise">
+    <section id="tech-stack">
         <div class="container">
-            <h2>Skills & Expertise</h2>
-            <div class="skills">
-                <h3>Technologies Stack</h3>
-                <ul>
-                    <li><strong>Operating Systems:</strong> Windows, Linux (CentOS, Debian, Ubuntu)</li>
-                    <li><strong>Development Tools:</strong> Visual Studio, Sublime Text, MySQL, XAMPP, Docker</li>
-                    <li><strong>Databases:</strong> MySQL, SQL Server, MS Access, MongoDB</li>
-                    <li><strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
-                    <li><strong>API & Design Tools:</strong> Postman API, Figma, Adobe Photoshop, Zapier</li>
-                </ul>
-            </div>
-            <div class="expertise">
-                <h3>Expertise</h3>
-                <ul>
-                    <li><strong>Front-End Development:</strong> HTML, CSS, JavaScript, Reactjs, Sass, Bootstrap, Tailwind</li>
-                    <li><strong>Back-End Development:</strong> Laravel, PHP, React Native</li>
-                    <li><strong>Database Management:</strong> SQL, MongoDB</li>
-                    <li><strong>Server Management:</strong> Linux, Windows Server</li>
-                    <li><strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
-                    <li><strong>API Integration, CMS Development, Load Balancing</strong></li>
-                </ul>
-            </div>
+            <h2>Technologies Stack</h2>
+            <ul class="skills-list">
+                <li><i class="fab fa-windows"></i> <strong>Operating Systems:</strong> Windows, Linux (CentOS, Debian, Ubuntu)</li>
+                <li><i class="fas fa-tools"></i> <strong>Development Tools:</strong> Visual Studio, Sublime Text, MySQL, XAMPP, Bitvise, Ngrok, Expo, Docker</li>
+                <li><i class="fas fa-database"></i> <strong>Databases:</strong> MySQL, SQL Server, MS Access, MongoDB</li>
+                <li><i class="fas fa-cloud"></i> <strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
+                <li><i class="fas fa-cogs"></i> <strong>API & Design Tools:</strong> Postman API, Figma, Adobe Photoshop, Zapier</li>
+                <li><i class="fas fa-wrench"></i> <strong>CMS:</strong> WordPress, Squarespace, CRM Platforms</li>
+                <li><i class="fas fa-envelope"></i> <strong>Email & Communication:</strong> Outlook, Thunderbird, Gmail, Google Workspace</li>
+                <li><i class="fas fa-comments"></i> <strong>Communication Tools:</strong> FreePBX, IssabelPBX, A2B Platform, MessageBird Omnichannel, Tawk.to, Slack, Microsoft Teams, Microsoft 365</li>
+            </ul>
         </div>
     </section>
+    
+    <section id="expertise">
+        <div class="container">
+            <h2>Expertise</h2>
+            <ul class="skills-list">
+                <li><i class="fas fa-laptop-code"></i> <strong>Front-End Development:</strong> HTML, CSS, JavaScript, Reactjs, Sass, Bootstrap, Tailwind</li>
+                <li><i class="fas fa-server"></i> <strong>Back-End Development:</strong> Laravel, PHP, React Native</li>
+                <li><i class="fas fa-code"></i> <strong>Full-Stack Development</strong></li>
+                <li><i class="fas fa-wrench"></i> <strong>CMS Development</strong></li>
+                <li><i class="fas fa-database"></i> <strong>Database Management:</strong> SQL, MongoDB</li>
+                <li><i class="fas fa-server"></i> <strong>Server Management:</strong> Linux, Windows Server</li>
+                <li><i class="fas fa-plug"></i> <strong>API Integration</strong></li>
+                <li><i class="fas fa-lock"></i> <strong>Web Security and Compliance</strong></li>
+                <li><i class="fab fa-docker"></i> <strong>Containerization:</strong> Docker, Kubernetes</li>
+                <li><i class="fas fa-balance-scale"></i> <strong>Load Balancing</strong></li>
+                <li><i class="fas fa-network-wired"></i> <strong>Virtualization:</strong> VMware</li>
+                <li><i class="fas fa-shield-alt"></i> <strong>Firewall Configuration</strong></li>
+                <li><i class="fas fa-hdd"></i> <strong>Backup and Disaster Recovery Planning</strong></li>
+                <li><i class="fas fa-file-alt"></i> <strong>Log Management and Analysis</strong></li>
+                <li><i class="fas fa-terminal"></i> <strong>Scripting and Automation:</strong> Bash, PowerShell, Python</li>
+                <li><i class="fas fa-key"></i> <strong>SSL Certificate Management</strong></li>
+                <li><i class="fas fa-code-branch"></i> <strong>Version Control:</strong> Git</li>
+                <li><i class="fas fa-bell"></i> <strong>Monitoring and Alerting:</strong> Nagios</li>
+                <li><i class="fas fa-credit-card"></i> <strong>Payment Gateway Integration</strong></li>
+                <li><i class="fas fa-cogs"></i> <strong>Third-Party Service Integration</strong></li>
+                <li><i class="fas fa-globe"></i> <strong>DNS Management</strong></li>
+                <li><i class="fas fa-envelope"></i> <strong>Email Management</strong></li>
+                <li><i class="fas fa-life-ring"></i> <strong>Technical Support, Testing, Debugging</strong></li>
+                <li><i class="fas fa-network-wired"></i> <strong>Network Support</strong></li>
+                <li><i class="fas fa-search"></i> <strong>SEO</strong></li>
+                <li><i class="fas fa-cloud"></i> <strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
+                <li><i class="fas fa-tools"></i> <strong>Site Troubleshooting</strong></li>
+            </ul>
+        </div>
+    </section>
+    
 
-    <!-- Projects Section -->
+
     <section id="projects">
         <div class="container">
             <h2>Projects</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <h3>Project 1: Bulk SMS Webapp</h3>
-                    <p>Developed a fully functional bulk SMS application with Laravel, integrated with messaging APIs.</p>
-                    <a href="https://github.com/your-username/bulk-sms-webapp" target="_blank">View on GitHub</a>
+                    <h3>Project 1: Bulk Sms Webapp</h3>
+                    <p>Developed a fully functional e-commerce website with Laravel, integrated with Stripe for payments.</p>
+                    <a href="https://github.com/your-username/ecommerce-project" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project-item">
                     <h3>Project 2: Solar Smart Calculator Webapp</h3>
-                    <p>A React-based solar energy calculator that helps homeowners estimate energy savings.</p>
-                    <a href="https://github.com/your-username/solar-calculator" target="_blank">View on GitHub</a>
+                    <p>A mobile application built using React Native that tracks fitness progress and integrates with wearable devices.</p>
+                    <a href="https://github.com/your-username/fitness-app" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project-item">
-                    <h3>Project 3: Fuel Management System</h3>
-                    <p>A fuel management system developed with Laravel and MySQL for real-time fuel monitoring.</p>
-                    <a href="https://github.com/your-username/fuel-management" target="_blank">View on GitHub</a>
+                    <h3>Project 3: Fuel Management</h3>
+                    <p>A blog platform developed with Node.js and Express, featuring a content management system (CMS) for easy post creation.</p>
+                    <a href="https://github.com/your-username/blog-platform" target="_blank">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
+            <ul class="contact-list">
+                <li>Email: <a href="mailto:tabstabilog@gmail.com">tabstabilog@gmail.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
+                <li>GitHub: <a href="https://github.com/07ZeroSeven" target="_blank">github.com/07ZeroSeven</a></li>
+            </ul>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <p>&copy; 2024 Racky. All rights reserved.</p>
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
         </div>
     </footer>
 </body>
