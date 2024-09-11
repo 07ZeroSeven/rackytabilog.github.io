@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Racky</h1>
-            <p>Full Stack Web Developer | Cloud Enthusiast </p>
+    <header class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold">Racky</h1>
+            <p class="text-lg">Full Stack Web Developer | Cloud Enthusiast</p>
         </div>
     </header>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>
+    <section id="about" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
+            <p class="text-center text-lg max-w-3xl mx-auto">
                 I am a passionate full-stack web developer with over 6 years of experience in developing
                 high-quality web applications. My expertise includes front-end frameworks like React and Vue,
                 and back-end technologies such as Laravel and Node.js. I also specialize in cloud services such
@@ -28,97 +27,80 @@
         </div>
     </section>
 
-    <section id="tech-stack">
-        <div class="container">
-            <h2>Technologies Stack</h2>
-            <ul class="skills-list">
-                <li><i class="fab fa-windows"></i> <strong>Operating Systems:</strong> Windows, Linux (CentOS, Debian, Ubuntu)</li>
-                <li><i class="fas fa-tools"></i> <strong>Development Tools:</strong> Visual Studio, Sublime Text, MySQL, XAMPP, Bitvise, Ngrok, Expo, Docker</li>
-                <li><i class="fas fa-database"></i> <strong>Databases:</strong> MySQL, SQL Server, MS Access, MongoDB</li>
-                <li><i class="fas fa-cloud"></i> <strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
-                <li><i class="fas fa-cogs"></i> <strong>API & Design Tools:</strong> Postman API, Figma, Adobe Photoshop, Zapier</li>
-                <li><i class="fas fa-wrench"></i> <strong>CMS:</strong> WordPress, Squarespace, CRM Platforms</li>
-                <li><i class="fas fa-envelope"></i> <strong>Email & Communication:</strong> Outlook, Thunderbird, Gmail, Google Workspace</li>
-                <li><i class="fas fa-comments"></i> <strong>Communication Tools:</strong> FreePBX, IssabelPBX, A2B Platform, MessageBird Omnichannel, Tawk.to, Slack, Microsoft Teams, Microsoft 365</li>
+    <section id="tech-stack" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Technologies Stack</h2>
+            <ul class="list-disc list-inside text-lg">
+                <li>Operating Systems: Windows, Linux (CentOS, Debian, Ubuntu)</li>
+                <li>Development Tools: Visual Studio, Sublime Text, MySQL, XAMPP, Bitvise, Ngrok, Expo, Docker</li>
+                <li>Databases: MySQL, SQL Server, MS Access, MongoDB</li>
+                <li>Cloud Computing: AWS, Azure, GCP</li>
+                <li>API & Design Tools: Postman API, Figma, Adobe Photoshop, Zapier</li>
+                <li>CMS: WordPress, Squarespace, CRM Platforms</li>
+                <li>Email & Communication: Outlook, Thunderbird, Gmail, Google Workspace</li>
+                <li>Communication Tools: FreePBX, IssabelPBX, A2B Platform, MessageBird Omnichannel, Tawk.to, Slack, Microsoft Teams, Microsoft 365</li>
             </ul>
         </div>
     </section>
-    
-    <section id="expertise">
-        <div class="container">
-            <h2>Expertise</h2>
-            <ul class="skills-list">
-                <li><i class="fas fa-laptop-code"></i> <strong>Front-End Development:</strong> HTML, CSS, JavaScript, Reactjs, Sass, Bootstrap, Tailwind</li>
-                <li><i class="fas fa-server"></i> <strong>Back-End Development:</strong> Laravel, PHP, React Native</li>
-                <li><i class="fas fa-code"></i> <strong>Full-Stack Development</strong></li>
-                <li><i class="fas fa-wrench"></i> <strong>CMS Development</strong></li>
-                <li><i class="fas fa-database"></i> <strong>Database Management:</strong> SQL, MongoDB</li>
-                <li><i class="fas fa-server"></i> <strong>Server Management:</strong> Linux, Windows Server</li>
-                <li><i class="fas fa-plug"></i> <strong>API Integration</strong></li>
-                <li><i class="fas fa-lock"></i> <strong>Web Security and Compliance</strong></li>
-                <li><i class="fab fa-docker"></i> <strong>Containerization:</strong> Docker, Kubernetes</li>
-                <li><i class="fas fa-balance-scale"></i> <strong>Load Balancing</strong></li>
-                <li><i class="fas fa-network-wired"></i> <strong>Virtualization:</strong> VMware</li>
-                <li><i class="fas fa-shield-alt"></i> <strong>Firewall Configuration</strong></li>
-                <li><i class="fas fa-hdd"></i> <strong>Backup and Disaster Recovery Planning</strong></li>
-                <li><i class="fas fa-file-alt"></i> <strong>Log Management and Analysis</strong></li>
-                <li><i class="fas fa-terminal"></i> <strong>Scripting and Automation:</strong> Bash, PowerShell, Python</li>
-                <li><i class="fas fa-key"></i> <strong>SSL Certificate Management</strong></li>
-                <li><i class="fas fa-code-branch"></i> <strong>Version Control:</strong> Git</li>
-                <li><i class="fas fa-bell"></i> <strong>Monitoring and Alerting:</strong> Nagios</li>
-                <li><i class="fas fa-credit-card"></i> <strong>Payment Gateway Integration</strong></li>
-                <li><i class="fas fa-cogs"></i> <strong>Third-Party Service Integration</strong></li>
-                <li><i class="fas fa-globe"></i> <strong>DNS Management</strong></li>
-                <li><i class="fas fa-envelope"></i> <strong>Email Management</strong></li>
-                <li><i class="fas fa-life-ring"></i> <strong>Technical Support, Testing, Debugging</strong></li>
-                <li><i class="fas fa-network-wired"></i> <strong>Network Support</strong></li>
-                <li><i class="fas fa-search"></i> <strong>SEO</strong></li>
-                <li><i class="fas fa-cloud"></i> <strong>Cloud Computing:</strong> AWS, Azure, GCP</li>
-                <li><i class="fas fa-tools"></i> <strong>Site Troubleshooting</strong></li>
-            </ul>
-        </div>
-    </section>
-    
 
-
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <h3>Project 1: Bulk Sms Webapp</h3>
-                    <p>Developed a fully functional e-commerce website with Laravel, integrated with Stripe for payments.</p>
-                    <a href="https://github.com/your-username/ecommerce-project" target="_blank">View on GitHub</a>
+    <section id="projects" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Netvoice Website</h3>
+                    <p>Designed and developed the Netvoice website for communication services.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
                 </div>
-                <div class="project-item">
-                    <h3>Project 2: Solar Smart Calculator Webapp</h3>
-                    <p>A mobile application built using React Native that tracks fitness progress and integrates with wearable devices.</p>
-                    <a href="https://github.com/your-username/fitness-app" target="_blank">View on GitHub</a>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Bulk SMS Webapp</h3>
+                    <p>Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
                 </div>
-                <div class="project-item">
-                    <h3>Project 3: Fuel Management</h3>
-                    <p>A blog platform developed with Node.js and Express, featuring a content management system (CMS) for easy post creation.</p>
-                    <a href="https://github.com/your-username/blog-platform" target="_blank">View on GitHub</a>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Solar Smart Calculator Webapp</h3>
+                    <p>Built a solar energy savings calculator using React for homeowners.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
+                </div>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Fuel Management Webapp</h3>
+                    <p>Developed a fuel management system with Laravel for real-time fuel tracking.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
+                </div>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Automated Savings Script</h3>
+                    <p>Created a Python script to automate savings calculations and reports.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
+                </div>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">WalterMart Monitoring Sites</h3>
+                    <p>Developed monitoring tools for the WalterMart sites to ensure uptime.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
+                </div>
+                <div class="project-item bg-white shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Android/IOS App Monitoring</h3>
+                    <p>Developed a monitoring system for Android/IOS apps, integrating with Firebase.</p>
+                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
-            <ul class="contact-list">
-                <li>Email: <a href="mailto:tabstabilog@gmail.com">tabstabilog@gmail.com</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
-                <li>GitHub: <a href="https://github.com/07ZeroSeven" target="_blank">github.com/07ZeroSeven</a></li>
+    <section id="contact" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact</h2>
+            <p class="text-center">If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
+            <ul class="list-none text-center mt-4">
+                <li>Email: <a href="mailto:tabstabilog@gmail.com" class="text-blue-600 underline">tabstabilog@gmail.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-blue-600 underline">linkedin.com/in/yourprofile</a></li>
+                <li>GitHub: <a href="https://github.com/07ZeroSeven" target="_blank" class="text-blue-600 underline">github.com/07ZeroSeven</a></li>
             </ul>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2024 Racky. All rights reserved.</p>
         </div>
     </footer>
 </body>
