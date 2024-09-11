@@ -2,81 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <title>Your Name | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <header>
+        <div class="container">
+            <h1>Your Name</h1>
+            <p>Full Stack Developer | Cloud Enthusiast | UI/UX Designer</p>
+        </div>
+    </header>
 
-<div class="container">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil officia voluptatibus consequuntur id possimus, vitae eum velit laborum? Debitis sed doloribus vitae tempora tempore cumque aspernatur, veniam molestias vero quo.</p>
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate full-stack web developer with over 6 years of experience in developing
+                high-quality web applications. My expertise includes front-end frameworks like React and Vue,
+                and back-end technologies such as Laravel and Node.js. I also specialize in cloud services such
+                as AWS and Azure. I love turning complex problems into simple, beautiful, and intuitive solutions.
+            </p>
+        </div>
+    </section>
 
-<button type="submit">Button</button>
-<input type="submit" value="Button 2">
-</div>
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li><strong>Front-end:</strong> HTML, CSS, JavaScript, React, Vue.js, TailwindCSS, Bootstrap</li>
+                <li><strong>Back-end:</strong> PHP, Laravel, Node.js, Express, REST APIs, GraphQL</li>
+                <li><strong>Database:</strong> MySQL, PostgreSQL, MongoDB</li>
+                <li><strong>Cloud & DevOps:</strong> AWS, Azure, GCP, Docker, Kubernetes, CI/CD pipelines</li>
+                <li><strong>Version Control:</strong> Git, GitHub, GitLab</li>
+                <li><strong>Others:</strong> WordPress, SEO, UX/UI Design, Agile Methodologies</li>
+            </ul>
+        </div>
+    </section>
 
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>Project 1: E-commerce Website</h3>
+                    <p>Developed a fully functional e-commerce website with Laravel, integrated with Stripe for payments.</p>
+                    <a href="https://github.com/your-username/ecommerce-project" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-item">
+                    <h3>Project 2: React Native Mobile App</h3>
+                    <p>A mobile application built using React Native that tracks fitness progress and integrates with wearable devices.</p>
+                    <a href="https://github.com/your-username/fitness-app" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-item">
+                    <h3>Project 3: Personal Blog Platform</h3>
+                    <p>A blog platform developed with Node.js and Express, featuring a content management system (CMS) for easy post creation.</p>
+                    <a href="https://github.com/your-username/blog-platform" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
-    This is some text in the div.
-    <p>This is a paragraph in the div.</p>
-    <p>This is another paragraph in the div.</p>
-    
-    </div>
-    <br>
-    
-    <button>Empty the div element</button>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
+            <ul class="contact-list">
+                <li>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
+                <li>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></li>
+            </ul>
+        </div>
+    </section>
 
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
-<script>
-   $(document).ready(function(){
-   $("button").click(function(){
-   var txt = "";
-   txt +="The width is:" + $("#div1").width() + "<br>";
-   txt +="The height is:" + $("#div1").height();
-   $("#div1").html(txt);
-});
-   });
-  
-   
-
-
-
-
-
-
-
-
-
-
-$("document").ready(function(){
-
-});
-
-
-    /*
-   $("document").ready(function(){
-     
-        $("button").click(function(){
-    $("#div1").empty();
-  
-
-        });
-    });
- 
-$(document).ready(function(){
-$("button").click(function(){
-$("p").hide("slow",function(){
-    alert("hide successfully");
-});
-});
-
-$("input").click(function(){
-    $("p").show("slow");
-});
-});
-*/
-</script>
