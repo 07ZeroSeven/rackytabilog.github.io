@@ -3,21 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Racky | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2020/08/30/12/22/network-5530971_960_720.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .custom-avatar {
+            background-color: #ffcc00;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 250px;
+            height: 250px;
+        }
+        section {
+            padding: 4rem 0;
+        }
+    </style>
 </head>
-<body>
-    <header class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold">Racky</h1>
-            <p class="text-lg">Full Stack Web Developer | Cloud Enthusiast</p>
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">Racky</div>
+            <nav>
+                <ul class="flex space-x-6 text-lg">
+                    <li><a href="#home" class="hover:text-indigo-600">Home</a></li>
+                    <li><a href="#about" class="hover:text-indigo-600">About</a></li>
+                    <li><a href="#skills" class="hover:text-indigo-600">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-indigo-600">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-12">
-        <div class="container mx-auto px-4">
+    <!-- Hero Section -->
+    <section id="home" class="py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <!-- Left Side: Text -->
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    Hi There,<br>
+                    I'm <span class="text-yellow-500">Racky</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-6">I Am Into Full Stack Web Development!</p>
+                <a href="#about" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-bold inline-block shadow-md hover:bg-indigo-700 transition">About Me</a>
+
+                <!-- Social Media Icons -->
+                <div class="mt-6 flex justify-center md:justify-start space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-linkedin text-3xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-github text-3xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-twitter text-3xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-telegram text-3xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-instagram text-3xl"></i></a>
+                </div>
+            </div>
+
+            <!-- Right Side: Avatar -->
+            <div class="flex-1 mt-10 md:mt-0 flex justify-center">
+                <div class="custom-avatar flex justify-center items-center">
+                    <!-- Placeholder for avatar image -->
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-100">
+        <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
             <p class="text-center text-lg max-w-3xl mx-auto">
                 I am a passionate full-stack web developer with over 6 years of experience in developing
@@ -28,62 +86,50 @@
         </div>
     </section>
 
-    <!-- Technologies Stack Section -->
-    <section id="tech-stack" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Technologies Stack</h2>
-            <ul class="list-disc list-inside text-lg">
-                <li><i class="fab fa-windows"></i> Operating Systems: Windows, Linux (CentOS, Debian, Ubuntu)</li>
-                <li><i class="fas fa-tools"></i> Development Tools: Visual Studio, Sublime Text, MySQL, XAMPP, Bitvise, Ngrok, Expo, Docker</li>
-                <li><i class="fas fa-database"></i> Databases: MySQL, SQL Server, MS Access, MongoDB</li>
-                <li><i class="fas fa-cloud"></i> Cloud Computing: AWS, Azure, GCP</li>
-                <li><i class="fas fa-cogs"></i> API & Design Tools: Postman API, Figma, Adobe Photoshop, Zapier</li>
-                <li><i class="fas fa-wrench"></i> CMS: WordPress, Squarespace, CRM Platforms</li>
-                <li><i class="fas fa-envelope"></i> Email & Communication: Outlook, Thunderbird, Gmail, Google Workspace</li>
-                <li><i class="fas fa-comments"></i> Communication Tools: FreePBX, IssabelPBX, A2B Platform, MessageBird Omnichannel, Tawk.to, Slack, Microsoft Teams, Microsoft 365</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Expertise Section -->
-    <section id="expertise" class="py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Expertise</h2>
-            <ul class="list-disc list-inside text-lg">
-                <li><i class="fas fa-laptop-code"></i> Front-End Development: HTML, CSS, JavaScript, Reactjs, Sass, Bootstrap, Tailwind</li>
-                <li><i class="fas fa-server"></i> Back-End Development: Laravel, PHP, React Native</li>
-                <li><i class="fas fa-code"></i> Full-Stack Development</li>
-                <li><i class="fas fa-wrench"></i> CMS Development</li>
-                <li><i class="fas fa-database"></i> Database Management: SQL, MongoDB</li>
-                <li><i class="fas fa-server"></i> Server Management: Linux, Windows Server</li>
-                <li><i class="fas fa-plug"></i> API Integration</li>
-                <li><i class="fas fa-lock"></i> Web Security and Compliance</li>
-                <li><i class="fab fa-docker"></i> Containerization: Docker, Kubernetes</li>
-                <li><i class="fas fa-balance-scale"></i> Load Balancing</li>
-                <li><i class="fas fa-network-wired"></i> Virtualization: VMware</li>
-                <li><i class="fas fa-shield-alt"></i> Firewall Configuration</li>
-                <li><i class="fas fa-hdd"></i> Backup and Disaster Recovery Planning</li>
-                <li><i class="fas fa-file-alt"></i> Log Management and Analysis</li>
-                <li><i class="fas fa-terminal"></i> Scripting and Automation: Bash, PowerShell, Python</li>
-                <li><i class="fas fa-key"></i> SSL Certificate Management</li>
-                <li><i class="fas fa-code-branch"></i> Version Control: Git</li>
-                <li><i class="fas fa-bell"></i> Monitoring and Alerting: Nagios</li>
-                <li><i class="fas fa-credit-card"></i> Payment Gateway Integration</li>
-                <li><i class="fas fa-cogs"></i> Third-Party Service Integration</li>
-                <li><i class="fas fa-globe"></i> DNS Management</li>
-                <li><i class="fas fa-envelope"></i> Email Management</li>
-                <li><i class="fas fa-life-ring"></i> Technical Support, Testing, Debugging</li>
-                <li><i class="fas fa-network-wired"></i> Network Support</li>
-                <li><i class="fas fa-search"></i> SEO</li>
-                <li><i class="fas fa-cloud"></i> Cloud Computing: AWS, Azure, GCP</li>
-                <li><i class="fas fa-tools"></i> Site Troubleshooting</li>
-            </ul>
+    <!-- Skills Section -->
+    <section id="skills" class="bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <i class="fab fa-react text-5xl text-indigo-600 mb-4"></i>
+                    <p class="font-bold">React</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-laravel text-5xl text-red-600 mb-4"></i>
+                    <p class="font-bold">Laravel</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-js-square text-5xl text-yellow-500 mb-4"></i>
+                    <p class="font-bold">JavaScript</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-aws text-5xl text-orange-500 mb-4"></i>
+                    <p class="font-bold">AWS</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-node text-5xl text-green-500 mb-4"></i>
+                    <p class="font-bold">Node.js</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-database text-5xl text-blue-600 mb-4"></i>
+                    <p class="font-bold">SQL</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-docker text-5xl text-blue-500 mb-4"></i>
+                    <p class="font-bold">Docker</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-github text-5xl text-gray-700 mb-4"></i>
+                    <p class="font-bold">GitHub</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-12">
-        <div class="container mx-auto px-4">
+    <section id="projects" class="bg-gray-100">
+        <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="project-item bg-white shadow-lg rounded-lg p-6">
@@ -116,18 +162,13 @@
                     <p>Developed monitoring tools for the WalterMart sites to ensure uptime.</p>
                     <a href="#" class="text-blue-600 underline">View on GitHub</a>
                 </div>
-                <div class="project-item bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Android/IOS App Monitoring</h3>
-                    <p>Developed a monitoring system for Android/IOS apps, integrating with Firebase.</p>
-                    <a href="#" class="text-blue-600 underline">View on GitHub</a>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
+    <section id="contact" class="bg-white">
+        <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-8">Contact</h2>
             <p class="text-center">If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
             <ul class="list-none text-center mt-4">
