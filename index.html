@@ -88,7 +88,7 @@
             background-color: #52dfb5;
         }
 
-        /* Vertical social icons */
+        /* Fixed Vertical Social Icons */
         .social-links {
             position: fixed;
             bottom: 0;
@@ -96,6 +96,15 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .social-links::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 90px;
+            margin: 0 auto;
+            background-color: #64ffda;
         }
 
         .social-links a {
@@ -118,6 +127,15 @@
             color: #64ffda;
             font-weight: 500;
             transition: color 0.3s ease;
+        }
+
+        .email::before {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 90px;
+            margin: 0 auto;
+            background-color: #64ffda;
         }
 
         .email:hover {
@@ -149,7 +167,7 @@
         <a href="#contact" class="cta-button">Get In Touch</a>
     </section>
 
-    <!-- Social Links -->
+    <!-- Fixed Social Links -->
     <div class="social-links">
         <a href="#"><i class="fab fa-github"></i></a>
         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -158,7 +176,7 @@
         <a href="#"><i class="fab fa-telegram"></i></a>
     </div>
 
-    <!-- Email -->
+    <!-- Fixed Vertical Email -->
     <div class="email">
         racky.example@gmail.com
     </div>
