@@ -88,7 +88,31 @@
             background-color: #52dfb5;
         }
 
-       
+        /* Social icons horizontal section */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: #4fd1ff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* Line below social icons */
+        .horizontal-line {
+            width: 80%;
+            height: 1px;
+            background-color: #4fd1ff;
+            margin: 2rem auto;
+        }
     </style>
 </head>
 <body>
@@ -112,14 +136,20 @@
         <p class="text-gray-400 max-w-md mt-4">
             I’m a full-stack web developer with a passion for creating dynamic and responsive web applications. I have experience working with modern technologies like Laravel, React, Docker, and AWS.
         </p>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
+
+        <!-- Social Icons Section -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+
+        <!-- Line Below Social Icons -->
+        <div class="horizontal-line"></div>
     </section>
 
-  
     <!-- Remaining Sections (About, Skills, Projects, Contact) -->
 
     <!-- About Section -->
