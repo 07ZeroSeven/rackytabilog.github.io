@@ -8,73 +8,165 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-image: url('https://cdn.pixabay.com/photo/2020/08/30/12/22/network-5530971_960_720.jpg');
-            background-size: cover;
-            background-position: center;
+            background-color: #0a192f;
+            color: #ccd6f6;
         }
-        .custom-avatar {
-            background-color: #ffcc00;
-            border-radius: 50%;
-            overflow: hidden;
-            width: 250px;
-            height: 250px;
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 2rem;
+            font-weight: 500;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            background: transparent;
+            z-index: 10;
         }
-        section {
-            padding: 4rem 0;
+
+        .navbar ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar ul li a {
+            color: #64ffda;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #fff;
+        }
+
+        .resume-btn {
+            border: 2px solid #64ffda;
+            padding: 0.5rem 1rem;
+            color: #64ffda;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            background-color: #64ffda;
+            color: #0a192f;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ccd6f6;
+        }
+
+        .hero-tagline {
+            font-size: 2.5rem;
+            color: #8892b0;
+        }
+
+        .cta-button {
+            background-color: #64ffda;
+            color: #0a192f;
+            padding: 0.75rem 2rem;
+            margin-top: 2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #52dfb5;
+        }
+
+        /* Vertical social icons */
+        .social-links {
+            position: fixed;
+            bottom: 0;
+            left: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #64ffda;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Vertical email text */
+        .email {
+            position: fixed;
+            right: 2rem;
+            bottom: 0;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: #64ffda;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .email:hover {
+            color: #fff;
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Header Section -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold">Racky</div>
-            <nav>
-                <ul class="flex space-x-6 text-lg">
-                    <li><a href="#home" class="hover:text-indigo-600">Home</a></li>
-                    <li><a href="#about" class="hover:text-indigo-600">About</a></li>
-                    <li><a href="#skills" class="hover:text-indigo-600">Skills</a></li>
-                    <li><a href="#projects" class="hover:text-indigo-600">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="#about">01. About</a></li>
+            <li><a href="#skills">02. Skills</a></li>
+            <li><a href="#projects">03. Projects</a></li>
+            <li><a href="#contact">04. Contact</a></li>
+        </ul>
+        <a href="#" class="resume-btn ml-6">Resume</a>
+    </div>
 
     <!-- Hero Section -->
-    <section id="home" class="py-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <!-- Left Side: Text -->
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                    Hi There,<br>
-                    I'm <span class="text-yellow-500">Racky</span>
-                </h1>
-                <p class="text-xl text-gray-600 mb-6">I Am Into Full Stack Web Development! and a Cloud enthusiast</p>
-                <a href="#about" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-bold inline-block shadow-md hover:bg-indigo-700 transition">About Me</a>
-
-                <!-- Social Media Icons -->
-                <div class="mt-6 flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-linkedin text-3xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-github text-3xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-twitter text-3xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-telegram text-3xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-instagram text-3xl"></i></a>
-                </div>
-            </div>
-
-            <!-- Right Side: Avatar -->
-            <div class="flex-1 mt-10 md:mt-0 flex justify-center">
-                <div class="custom-avatar flex justify-center items-center">
-                    <!-- Placeholder for avatar image -->
-                    <img src="pictureprof.png" alt="Avatar" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
+    <section class="hero-section">
+        <p class="hero-intro text-teal-400 mb-4">Hello, my name is</p>
+        <h1 class="hero-title">Racky.</h1>
+        <h2 class="hero-tagline">I love building things on the web!</h2>
+        <p class="text-gray-400 max-w-md mt-4">
+            I’m a full-stack web developer with a passion for creating dynamic and responsive web applications. I have experience working with modern technologies like Laravel, React, Docker, and AWS.
+        </p>
+        <a href="#contact" class="cta-button">Get In Touch</a>
     </section>
 
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+    </div>
+
+    <!-- Email -->
+    <div class="email">
+        racky.example@gmail.com
+    </div>
+
+    <!-- Remaining Sections (About, Skills, Projects, Contact) -->
+
     <!-- About Section -->
-    <section id="about" class="bg-gray-100">
+    <section id="about" class="bg-gray-100 py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
             <p class="text-center text-lg max-w-3xl mx-auto">
@@ -85,6 +177,12 @@
             </p>
         </div>
     </section>
+
+    <!-- The rest of your sections (Skills, Projects, etc.) -->
+    <!-- Continue the same as before... -->
+</body>
+</html>
+
 
   <!-- Skills & Expertise Section -->
 <section id="skills-expertise" class="bg-gray-900 text-white py-10">
