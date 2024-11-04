@@ -40,15 +40,19 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             padding: 2rem;
-            position: relative;
             color: #ccd6f6;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
         }
+        .hero-content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
         .hero-content {
             max-width: 600px;
-            text-align: left;
         }
         .hero-intro {
             font-size: 1.2rem;
@@ -123,22 +127,27 @@
 
         /* Profile Image */
         .profile-image {
-            position: absolute;
-            right: 10%;
-            bottom: 10%;
             width: 300px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-left: 2rem;
         }
 
-        /* Project Card Styling */
-        .project-card {
-            border-bottom: 4px solid #4fd1ff;
-            transition: transform 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-content, .profile-image {
+                max-width: 100%;
+                margin: 0;
+            }
+            .profile-image {
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -160,24 +169,26 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-content">
-            <p class="hero-intro">Hello, I'm</p>
-            <h1 class="hero-title">Racky</h1>
-            <div class="badge">Full Stack Web Developer</div>
-            <p class="hero-tagline">I love building things on the web!</p>
-            <p class="hero-description">
-                I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications. 
-            </p>
-            <a href="#" class="btn btn-primary">Contact Me</a>
-            <a href="#" class="btn btn-secondary">View Portfolio</a>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="hero-content-wrapper">
+            <div class="hero-content">
+                <p class="hero-intro">Hello, I'm</p>
+                <h1 class="hero-title">Racky</h1>
+                <div class="badge">Full Stack Web Developer</div>
+                <p class="hero-tagline">I love building things on the web!</p>
+                <p class="hero-description">
+                    I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications. 
+                </p>
+                <a href="#" class="btn btn-primary">Contact Me</a>
+                <a href="#" class="btn btn-secondary">View Portfolio</a>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
+            <img src="profile.jpg" alt="Profile Image" class="profile-image">
         </div>
-        <img src="profile.jpg" alt="Profile Image" class="profile-image">
     </section>
 
 <!-- Tech Stacks -->
