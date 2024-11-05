@@ -16,7 +16,6 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Navbar */
         nav {
             background: transparent;
             position: fixed;
@@ -34,13 +33,38 @@
         .active-link {
             border-bottom: 2px solid #4fd1ff;
         }
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-        /* Hero Section */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background: #1f1c2c;
+            position: absolute;
+            width: 100%;
+            top: 60px;
+            left: 0;
+            padding: 1rem 0;
+            z-index: 9;
+        }
+        .mobile-menu a {
+            color: #ccd6f6;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .mobile-menu a:hover {
+            color: #4fd1ff;
+        }
+
         .hero-section {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 2rem;
             color: #ccd6f6;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -50,9 +74,12 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
         }
         .hero-content {
             max-width: 600px;
+            text-align: left;
         }
         .hero-intro {
             font-size: 1.2rem;
@@ -84,7 +111,6 @@
             margin-bottom: 20px;
         }
         
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 0.75rem 2rem;
@@ -110,7 +136,6 @@
             background-color: #ff4081;
         }
 
-        /* Social Icons */
         .social-icons {
             display: flex;
             gap: 1rem;
@@ -125,45 +150,51 @@
             color: #ffffff;
         }
 
-        /* Profile Image */
         .profile-image {
-            width: 300px;
+            width: 600px;
             height: auto;
-            border-radius: 10px;
+            border-radius:50px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            margin-left: 2rem;
+            margin-left: 0.5rem;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .hero-content, .profile-image {
-                max-width: 100%;
-                margin: 0;
-            }
-            .profile-image {
-                margin-top: 2rem;
-            }
+        .tech-stacks-container {
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
         }
+
+        .tech-stack-card {
+            background: linear-gradient(135deg, #1f1c2c, #302b63);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tech-stack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav>
-        <div class="flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold">Racky</a>
-            <div>
-                <a href="#home" class="active-link">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
+    <nav class="flex justify-between items-center">
+        <a href="#home" class="text-2xl font-bold">R.C.T</a>
+        <div class="desktop-menu">
+            <a href="#home" class="active-link">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+        </div>
+        <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
 
@@ -174,195 +205,136 @@
                 <p class="hero-intro">Hello, I'm</p>
                 <h1 class="hero-title">Racky</h1>
                 <div class="badge">Full Stack Web Developer</div>
+                <div class="badge">Cloud Engineer</div>
+                <div class="badge">Database Administrator</div>
                 <p class="hero-tagline">I love building things on the web!</p>
                 <p class="hero-description">
                     I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications. 
                 </p>
                 <a href="#" class="btn btn-primary">Contact Me</a>
-                <a href="#" class="btn btn-secondary">View Portfolio</a>
+                <a href="#" class="btn btn-secondary">View Resume</a>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/07ZeroSeven" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin" target="_blank"></i></a>
+                    <a href="#"><i class="fab fa-instagram" target="_blank"></i></a>
+                    <a href="https://www.facebook.com/akie.tabs" target="_blank"><i class="fab fa-facebook" ></i></a>
+                    <a href="viber://add?number=09992276570" target="_blank">
+                        <i class="fab fa-viber"></i>
+                    </a>
                 </div>
             </div>
             <img src="profile.jpg" alt="Profile Image" class="profile-image">
         </div>
     </section>
 
-<!-- Tech Stacks -->
-<h3 class="text-2xl font-bold mt-8 text-center">Tech Stacks</h3>
-<div class="flex flex-wrap justify-center gap-4 mt-6">
-    <!-- Tech Stack 1 -->
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="laravel.png" alt="Laravel" style="width: 30px;" class="mr-3"> Laravel
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-php text-blue-600 mr-3" style="font-size: 30px;"></i> PHP
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fas fa-terminal text-gray-600 mr-3" style="font-size: 30px;"></i> Bash/Shell
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-python text-yellow-500 mr-3" style="font-size: 30px;"></i> Python
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-js-square text-yellow-500 mr-3" style="font-size: 30px;"></i> JavaScript
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="sass.png" alt="Sass" style="width: 30px;" class="mr-3"> Sass
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-css3-alt text-blue-600 mr-3" style="font-size: 30px;"></i> CSS
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-html5 text-orange-500 mr-3" style="font-size: 30px;"></i> HTML
-    </div>
-    
-    <!-- Second Row -->
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-bootstrap text-purple-600 mr-3" style="font-size: 30px;"></i> Bootstrap
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="tailwind.png" alt="Tailwind" style="width: 30px;" class="mr-3"> Tailwind
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-react text-blue-600 mr-3" style="font-size: 30px;"></i> React
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fab fa-aws text-orange-500 mr-3" style="font-size: 30px;"></i> AWS
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="azure.png" alt="Azure" style="width: 30px;" class="mr-3"> Azure
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="firebase.png" alt="Firebase" style="width: 30px;" class="mr-3"> Firebase
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <img src="kubernetes.png" alt="Kubernetes" style="width: 30px;" class="mr-3"> Kubernetes
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fas fa-database text-blue-600 mr-3" style="font-size: 30px;"></i> MySQL
-    </div>
+    <!-- Tech Stacks Section -->
+    <section class="tech-stacks-container">
+        <h3 class="text-2xl font-bold text-center">Tech Stacks</h3>
+        <div class="flex flex-wrap justify-center gap-4 mt-6">
+            <div class="tech-stack-card">PHP</div>
+            <div class="tech-stack-card">JavaScript</div>
+            <div class="tech-stack-card">HTML</div>
+            <div class="tech-stack-card">CSS</div>
+            <div class="tech-stack-card">React</div>
+            <div class="tech-stack-card">Laravel</div>
+            <div class="tech-stack-card">Bootstrap</div>
+            <div class="tech-stack-card">Tailwind</div>
+            <div class="tech-stack-card">AWS</div>
+            <div class="tech-stack-card">Azure</div>
+            <div class="tech-stack-card">Firebase</div>
+            <div class="tech-stack-card">Kubernetes</div>
+            <div class="tech-stack-card">MySQL</div>
+            <div class="tech-stack-card">PostgreSQL</div>
+            <div class="tech-stack-card">MongoDB</div>
+        </div>
+    </section>
 
-    <!-- Third Row -->
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fas fa-server text-green-500 mr-3" style="font-size: 30px;"></i> MongoDB
-    </div>
-    <div class="flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md">
-        <i class="fas fa-database text-gray-500 mr-3" style="font-size: 30px;"></i> PostgreSQL
-    </div>
-</div>
-
-
-
-
-
-<!-- Projects Section -->
-<section id="projects" class="bg-gray-100 py-10">
+ <!-- Project Section -->
+<section id="projects" class="py-10" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #ccd6f6;">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+        <h2 class="text-3xl font-bold text-center mb-8 text-[#4fd1ff]">Projects</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Netvoice Website</h3>
-                    <hr>
-                    <p class="text-gray-600">Designed and developed the Netvoice website for communication services.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">Netvoice Website</h3>
+                    <p class="text-gray-700">Designed and developed the Netvoice website for communication services.</p>
                 </div>
                 <div class="p-4">
                     <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 2 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Bulk SMS Webapp</h3>
-                    <hr>
-                    <p class="text-gray-600">Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">Bulk SMS Webapp</h3>
+                    <p class="text-gray-700">Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
                 </div>
                 <div class="p-4">
                     <img src="https://via.placeholder.com/300x200" alt="Bulk SMS Webapp" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 3 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Solar Smart Calculator Webapp</h3>
-                    <hr>
-                    <p class="text-gray-600">Built a solar energy savings calculator using React for homeowners.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">Solar Smart Calculator Webapp</h3>
+                    <p class="text-gray-700">Built a solar energy savings calculator using React for homeowners.</p>
                 </div>
                 <div class="p-4">
                     <img src="https://via.placeholder.com/300x200" alt="Solar Smart Calculator Webapp" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Fuel Management Webapp</h3>
-                    <hr>
-                    <p class="text-gray-600">Developed a fuel management system with Laravel for real-time fuel tracking.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">Fuel Management Webapp</h3>
+                    <p class="text-gray-700">Developed a fuel management system with Laravel for real-time fuel tracking.</p>
                 </div>
                 <div class="p-4">
                     <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 5 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">Automated Savings Script</h3>
-                    <hr>
-                    <p class="text-gray-600">Created a Python script to automate savings calculations and reports.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">Automated Savings Script</h3>
+                    <p class="text-gray-700">Created a Python script to automate savings calculations and reports.</p>
                 </div>
                 <div class="p-4">
                     <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 6 -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-blue-500">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden border-b-4 border-[#4fd1ff]">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold mb-2">WalterMart Monitoring Sites</h3>
-                    <hr>
-                    <p class="text-gray-600">Developed monitoring tools for the WalterMart sites to ensure uptime.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-[#4fd1ff]">WalterMart Monitoring Sites</h3>
+                    <p class="text-gray-700">Developed monitoring tools for the WalterMart sites to ensure uptime.</p>
                 </div>
                 <div class="p-4">
                     <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover rounded-md mb-4">
-                    <hr>
                     <div class="flex justify-center items-center space-x-2 mt-4">
-                        <i class="fas fa-eye text-gray-600"></i>
-                        <a href="#" class="text-blue-600 hover:underline">View</a>
+                        <a href="#" class="bg-[#f72585] text-white px-4 py-2 rounded hover:bg-[#ff4081]">View</a>
                     </div>
                 </div>
             </div>
@@ -371,22 +343,8 @@
 </section>
 
 
-    
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">Contact</h2>
-            <p class="text-center">If you'd like to get in touch, feel free to reach out via email or connect on LinkedIn.</p>
-            <ul class="list-none text-center mt-4">
-                <li>Email: <a href="mailto:tabstabilog@gmail.com" class="text-blue-600 underline">tabstabilog@gmail.com</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-blue-600 underline">linkedin.com/in/yourprofile</a></li>
-                <li>GitHub: <a href="https://github.com/07ZeroSeven" target="_blank" class="text-blue-600 underline">github.com/07ZeroSeven</a></li>
-            </ul>
-        </div>
-    </section>
 
-    <!-- Footer Section -->
     <footer class="bg-gray-800 text-white py-6 text-center">
         <div class="container mx-auto">
             <p>&copy; 2024 Racky. All rights reserved.</p>
