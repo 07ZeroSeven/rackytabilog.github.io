@@ -360,7 +360,7 @@ nav a.active-link {
             background: #636262;
             border-radius: 5px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .skill-percentage {
@@ -373,6 +373,7 @@ nav a.active-link {
             background: #333;
             width: 0; /* Start width from 0 for animation */
         }
+        
         .skill-percentage.web {
             background: linear-gradient(to right, #4fd1ff, #0a192f);
             animation: fillWeb 2s forwards;
@@ -393,6 +394,26 @@ nav a.active-link {
             animation: fillWordPress 2s forwards;
             animation-delay: 2s;
         }
+        .skill-percentage.expertise {
+    background: linear-gradient(to right, #07f4ec, #0a192f); /* Custom color gradient */
+    animation: fillExpertise 2s forwards; /* Animation to fill the bar */
+    animation-delay: 0.5s; /* Starts the animation after 0.5 seconds */
+}
+.skill-percentage.almost {
+    background: linear-gradient(to right, #f72585, #0a192f); /* Custom color gradient */
+    animation: fillAlmost 2s forwards; /* Animation to fill the bar */
+    animation-delay: 0.5s; /* Starts the animation after 0.5 seconds */
+}
+
+@keyframes fillExpertise {
+    from { width: 0; }
+    to { width: 100%; } /* Animation goes from 0 to 100% width */
+}
+@keyframes fillAlmost {
+    from { width: 0; }
+    to { width: 90%; } /* Animation goes from 0 to 100% width */
+}
+
         @keyframes fillWeb {
             from { width: 0; }
             to { width: 80%; }
@@ -403,7 +424,7 @@ nav a.active-link {
         }
         @keyframes fillBranding {
             from { width: 0; }
-            to { width: 60%; }
+            to { width: 100%; }
         }
         @keyframes fillWordPress {
             from { width: 0; }
@@ -497,7 +518,7 @@ li::before {
                     I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications. 
                 </p>
                 <a href="#" class="btn btn-primary">Contact Me</a>
-                <a href="#" class="btn btn-secondary">Download Resume</a>
+                <a href="RackyTabilog-Resume.pdf" class="btn btn-secondary" download="Racky_Resume.pdf">Download Resume</a>
                 <div class="social-icons">
                     <a href="https://github.com/07ZeroSeven" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-linkedin" target="_blank"></i></a>
@@ -665,21 +686,25 @@ li::before {
         <div class="w-full md:w-1/2 px-6">
             <div class="skill-set">
                 <h4 class="section-title">Frontend</h4>
-                <h3>Graphic Design</h3>
+                <h3>HTML & CSS,Sass</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage web" style="width: 80%;">80%</div>
+                    <div class="skill-percentage expertise" style="width: 100%;">100%</div>
                 </div>
-                <h3>Graphic Design</h3>
+                <h3>JavaScript</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage graphic" style="width: 70%;">70%</div>
+                    <div class="skill-percentage almost" style="width: 90%;">90%</div>
                 </div>
-                <h3>Graphic Design</h3>
+                <h3>Reactjs</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage branding" style="width: 60%;">60%</div>
+                    <div class="skill-percentage almost" style="width: 90%;">90%</div>
                 </div>
-                <h3>Graphic Design</h3>
+                <h3>Bootstrap</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage wordpress" style="width: 50%;">50%</div>
+                    <div class="skill-percentage expertise" style="width: 100%;">100%</div>
+                </div>
+                <h3>Tailwind</h3>
+                <div class="skill-bar">
+                    <div class="skill-percentage expertise" style="width: 100%;">100%</div>
                 </div>
             </div>
         </div>
@@ -687,23 +712,40 @@ li::before {
         <div class="w-full md:w-1/2 px-6">
             <div class="skill-set">
                 <h4 class="section-title">Backend</h4>
-                <h3>Graphic Design</h3>
+                <h3>Laravel Framework</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage branding" style="width: 60%;">60%</div>
+                    <div class="skill-percentage branding" style="width: 0;">100%</div>
+                </div>
+                <h3>PHP</h3>
+                <div class="skill-bar">
+                    <div class="skill-percentage branding" style="width: 0;">100%</div>
+                </div>
+                <h3>Cloud Computing</h3>
+                <div class="skill-bar">
+                    <div class="skill-percentage branding" style="width: 0;">100%</div>
                 </div>
                 <h3>Graphic Design</h3>
                 <div class="skill-bar">
-                    <div class="skill-percentage wordpress" style="width: 50%;">50%</div>
-                </div>
-                <h3>Graphic Design</h3>
-                <div class="skill-bar">
-                    <div class="skill-percentage branding" style="width: 60%;">60%</div>
-                </div>
-                <h3>Graphic Design</h3>
-                <div class="skill-bar">
-                    <div class="skill-percentage wordpress" style="width: 50%;">50%</div>
+                    <div class="skill-percentage wordpress" style="width: 0;">50%</div>
                 </div>
             </div>
+        </div>
+        <div class="w-full md:w-1/2 px-6">
+            <h4 class="section-title text-center">Interpersonal/Life Skills</h4>
+            <ul class="mt-4">
+                <li>Good Team Player,</li>
+                <li>Detail-Oriented,</li>
+                <li>Multi-tasking,</li>
+                <li>Analytical Skills</li>
+            </ul>
+        </div>
+        <div class="w-full md:w-1/2 px-6">
+            <h4 class="section-title text-center">Communication Skills:</h4>
+            <ul class=" mt-4">
+                <li>Filipino (Written and Verbal),</li>
+                <li>English (Written and Verbal),</li>
+            </ul>
+
         </div>
     </div>
 
