@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Racky | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css">
-
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css" />
   <style>
     /* Global Styles */
     body {
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #ccd6f6;
       font-family: 'Poppins', sans-serif;
     }
@@ -41,86 +40,117 @@
       color: #52dfb5;
       border-color: #52dfb5;
     }
-    /* Navbar (non-fixed, no background) */
+    /* Navbar */
     nav {
-      position: relative; /* Not fixed so that it scrolls with the page */
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       padding: 1rem;
       z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: transparent; /* No background color */
     }
-    nav a {
+    .brand {
+      font-size: 2rem;
+      font-weight: bold;
       color: #ccd6f6;
-      margin: 0 15px;
     }
-    nav a:hover {
-      color: #4fd1ff;
-      text-decoration: none;
-    }
-    nav a.active-link {
-      color: #4fd1ff;
-      border-bottom: 2px solid #4fd1ff;
-    }
-    /* Hamburger & Mobile Menu */
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    /* Mobile menu inside nav; positioned below the hamburger */
-    .mobile-menu {
-      position: absolute;
-      top: 100%; /* directly beneath the navbar */
-      right: 0;
-      padding: 0.5rem 0;
-      z-index: 9;
-      background: transparent; /* no background color */
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .mobile-menu.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .mobile-menu a {
+    /* Hamburger (visible on mobile only) */
+    .mobile-hamburger {
       display: block;
+      cursor: pointer;
       color: #ccd6f6;
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
     }
-    .mobile-menu a:hover {
-      color: #4fd1ff;
+    @media (min-width: 768px) {
+      .mobile-hamburger,
+      #mobile-menu {
+        display: none !important;
+      }
     }
-    @media (max-width: 768px) {
-      .profile-image {
-        display: none;
-      }
-      .desktop-menu {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
+    /* Desktop Menu (optional) */
+    .desktop-menu {
+      display: none;
     }
     @media (min-width: 769px) {
-      .mobile-menu {
-        display: none;
+      .desktop-menu {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
       }
+      .desktop-menu a {
+        color: #ccd6f6;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .desktop-menu a:hover {
+        color: #4fd1ff;
+      }
+      .desktop-menu a.active-link {
+        color: #4fd1ff;
+        border-bottom: 2px solid #4fd1ff;
+      }
+    }
+    /* Mobile Dropdown Menu – positioned below the navbar (aligned to left) */
+    #mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, #232931, #393e46);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      flex-direction: column;
+    }
+    #mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      display: flex;
+    }
+    #mobile-menu a {
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background-color 0.3s ease;
+      font-weight: 500;
+      color: #ccd6f6;
+      text-decoration: none;
+    }
+    #mobile-menu a:last-child {
+      border-bottom: none;
+    }
+    #mobile-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
     /* Hero Section */
     .hero-section {
       height: 100vh;
+   
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 2rem;
       color: #ccd6f6;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    }
+    @media (max-width: 768px) {
+      .hero-section {
+        padding-top: 450px;
+      }
+    }
+    @media (max-width:1024px) {
+      .hero-section {
+        padding-top: 450px;
+      }
     }
     .hero-content-wrapper {
       display: flex;
@@ -209,7 +239,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
-    /* The rest of your CSS (About, Tech Stacks, Projects, Skills, Footer, etc.) remains unchanged */
+    /* Tech Stacks Section */
     .tech-stacks-container {
       padding: 2rem;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -246,6 +276,7 @@
         width: calc(12.5% - 1rem);
       }
     }
+    /* Projects Section */
     #projects {
       background: linear-gradient(135deg, #111827, #302b63);
     }
@@ -272,6 +303,7 @@
     .download-btn i {
       margin-right: 8px;
     }
+    /* About Section */
     .about-section {
       display: flex;
       flex-wrap: wrap;
@@ -318,7 +350,7 @@
       border-radius: 10px;
       padding: 25px;
       margin: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       color: #ccd6f6;
       display: flex;
       align-items: center;
@@ -361,12 +393,13 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
+    /* Skill Bars */
     .skill-bar {
       background: #636262;
       border-radius: 5px;
       overflow: hidden;
       margin-bottom: 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     .skill-percentage {
       height: 20px;
@@ -432,6 +465,7 @@
       from { width: 0; }
       to { width: 90%; }
     }
+    /* Footer */
     .foot {
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     }
@@ -440,17 +474,18 @@
 <body>
   <!-- Navbar -->
   <nav>
-    <span class="text-2xl font-bold">Racky</span>
-    <div class="desktop-menu hidden md:flex">
+    <span class="brand">R.C.T</span>
+    <div class="mobile-hamburger" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <!-- Desktop Menu (if needed) -->
+    <div class="desktop-menu">
       <a href="#home" class="active-link mx-2">Home</a>
       <a href="#about" class="mx-2">About</a>
       <a href="#skills" class="mx-2">Skills</a>
       <a href="#projects" class="mx-2">Projects</a>
     </div>
-    <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <!-- Mobile menu positioned relative to the navbar -->
+    <!-- Mobile Dropdown Menu – positioned below the navbar, aligned to left -->
     <div id="mobile-menu" class="mobile-menu">
       <a href="#home" class="active-link">Home</a>
       <a href="#about">About</a>
@@ -482,7 +517,7 @@
           <a href="viber://add?number=09992276570" target="_blank"><i class="fab fa-viber"></i></a>
         </div>
       </div>
-      <img src="profile.png" alt="Profile Image" class="profile-image">
+      <img src="profile.png" alt="Profile Image" class="profile-image" />
     </div>
   </section>
 
@@ -503,11 +538,11 @@
         <div class="column">
           <h4 class="subheading">Education</h4>
           <p class="text">
-            BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY<br>
+            BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY<br />
             Cavite State University-CBE
           </p>
           <p class="text">
-            CERTIFICATE OF COMPUTER TECHNICIAN<br>
+            CERTIFICATE OF COMPUTER TECHNICIAN<br />
             Cavite State University-CBE
           </p>
         </div>
@@ -728,7 +763,9 @@
       <div class="flex justify-between items-center mb-8">
         <div>
           <h3 class="text-3xl font-regular text-[#ccd6f6]">Projects</h3>
-          <p class="text-[#ccd6f6]">Check out some of my latest projects with creative ideas.</p>
+          <p class="text-[#ccd6f6]">
+            Check out some of my latest projects with creative ideas.
+          </p>
         </div>
         <!-- Uncomment below button if you wish to toggle project cards -->
         <!-- <button onclick="toggleProjects()" id="see-all-btn" class="see-all-btn">See All Projects</button> -->
@@ -736,61 +773,73 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-cards">
         <!-- Project Card Example 1 -->
         <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover">
+          <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">Netvoice Website</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Designed and developed the Netvoice website for communication services.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Designed and developed the Netvoice website for communication services.
+            </p>
             <a href="http://netvoice.com.ph" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
         <!-- Project Card Example 2 -->
         <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-40 object-cover">
+          <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">Bulk SMS Webapp</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Developed a bulk SMS application with Laravel, integrated with messaging APIs.
+            </p>
             <a href="http://20.188.106.199/login" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
         <!-- Project Card Example 3 -->
         <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover">
+          <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">Fuel Management Webapp</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Developed a fuel management system with Laravel for real-time fuel tracking.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Developed a fuel management system with Laravel for real-time fuel tracking.
+            </p>
             <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
         <!-- Project Card Example 4 -->
         <div class="project-card bg-[#edb51c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-40 object-cover">
+          <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">Solar Smart Calculator</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Built a solar energy savings calculator using React for homeowners to calculate potential savings.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Built a solar energy savings calculator using React for homeowners to calculate potential savings.
+            </p>
             <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
         <!-- Project Card Example 5: Automated Savings Script -->
         <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover">
+          <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">Automated Savings Script</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Created a Python script to automate savings calculations and reports for energy management.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Created a Python script to automate savings calculations and reports for energy management.
+            </p>
             <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
         <!-- Project Card Example 6: WalterMart Monitoring Sites -->
         <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover">
+          <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover" />
           <div class="p-6">
             <h4 class="text-xl font-semibold text-[#4fd1ff]">WalterMart Monitoring Sites</h4>
-            <hr>
-            <p class="text-[#ccd6f6] mb-4">Developed monitoring tools for the WalterMart sites to ensure uptime and efficient operations.</p>
+            <hr />
+            <p class="text-[#ccd6f6] mb-4">
+              Developed monitoring tools for the WalterMart sites to ensure uptime and efficient operations.
+            </p>
             <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
           </div>
         </div>
@@ -807,7 +856,7 @@
 
   <!-- Scripts -->
   <script>
-    // Toggle mobile menu dropdown when hamburger is clicked
+    // Toggle mobile dropdown menu
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('open');
     }
@@ -815,7 +864,7 @@
     // Highlight active nav links based on scroll position
     document.addEventListener('DOMContentLoaded', function () {
       const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('nav a, .mobile-menu a');
+      const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
 
       function changeLinkState() {
         let index = sections.length;
@@ -831,20 +880,5 @@
       window.addEventListener('scroll', changeLinkState);
     });
   </script>
-
-  <!-- Custom Mobile Menu Dropdown Animation Styles -->
-  <style>
-    .mobile-menu {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .mobile-menu.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-  </style>
 </body>
 </html>
