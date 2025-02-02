@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css">
-
+  
   <style>
     /* Global Styles */
     body {
@@ -64,14 +64,15 @@
       color: #4fd1ff;
       border-bottom: 2px solid #4fd1ff;
     }
-    /* Hamburger and Mobile Menu */
+    /* Hamburger & Mobile Menu */
     .hamburger {
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
     }
+    /* Custom mobile menu styling with dropdown animation */
     .mobile-menu {
-      /* Remove the "display: none" here and rely on Tailwind's hidden class */
+      display: flex;
       flex-direction: column;
       align-items: center;
       background: #1f1c2c;
@@ -81,6 +82,15 @@
       left: 0;
       padding: 1rem 0;
       z-index: 9;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
     @media (max-width: 768px) {
       .profile-image {
@@ -95,7 +105,6 @@
     }
     @media (min-width: 769px) {
       .mobile-menu {
-        /* For larger screens, the mobile menu stays hidden */
         display: none;
       }
     }
@@ -444,8 +453,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <!-- Note: Added the Tailwind "hidden" class so that JS can toggle it -->
-  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+  <div id="mobile-menu" class="mobile-menu">
     <a href="#home" class="active-link">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -800,9 +808,9 @@
 
   <!-- Scripts -->
   <script>
-    // Toggle mobile menu display when hamburger is clicked
+    // Toggle mobile menu dropdown with smooth animation
     function toggleMobileMenu() {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
+      document.getElementById('mobile-menu').classList.toggle('open');
     }
 
     // Highlight active nav links based on scroll position
@@ -824,5 +832,27 @@
       window.addEventListener('scroll', changeLinkState);
     });
   </script>
+  
+  <!-- Custom Mobile Menu Dropdown Styles -->
+  <script>
+    // Optional: If you prefer to have the mobile menu hidden by default using CSS (instead of Tailwind's hidden class),
+    // you can remove the "hidden" class from the mobile-menu div and use the custom "open" class below.
+    // The following CSS ensures the mobile menu dropdown animates smoothly.
+  </script>
+  
+  <style>
+    /* Custom Mobile Menu Dropdown Animation */
+    .mobile-menu {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  </style>
 </body>
 </html>
