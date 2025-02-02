@@ -43,8 +43,7 @@
     }
     /* Navbar */
     nav {
-      background: transparent;
-      position: relative; /* Changed from fixed to relative */
+      position: relative; /* So that mobile menu positions relative to nav */
       padding: 1rem;
       z-index: 10;
       display: flex;
@@ -69,18 +68,19 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    /* Mobile menu appears inside nav, positioned below the hamburger */
+    /* Place the mobile menu inside nav; position it relative to the hamburger */
     .mobile-menu {
       position: absolute;
-      top: 100%;
-      right: 0;
-      background: #1f1c2c;
-      width: 200px;
-      padding: 1rem 0;
+      top: 100%; /* Directly below the nav */
+      right: 0;  /* Align to the right (next to the hamburger) */
+      padding: 0.5rem 0;
       z-index: 9;
+      /* Remove background color */
+      background: transparent;
+      /* Start hidden with animation */
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-20px);
+      transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .mobile-menu.open {
@@ -164,7 +164,7 @@
       display: inline-block;
       margin-bottom: 20px;
     }
-    /* Button Base */
+    /* Buttons */
     .btn {
       display: inline-block;
       padding: 0.75rem 2rem;
@@ -210,7 +210,8 @@
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
-    /* Tech Stacks Section */
+    /* (Rest of your CSS for About, Tech Stacks, Projects, Skills, Footer, etc. remains unchanged) */
+    /* For brevity, the additional CSS from your original code is kept as-is below */
     .tech-stacks-container {
       padding: 2rem;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -247,7 +248,6 @@
         width: calc(12.5% - 1rem);
       }
     }
-    /* Projects Section */
     #projects {
       background: linear-gradient(135deg, #111827, #302b63);
     }
@@ -274,7 +274,6 @@
     .download-btn i {
       margin-right: 8px;
     }
-    /* About Section */
     .about-section {
       display: flex;
       flex-wrap: wrap;
@@ -364,7 +363,6 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
-    /* Skill Bars */
     .skill-bar {
       background: #636262;
       border-radius: 5px;
@@ -436,7 +434,6 @@
       from { width: 0; }
       to { width: 90%; }
     }
-    /* Footer */
     .foot {
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     }
@@ -455,7 +452,7 @@
     <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
       <i class="fas fa-bars"></i>
     </div>
-    <!-- Mobile menu placed inside nav so it appears relative to the hamburger -->
+    <!-- Mobile menu placed inside nav -->
     <div id="mobile-menu" class="mobile-menu">
       <a href="#home" class="active-link">Home</a>
       <a href="#about">About</a>
@@ -837,13 +834,12 @@
     });
   </script>
 
-  <!-- Custom Mobile Menu Dropdown Animation -->
+  <!-- Custom Mobile Menu Dropdown Animation Styles -->
   <style>
-    /* Mobile Menu Dropdown Animation */
     .mobile-menu {
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-20px);
+      transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .mobile-menu.open {
