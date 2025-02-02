@@ -41,14 +41,15 @@
       color: #52dfb5;
       border-color: #52dfb5;
     }
-    /* Navbar */
+    /* Navbar (non-fixed, no background) */
     nav {
-      position: relative; /* So that mobile menu positions relative to nav */
+      position: relative; /* Not fixed so that it scrolls with the page */
       padding: 1rem;
       z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: transparent; /* No background color */
     }
     nav a {
       color: #ccd6f6;
@@ -68,16 +69,14 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    /* Place the mobile menu inside nav; position it relative to the hamburger */
+    /* Mobile menu inside nav; positioned below the hamburger */
     .mobile-menu {
       position: absolute;
-      top: 100%; /* Directly below the nav */
-      right: 0;  /* Align to the right (next to the hamburger) */
+      top: 100%; /* directly beneath the navbar */
+      right: 0;
       padding: 0.5rem 0;
       z-index: 9;
-      /* Remove background color */
-      background: transparent;
-      /* Start hidden with animation */
+      background: transparent; /* no background color */
       opacity: 0;
       pointer-events: none;
       transform: translateY(-10px);
@@ -164,7 +163,7 @@
       display: inline-block;
       margin-bottom: 20px;
     }
-    /* Buttons */
+    /* Button Base */
     .btn {
       display: inline-block;
       padding: 0.75rem 2rem;
@@ -210,8 +209,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
-    /* (Rest of your CSS for About, Tech Stacks, Projects, Skills, Footer, etc. remains unchanged) */
-    /* For brevity, the additional CSS from your original code is kept as-is below */
+    /* The rest of your CSS (About, Tech Stacks, Projects, Skills, Footer, etc.) remains unchanged */
     .tech-stacks-container {
       padding: 2rem;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -452,7 +450,7 @@
     <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
       <i class="fas fa-bars"></i>
     </div>
-    <!-- Mobile menu placed inside nav -->
+    <!-- Mobile menu positioned relative to the navbar -->
     <div id="mobile-menu" class="mobile-menu">
       <a href="#home" class="active-link">Home</a>
       <a href="#about">About</a>
