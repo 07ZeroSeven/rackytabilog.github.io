@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css">
-  
+
   <style>
     /* Global Styles */
     body {
@@ -44,13 +44,12 @@
     /* Navbar */
     nav {
       background: transparent;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
+      position: relative; /* Changed from fixed to relative */
       padding: 1rem;
       z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     nav a {
       color: #ccd6f6;
@@ -70,16 +69,13 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    /* Custom mobile menu styling with dropdown animation */
+    /* Mobile menu appears inside nav, positioned below the hamburger */
     .mobile-menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #1f1c2c;
       position: absolute;
-      width: 100%;
-      top: 60px;
-      left: 0;
+      top: 100%;
+      right: 0;
+      background: #1f1c2c;
+      width: 200px;
       padding: 1rem 0;
       z-index: 9;
       opacity: 0;
@@ -91,6 +87,15 @@
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
+    }
+    .mobile-menu a {
+      display: block;
+      color: #ccd6f6;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+    }
+    .mobile-menu a:hover {
+      color: #4fd1ff;
     }
     @media (max-width: 768px) {
       .profile-image {
@@ -439,7 +444,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="flex justify-between items-center">
+  <nav>
     <span class="text-2xl font-bold">Racky</span>
     <div class="desktop-menu hidden md:flex">
       <a href="#home" class="active-link mx-2">Home</a>
@@ -450,15 +455,14 @@
     <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
       <i class="fas fa-bars"></i>
     </div>
+    <!-- Mobile menu placed inside nav so it appears relative to the hamburger -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#home" class="active-link">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </div>
   </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu">
-    <a href="#home" class="active-link">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-  </div>
 
   <!-- Hero Section -->
   <section id="home" class="hero-section">
@@ -808,7 +812,7 @@
 
   <!-- Scripts -->
   <script>
-    // Toggle mobile menu dropdown with smooth animation
+    // Toggle mobile menu dropdown when hamburger is clicked
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('open');
     }
@@ -832,16 +836,10 @@
       window.addEventListener('scroll', changeLinkState);
     });
   </script>
-  
-  <!-- Custom Mobile Menu Dropdown Styles -->
-  <script>
-    // Optional: If you prefer to have the mobile menu hidden by default using CSS (instead of Tailwind's hidden class),
-    // you can remove the "hidden" class from the mobile-menu div and use the custom "open" class below.
-    // The following CSS ensures the mobile menu dropdown animates smoothly.
-  </script>
-  
+
+  <!-- Custom Mobile Menu Dropdown Animation -->
   <style>
-    /* Custom Mobile Menu Dropdown Animation */
+    /* Mobile Menu Dropdown Animation */
     .mobile-menu {
       opacity: 0;
       pointer-events: none;
