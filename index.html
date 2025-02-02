@@ -16,7 +16,6 @@
       color: #ccd6f6;
       font-family: 'Poppins', sans-serif;
     }
-    /* Button Styles */
     .see-all-btn {
       font-size: 0.875rem;
       color: #f72585;
@@ -42,11 +41,10 @@
       color: #52dfb5;
       border-color: #52dfb5;
     }
-    
     /* Navbar */
     nav {
       background: transparent;
-      position: fixed; /* Fixed navbar */
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
@@ -73,7 +71,7 @@
       cursor: pointer;
     }
     .mobile-menu {
-      display: none;
+      /* Remove the "display: none" here and rely on Tailwind's hidden class */
       flex-direction: column;
       align-items: center;
       background: #1f1c2c;
@@ -83,14 +81,6 @@
       left: 0;
       padding: 1rem 0;
       z-index: 9;
-    }
-    .mobile-menu a {
-      color: #ccd6f6;
-      padding: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .mobile-menu a:hover {
-      color: #4fd1ff;
     }
     @media (max-width: 768px) {
       .profile-image {
@@ -105,10 +95,10 @@
     }
     @media (min-width: 769px) {
       .mobile-menu {
+        /* For larger screens, the mobile menu stays hidden */
         display: none;
       }
     }
-
     /* Hero Section */
     .hero-section {
       height: 100vh;
@@ -439,401 +429,400 @@
   </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="flex justify-between items-center">
-        <span class="text-2xl font-bold">Racky</span>
-        <div class="desktop-menu hidden md:flex">
-            <a href="#home" class="active-link mx-2">Home</a>
-            <a href="#about" class="mx-2">About</a>
-            <a href="#skills" class="mx-2">Skills</a>
-            <a href="#projects" class="mx-2">Projects</a>
-        </div>
-        <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu md:hidden" id="mobile-menu">
-        <a href="#home" class="active-link">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center">
+    <span class="text-2xl font-bold">Racky</span>
+    <div class="desktop-menu hidden md:flex">
+      <a href="#home" class="active-link mx-2">Home</a>
+      <a href="#about" class="mx-2">About</a>
+      <a href="#skills" class="mx-2">Skills</a>
+      <a href="#projects" class="mx-2">Projects</a>
     </div>
+    <div class="hamburger md:hidden" onclick="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-content-wrapper">
-            <div class="hero-content">
-                <p class="hero-intro">Hello, I'm</p>
-                <h1 class="hero-title">Racky</h1>
-                <div class="badge">Full Stack Web Developer</div>
-                <div class="badge">Cloud Engineer</div>
-                <div class="badge">Database Administrator</div>
-                <p class="hero-tagline">I love building things on the web!</p>
-                <p class="hero-description">
-                    I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications. 
-                </p>
-                <a href="#" class="btn btn-primary">Contact Me</a>
-                <a href="RackyTabilog-Resume.pdf" class="btn btn-secondary" download="Racky_Resume.pdf">Download Resume</a>
-                <div class="social-icons">
-                    <a href="https://github.com/07ZeroSeven" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/rackytabilog" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/akie.tabs" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="viber://add?number=09992276570" target="_blank">
-                        <i class="fab fa-viber"></i>
-                    </a>
-                </div>
-            </div>
-            <img src="profile.png" alt="Profile Image" class="profile-image">
+  <!-- Mobile Menu -->
+  <!-- Note: Added the Tailwind "hidden" class so that JS can toggle it -->
+  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+    <a href="#home" class="active-link">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-content-wrapper">
+      <div class="hero-content">
+        <p class="hero-intro">Hello, I'm</p>
+        <h1 class="hero-title">Racky</h1>
+        <div class="badge">Full Stack Web Developer</div>
+        <div class="badge">Cloud Engineer</div>
+        <div class="badge">Database Administrator</div>
+        <p class="hero-tagline">I love building things on the web!</p>
+        <p class="hero-description">
+          I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications.
+        </p>
+        <a href="#" class="btn btn-primary">Contact Me</a>
+        <a href="RackyTabilog-Resume.pdf" class="btn btn-secondary" download="Racky_Resume.pdf">Download Resume</a>
+        <div class="social-icons">
+          <a href="https://github.com/07ZeroSeven" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/rackytabilog" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/akie.tabs" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="viber://add?number=09992276570" target="_blank"><i class="fab fa-viber"></i></a>
         </div>
-    </section>
+      </div>
+      <img src="profile.png" alt="Profile Image" class="profile-image">
+    </div>
+  </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-8 bg-gray-900 text-gray-300">
-        <div class="container mx-auto px-6 text-center md:text-left">
-            <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-4">About Me</h3>
-            <div class="about-section">
-                <p class="text">
-                    Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines. With over six years of experience in software development, I am dedicated to crafting efficient and scalable applications for the web. I have a knack for solving complex problems and a deep interest in web technologies, cloud computing, and database management. My journey in technology began with small web projects, which sparked a desire to make impactful applications that bring value to users. Since then, I’ve worked with a variety of technologies, including PHP, JavaScript, React, Laravel, and AWS, Azure, Digital Ocean, GCP.
-                </p>
-                <div class="column">
-                    <h4 class="subheading">Interest</h4>
-                    <p class="text">Computer</p>
-                    <p class="text">Jogging/Running</p>
-                    <p class="text">Watching movies</p>
-                </div>
-                <div class="column">
-                    <h4 class="subheading">Education</h4>
-                    <p class="text">
-                        BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY<br>
-                        Cavite State University-CBE
-                    </p>
-                    <p class="text">
-                        CERTIFICATE OF COMPUTER TECHNICIAN<br>
-                        Cavite State University-CBE
-                    </p>
-                </div>
-            </div>
-            <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-1 mt-8">What I'm Doing</h3>
-            <div class="flex flex-wrap justify-center">
-                <div class="card">
-                    <i class="fas fa-laptop-code icon"></i>
-                    <div>
-                        <h2 class="text-xl font-bold">Web Design</h2>
-                        <p>The most modern and high-quality design made at a professional level.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-code icon"></i>
-                    <div>
-                        <h2 class="text-xl font-bold">Web Development</h2>
-                        <p>High-quality development of sites at the professional level.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-cloud icon"></i>
-                    <div>
-                        <h2 class="text-xl font-bold">Cloud Computing</h2>
-                        <p>Designing and managing scalable cloud solutions to enhance business efficiency and security.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-robot icon"></i>
-                    <div>
-                        <h2 class="text-xl font-bold">Automation Script</h2>
-                        <p>Developing efficient automation scripts to streamline operations and enhance productivity.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-database icon"></i>
-                    <div>
-                        <h2 class="text-xl font-bold">Database</h2>
-                        <p>Expert management and optimization of databases to ensure fast, reliable, and secure data access.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- About Me Section -->
+  <section id="about" class="py-8 bg-gray-900 text-gray-300">
+    <div class="container mx-auto px-6 text-center md:text-left">
+      <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-4">About Me</h3>
+      <div class="about-section">
+        <p class="text">
+          Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines. With over six years of experience in software development, I am dedicated to crafting efficient and scalable applications for the web. I have a knack for solving complex problems and a deep interest in web technologies, cloud computing, and database management. My journey in technology began with small web projects, which sparked a desire to make impactful applications that bring value to users. Since then, I’ve worked with a variety of technologies, including PHP, JavaScript, React, Laravel, and AWS, Azure, Digital Ocean, GCP.
+        </p>
+        <div class="column">
+          <h4 class="subheading">Interest</h4>
+          <p class="text">Computer</p>
+          <p class="text">Jogging/Running</p>
+          <p class="text">Watching movies</p>
         </div>
-    </section>
-
-    <!-- Tech Stacks Section -->
-    <section id="skills" class="tech-stacks-container py-8">
-        <h3 class="text-2xl font-regular text-center text-white">Tech Stacks</h3>
-        <div class="flex flex-wrap justify-center gap-1 mt-6">
-            <!-- Tech Stack Cards -->
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-php-plain colored text-2xl"></i>
-                <span>PHP</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-javascript-plain colored text-2xl"></i>
-                <span>JavaScript</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-html5-plain colored text-2xl"></i>
-                <span>HTML</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-css3-plain colored text-2xl"></i>
-                <span>CSS</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-sass-original colored text-2xl"></i>
-                <span>Sass</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-python-plain colored text-2xl"></i>
-                <span>Python</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-bash-plain colored text-2xl"></i>
-                <span>Bash Shell</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-react-original colored text-2xl"></i>
-                <span>React</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-laravel-plain colored text-2xl"></i>
-                <span>Laravel</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-bootstrap-plain colored text-2xl"></i>
-                <span>Bootstrap</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-tailwindcss-plain colored text-2xl"></i>
-                <span>Tailwind</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-amazonwebservices-plain colored text-2xl"></i>
-                <span>AWS</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-azure-plain colored text-2xl"></i>
-                <span>Azure</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-firebase-plain colored text-2xl"></i>
-                <span>Firebase</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-kubernetes-plain colored text-2xl"></i>
-                <span>Kubernetes</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-mysql-plain colored text-2xl"></i>
-                <span>MySQL</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-postgresql-plain colored text-2xl"></i>
-                <span>PostgreSQL</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-mongodb-plain colored text-2xl"></i>
-                <span>MongoDB</span>
-            </div>
-            <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-                <i class="devicon-docker-plain colored text-2xl"></i>
-                <span>Docker</span>
-            </div>
+        <div class="column">
+          <h4 class="subheading">Education</h4>
+          <p class="text">
+            BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY<br>
+            Cavite State University-CBE
+          </p>
+          <p class="text">
+            CERTIFICATE OF COMPUTER TECHNICIAN<br>
+            Cavite State University-CBE
+          </p>
         </div>
-        <h2 class="section-title text-center my-8 text-[#4fd1ff]">My Skills</h2>
-        <div class="flex flex-wrap justify-center mt-6">
-            <!-- Left Column for Skills -->
-            <div class="w-full md:w-1/2 px-6">
-                <div class="skill-set">
-                    <h3>HTML & CSS, Sass</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-                    </div>
-                    <h3>JavaScript</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage almost" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Reactjs</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage almost" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Bootstrap</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-                    </div>
-                    <h3>Tailwind</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-                    </div>
-                    <h3>UI/UX</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage almost" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Responsive Design</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage almost" style="width: 90%;">90%</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Right Column for Skills -->
-            <div class="w-full md:w-1/2 px-6">
-                <div class="skill-set">
-                    <h3>Laravel Framework</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>PHP</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage branding" style="width: 100%;">100%</div>
-                    </div>
-                    <h3>Cloud Computing</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Database</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage branding" style="width: 100%;">100%</div>
-                    </div>
-                    <h3>Automation Script</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Network Support</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-                    </div>
-                    <h3>Site Troubleshooting & SEO</h3>
-                    <div class="skill-bar">
-                        <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 px-6">
-                <h4 class="section-title text-center">Interpersonal/Life Skills</h4>
-                <ul class="mt-4">
-                    <li>Good Team Player,</li>
-                    <li>Detail-Oriented,</li>
-                    <li>Multi-tasking,</li>
-                    <li>Analytical Skills</li>
-                </ul>
-            </div>
-            <div class="w-full md:w-1/2 px-6">
-                <h4 class="section-title text-center">Communication Skills:</h4>
-                <ul class="mt-4">
-                    <li>Filipino (Written and Verbal),</li>
-                    <li>English (Written and Verbal),</li>
-                </ul>
-            </div>
+      </div>
+      <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-1 mt-8">What I'm Doing</h3>
+      <div class="flex flex-wrap justify-center">
+        <div class="card">
+          <i class="fas fa-laptop-code icon"></i>
+          <div>
+            <h2 class="text-xl font-bold">Web Design</h2>
+            <p>The most modern and high-quality design made at a professional level.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Project Section -->
-    <section id="projects" class="py-16 project-section">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center mb-8">
-                <div>
-                    <h3 class="text-3xl font-regular text-[#ccd6f6]">Projects</h3>
-                    <p class="text-[#ccd6f6]">Check out some of my latest projects with creative ideas.</p>
-                </div>
-                <!-- Uncomment the button below if you wish to add a "See All Projects" toggle -->
-                <!-- <button onclick="toggleProjects()" id="see-all-btn" class="see-all-btn">See All Projects</button> -->
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-cards">
-                <!-- Project Card Example 1 -->
-                <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">Netvoice Website</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Designed and developed the Netvoice website for communication services.</p>
-                        <a href="http://netvoice.com.ph" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-                <!-- Project Card Example 2 -->
-                <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">Bulk SMS Webapp</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
-                        <a href="http://20.188.106.199/login" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-                <!-- Project Card Example 3 -->
-                <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">Fuel Management Webapp</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Developed a fuel management system with Laravel for real-time fuel tracking.</p>
-                        <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-                <!-- Project Card Example 4 -->
-                <div class="project-card bg-[#edb51c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">Solar Smart Calculator</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Built a solar energy savings calculator using React for homeowners to calculate potential savings.</p>
-                        <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-                <!-- Project Card Example 5: Automated Savings Script -->
-                <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">Automated Savings Script</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Created a Python script to automate savings calculations and reports for energy management.</p>
-                        <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-                <!-- Project Card Example 6: WalterMart Monitoring Sites -->
-                <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                    <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold text-[#4fd1ff]">WalterMart Monitoring Sites</h4>
-                        <hr>
-                        <p class="text-[#ccd6f6] mb-4">Developed monitoring tools for the WalterMart sites to ensure uptime and efficient operations.</p>
-                        <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <i class="fas fa-code icon"></i>
+          <div>
+            <h2 class="text-xl font-bold">Web Development</h2>
+            <p>High-quality development of sites at the professional level.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="foot bg-gray-600 text-white py-2 text-center">
-        <div class="container mx-auto">
-            <p>&copy; 2024 R.C.T</p>
+        <div class="card">
+          <i class="fas fa-cloud icon"></i>
+          <div>
+            <h2 class="text-xl font-bold">Cloud Computing</h2>
+            <p>Designing and managing scalable cloud solutions to enhance business efficiency and security.</p>
+          </div>
         </div>
-    </footer>
+        <div class="card">
+          <i class="fas fa-robot icon"></i>
+          <div>
+            <h2 class="text-xl font-bold">Automation Script</h2>
+            <p>Developing efficient automation scripts to streamline operations and enhance productivity.</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fas fa-database icon"></i>
+          <div>
+            <h2 class="text-xl font-bold">Database</h2>
+            <p>Expert management and optimization of databases to ensure fast, reliable, and secure data access.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script>
-      // Toggle mobile menu display
-      function toggleMobileMenu() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-      }
+  <!-- Tech Stacks Section -->
+  <section id="skills" class="tech-stacks-container py-8">
+    <h3 class="text-2xl font-regular text-center text-white">Tech Stacks</h3>
+    <div class="flex flex-wrap justify-center gap-1 mt-6">
+      <!-- Tech Stack Cards -->
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-php-plain colored text-2xl"></i>
+        <span>PHP</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-javascript-plain colored text-2xl"></i>
+        <span>JavaScript</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-html5-plain colored text-2xl"></i>
+        <span>HTML</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-css3-plain colored text-2xl"></i>
+        <span>CSS</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-sass-original colored text-2xl"></i>
+        <span>Sass</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-python-plain colored text-2xl"></i>
+        <span>Python</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-bash-plain colored text-2xl"></i>
+        <span>Bash Shell</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-react-original colored text-2xl"></i>
+        <span>React</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-laravel-plain colored text-2xl"></i>
+        <span>Laravel</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-bootstrap-plain colored text-2xl"></i>
+        <span>Bootstrap</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-tailwindcss-plain colored text-2xl"></i>
+        <span>Tailwind</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-amazonwebservices-plain colored text-2xl"></i>
+        <span>AWS</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-azure-plain colored text-2xl"></i>
+        <span>Azure</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-firebase-plain colored text-2xl"></i>
+        <span>Firebase</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-kubernetes-plain colored text-2xl"></i>
+        <span>Kubernetes</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-mysql-plain colored text-2xl"></i>
+        <span>MySQL</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-postgresql-plain colored text-2xl"></i>
+        <span>PostgreSQL</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-mongodb-plain colored text-2xl"></i>
+        <span>MongoDB</span>
+      </div>
+      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
+        <i class="devicon-docker-plain colored text-2xl"></i>
+        <span>Docker</span>
+      </div>
+    </div>
+    <h2 class="section-title text-center my-8 text-[#4fd1ff]">My Skills</h2>
+    <div class="flex flex-wrap justify-center mt-6">
+      <!-- Left Column for Skills -->
+      <div class="w-full md:w-1/2 px-6">
+        <div class="skill-set">
+          <h3>HTML & CSS, Sass</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
+          </div>
+          <h3>JavaScript</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage almost" style="width: 90%;">90%</div>
+          </div>
+          <h3>Reactjs</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage almost" style="width: 90%;">90%</div>
+          </div>
+          <h3>Bootstrap</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
+          </div>
+          <h3>Tailwind</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
+          </div>
+          <h3>UI/UX</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage almost" style="width: 90%;">90%</div>
+          </div>
+          <h3>Responsive Design</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage almost" style="width: 90%;">90%</div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column for Skills -->
+      <div class="w-full md:w-1/2 px-6">
+        <div class="skill-set">
+          <h3>Laravel Framework</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
+          </div>
+          <h3>PHP</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage branding" style="width: 100%;">100%</div>
+          </div>
+          <h3>Cloud Computing</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
+          </div>
+          <h3>Database</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage branding" style="width: 100%;">100%</div>
+          </div>
+          <h3>Automation Script</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
+          </div>
+          <h3>Network Support</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
+          </div>
+          <h3>Site Troubleshooting & SEO</h3>
+          <div class="skill-bar">
+            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-6">
+        <h4 class="section-title text-center">Interpersonal/Life Skills</h4>
+        <ul class="mt-4">
+          <li>Good Team Player,</li>
+          <li>Detail-Oriented,</li>
+          <li>Multi-tasking,</li>
+          <li>Analytical Skills</li>
+        </ul>
+      </div>
+      <div class="w-full md:w-1/2 px-6">
+        <h4 class="section-title text-center">Communication Skills:</h4>
+        <ul class="mt-4">
+          <li>Filipino (Written and Verbal),</li>
+          <li>English (Written and Verbal),</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      // Highlight active nav links based on scroll position
-      document.addEventListener('DOMContentLoaded', function () {
-          const sections = document.querySelectorAll('section');
-          const navLinks = document.querySelectorAll('nav a, .mobile-menu a');
+  <!-- Project Section -->
+  <section id="projects" class="py-16 project-section">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center mb-8">
+        <div>
+          <h3 class="text-3xl font-regular text-[#ccd6f6]">Projects</h3>
+          <p class="text-[#ccd6f6]">Check out some of my latest projects with creative ideas.</p>
+        </div>
+        <!-- Uncomment below button if you wish to toggle project cards -->
+        <!-- <button onclick="toggleProjects()" id="see-all-btn" class="see-all-btn">See All Projects</button> -->
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-cards">
+        <!-- Project Card Example 1 -->
+        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">Netvoice Website</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Designed and developed the Netvoice website for communication services.</p>
+            <a href="http://netvoice.com.ph" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+        <!-- Project Card Example 2 -->
+        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">Bulk SMS Webapp</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Developed a bulk SMS application with Laravel, integrated with messaging APIs.</p>
+            <a href="http://20.188.106.199/login" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+        <!-- Project Card Example 3 -->
+        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">Fuel Management Webapp</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Developed a fuel management system with Laravel for real-time fuel tracking.</p>
+            <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+        <!-- Project Card Example 4 -->
+        <div class="project-card bg-[#edb51c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">Solar Smart Calculator</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Built a solar energy savings calculator using React for homeowners to calculate potential savings.</p>
+            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+        <!-- Project Card Example 5: Automated Savings Script -->
+        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">Automated Savings Script</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Created a Python script to automate savings calculations and reports for energy management.</p>
+            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+        <!-- Project Card Example 6: WalterMart Monitoring Sites -->
+        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold text-[#4fd1ff]">WalterMart Monitoring Sites</h4>
+            <hr>
+            <p class="text-[#ccd6f6] mb-4">Developed monitoring tools for the WalterMart sites to ensure uptime and efficient operations.</p>
+            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          function changeLinkState() {
-              let index = sections.length;
-              while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-              navLinks.forEach(link => link.classList.remove('active-link'));
-              navLinks.forEach(link => {
-                  if (link.getAttribute('href') === `#${sections[index].id}`) {
-                      link.classList.add('active-link');
-                  }
-              });
+  <!-- Footer -->
+  <footer class="foot bg-gray-600 text-white py-2 text-center">
+    <div class="container mx-auto">
+      <p>&copy; 2024 R.C.T</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Toggle mobile menu display when hamburger is clicked
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    // Highlight active nav links based on scroll position
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a, .mobile-menu a');
+
+      function changeLinkState() {
+        let index = sections.length;
+        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+        navLinks.forEach(link => link.classList.remove('active-link'));
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${sections[index].id}`) {
+            link.classList.add('active-link');
           }
-          changeLinkState();
-          window.addEventListener('scroll', changeLinkState);
-      });
-    </script>
+        });
+      }
+      changeLinkState();
+      window.addEventListener('scroll', changeLinkState);
+    });
+  </script>
 </body>
 </html>
