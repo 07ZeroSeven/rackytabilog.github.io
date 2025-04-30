@@ -1,936 +1,627 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Racky | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.14.0/devicon.min.css" />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Enable Tailwind Dark Mode -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4fd1ff',
+            secondary: '#f72585',
+            backgroundLight: '#f9fafb',
+            backgroundDark: '#0f172a',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Devicon for Tech Stack Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css">
+
   <style>
-    /* Global Styles */
     body {
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #ccd6f6;
       font-family: 'Poppins', sans-serif;
-    }
-    .see-all-btn {
-      font-size: 0.875rem;
-      color: #f72585;
-      padding: 0.5rem 1rem;
-      border: 1px solid #f72585;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .see-all-btn:hover {
-      background-color: #f72585;
-      color: #ffffff;
-    }
-    .project-btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      color: #4fd1ff;
-      font-weight: 600;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s ease, border-color 0.3s ease;
-    }
-    .project-btn:hover {
-      color: #52dfb5;
-      border-color: #52dfb5;
-    }
-    /* Navbar */
-    nav {
-      background: transparent;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #ccd6f6;
-    }
-    /* Hamburger (visible on mobile only) */
-    .mobile-hamburger {
-      display: block;
-      cursor: pointer;
-      color: #ccd6f6;
-    }
-    @media (min-width: 768px) {
-      .mobile-hamburger,
-      #mobile-menu {
-        display: none !important;
-      }
-    }
-    /* Desktop Menu (optional) */
-    .desktop-menu {
-      display: none;
-    }
-    @media (min-width: 769px) {
-      .desktop-menu {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-      }
-      .desktop-menu a {
-        color: #ccd6f6;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-      .desktop-menu a:hover {
-        color: #4fd1ff;
-      }
-      .desktop-menu a.active-link {
-        color: #4fd1ff;
-        border-bottom: 2px solid #4fd1ff;
-      }
-    }
-    /* Mobile Dropdown Menu – positioned below the navbar (aligned to left) */
-    #mobile-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(180deg, #232931, #393e46);
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      overflow: hidden;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      opacity: 0;
-      transform: translateY(-10px);
-      pointer-events: none;
-      flex-direction: column;
-    }
-    #mobile-menu.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-      display: flex;
-    }
-    #mobile-menu a {
-      width: 100%;
-      padding: 0.85rem 1.5rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      transition: background-color 0.3s ease;
-      font-weight: 500;
-      color: #ccd6f6;
-      text-decoration: none;
-    }
-    #mobile-menu a:last-child {
-      border-bottom: none;
-    }
-    #mobile-menu a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    /* Hero Section */
-    .hero-section {
-      height: 100vh;
-   
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      color: #ccd6f6;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    }
-    @media (max-width: 768px) {
-      .hero-section {
-      
-      }
-    }
-    @media (max-width:1024px) {
-      .hero-section {
-       
-      }
-    }
-    .hero-content-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      flex-wrap: wrap;
-    }
-    .hero-content {
-      max-width: 600px;
-      text-align: left;
-    }
-    .hero-intro {
-      font-size: 1.2rem;
-      color: #4fd1ff;
-    }
-    .hero-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 3rem;
-      color: #f72585;
-    }
-    .hero-tagline {
-      font-size: 2rem;
-      color: #8892b0;
-    }
-    .hero-description {
-      font-size: 1rem;
-      color: #8892b0;
-      max-width: 500px;
-      margin-top: 10px;
-    }
-    .badge {
-      background-color: #6f42c1;
-      color: #ffffff;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    /* Button Base */
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      margin-top: 1.5rem;
-      font-weight: 600;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn-primary {
-      background-color: #4fd1ff;
-      color: #0a192f;
-      margin-right: 1rem;
-    }
-    .btn-primary:hover {
-      background-color: #52dfb5;
-    }
-    .btn-secondary {
-      background-color: #f72585;
-      color: #ffffff;
-    }
-    .btn-secondary:hover {
-      background-color: #ff4081;
-    }
-    /* Social Icons */
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .social-icons a {
-      color: #4fd1ff;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #ffffff;
-    }
-    /* Profile Image */
-    .profile-image {
-      width: 450px;
-      height: 400px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-    /* Tech Stacks Section */
-    .tech-stacks-container {
-      padding: 2rem;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    }
-    .tech-stack-card {
-      background: linear-gradient(135deg, #6f42c1, #302b63);
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: calc(50% - 1rem);
-      margin: 0.5rem;
-    }
-    .tech-stack-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-      background: linear-gradient(135deg, #0f0c29, #302b63);
-    }
-    @media (min-width: 768px) {
-      .tech-stack-card {
-        width: calc(33.333% - 1rem);
-      }
-    }
-    @media (min-width: 1024px) {
-      .tech-stack-card {
-        width: calc(25% - 1rem);
-      }
-    }
-    @media (min-width: 1440px) {
-      .tech-stack-card {
-        width: calc(12.5% - 1rem);
-      }
-    }
-    /* Projects Section */
-    #projects {
-      background: linear-gradient(135deg, #111827, #302b63);
-    }
-    .project-card {
-      background: linear-gradient(135deg, #6f42c1, #302b63);
-    }
-    .download-btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: #87ceeb;
-      color: #0a192f;
-      font-weight: 600;
-      border: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .download-btn:hover {
-      background-color: #00bfff;
-      color: #ffffff;
-    }
-    .project-btn i,
-    .download-btn i {
-      margin-right: 8px;
-    }
-    /* About Section */
-    .about-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      background: #24243e;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .column {
-      flex: 1 1 300px;
-      margin: 10px;
-      padding: 20px;
-    }
-    .heading {
-      color: #4fd1ff;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-    .subheading {
-      font-size: 20px;
-      color: #f72585;
-    }
-    .text {
-      font-size: 16px;
-      color: #ccd6f6;
-      line-height: 1.5;
-    }
-    .download-btn {
-      display: block;
-      width: fit-content;
-      padding: 10px 20px;
-      margin-top: 20px;
-      background-color: #F72585;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    .download-btn:hover {
-      background-color: #52dfb5;
-    }
-    .card {
-      background: #24243e;
-      border-radius: 10px;
-      padding: 25px;
-      margin: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      color: #ccd6f6;
-      display: flex;
-      align-items: center;
-      width: auto;
-    }
-    .icon {
-      font-size: 34px;
-      margin-right: 15px;
-      color: #f72585;
-    }
-    h2 {
-      position: relative;
-      padding-bottom: 5px;
-      margin-bottom: 10px;
-    }
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: #4fd1ff;
-    }
-    @media (min-width: 640px) {
-      .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .card {
-        width: calc(50% - 20px);
-      }
-    }
-    .section-title {
-      color: #4fd1ff;
-      margin-bottom: 25px;
-      margin-top: 25px;
-      font-size: 24px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-    /* Skill Bars */
-    .skill-bar {
-      background: #636262;
-      border-radius: 5px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    .skill-percentage {
-      height: 20px;
-      color: #fff;
-      text-align: right;
-      line-height: 20px;
-      padding-right: 10px;
-      border-radius: 5px;
-      background: #333;
-      width: 0;
-    }
-    .skill-percentage.web {
-      background: linear-gradient(to right, #4fd1ff, #0a192f);
-      animation: fillWeb 2s forwards;
-      animation-delay: 0.5s;
-    }
-    .skill-percentage.graphic {
-      background: linear-gradient(to right, #f72585, #0a192f);
-      animation: fillGraphic 2s forwards;
-      animation-delay: 1s;
-    }
-    .skill-percentage.branding {
-      background: linear-gradient(to right, #ff7f50, #0a192f);
-      animation: fillBranding 2s forwards;
-      animation-delay: 1.5s;
-    }
-    .skill-percentage.wordpress {
-      background: linear-gradient(to right, #ffd700, #0a192f);
-      animation: fillWordPress 2s forwards;
-      animation-delay: 2s;
-    }
-    .skill-percentage.expertise {
-      background: linear-gradient(to right, #07f4ec, #0a192f);
-      animation: fillExpertise 2s forwards;
-      animation-delay: 0.5s;
-    }
-    .skill-percentage.almost {
-      background: linear-gradient(to right, #f72585, #0a192f);
-      animation: fillAlmost 2s forwards;
-      animation-delay: 0.5s;
-    }
-    @keyframes fillExpertise {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes fillAlmost {
-      from { width: 0; }
-      to { width: 90%; }
-    }
-    @keyframes fillWeb {
-      from { width: 0; }
-      to { width: 80%; }
-    }
-    @keyframes fillGraphic {
-      from { width: 0; }
-      to { width: 70%; }
-    }
-    @keyframes fillBranding {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes fillWordPress {
-      from { width: 0; }
-      to { width: 90%; }
-    }
-    /* Footer */
-    .foot {
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     }
   </style>
 </head>
-<body>
-  <!-- Navbar -->
-  <nav>
-    <span class="brand">R.C.T</span>
-    <div class="mobile-hamburger" onclick="toggleMobileMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <!-- Desktop Menu (if needed) -->
-    <div class="desktop-menu">
-      <a href="#home" class="active-link mx-2">Home</a>
-      <a href="#about" class="mx-2">About</a>
-      <a href="#skills" class="mx-2">Skills</a>
-      <a href="#projects" class="mx-2">Projects</a>
-    </div>
-    <!-- Mobile Dropdown Menu – positioned below the navbar, aligned to left -->
-    <div id="mobile-menu" class="mobile-menu">
-      <a href="#home" class="active-link">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero-section">
-    <div class="hero-content-wrapper">
-      <div class="hero-content">
-        <p class="hero-intro">Hello, I'm</p>
-        <h1 class="hero-title">Racky</h1>
-        <div class="badge">Full Stack Web Developer</div>
-        <div class="badge">Cloud Engineer</div>
-        <div class="badge">Database Administrator</div>
-        <p class="hero-tagline">I love building things on the web!</p>
-        <p class="hero-description">
-          I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications.
-        </p>
-        <a href="#" class="btn btn-primary">Contact Me</a>
-        <a href="RackyTabilog-Resume.pdf" class="btn btn-secondary" download="Racky_Resume.pdf">Download Resume</a>
-        <div class="social-icons">
-          <a href="https://github.com/07ZeroSeven" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.instagram.com/rackytabilog" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/akie.tabs" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="viber://add?number=09992276570" target="_blank"><i class="fab fa-viber"></i></a>
-        </div>
-      </div>
-      <img src="profile.png" alt="Profile Image" class="profile-image hidden md:block" />
-    </div>
-  </section>
+<body class="bg-backgroundLight text-gray-900 dark:bg-backgroundDark dark:text-gray-100">
 
-  <!-- About Me Section -->
-  <section id="about" class="py-8 bg-gray-900 text-gray-300">
-    <div class="container mx-auto px-6 text-center md:text-left">
-      <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-4">About Me</h3>
-      <div class="about-section">
-        <p class="text">
-          Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines. With over six years of experience in software development, I am dedicated to crafting efficient and scalable applications for the web. I have a knack for solving complex problems and a deep interest in web technologies, cloud computing, and database management. My journey in technology began with small web projects, which sparked a desire to make impactful applications that bring value to users. Since then, I’ve worked with a variety of technologies, including PHP, JavaScript, React, Laravel, and AWS, Azure, Digital Ocean, GCP.
-        </p>
-        <div class="column">
-          <h4 class="subheading">Interest</h4>
-          <p class="text">Computer</p>
-          <p class="text">Jogging/Running</p>
-          <p class="text">Watching movies</p>
-        </div>
-        <div class="column">
-          <h4 class="subheading">Education</h4>
-          <p class="text">
-            BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY<br />
-            Cavite State University-CBE
-          </p>
-          <p class="text">
-            CERTIFICATE OF COMPUTER TECHNICIAN<br />
-            Cavite State University-CBE
-          </p>
-        </div>
-      </div>
-      <h3 class="text-2xl font-regular text-[#4fd1ff] text-center mb-1 mt-8">What I'm Doing</h3>
-      <div class="flex flex-wrap justify-center">
-        <div class="card">
-          <i class="fas fa-laptop-code icon"></i>
-          <div>
-            <h2 class="text-xl font-bold">Web Design</h2>
-            <p>The most modern and high-quality design made at a professional level.</p>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fas fa-code icon"></i>
-          <div>
-            <h2 class="text-xl font-bold">Web Development</h2>
-            <p>High-quality development of sites at the professional level.</p>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fas fa-cloud icon"></i>
-          <div>
-            <h2 class="text-xl font-bold">Cloud Computing</h2>
-            <p>Designing and managing scalable cloud solutions to enhance business efficiency and security.</p>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fas fa-robot icon"></i>
-          <div>
-            <h2 class="text-xl font-bold">Automation Script</h2>
-            <p>Developing efficient automation scripts to streamline operations and enhance productivity.</p>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fas fa-database icon"></i>
-          <div>
-            <h2 class="text-xl font-bold">Database</h2>
-            <p>Expert management and optimization of databases to ensure fast, reliable, and secure data access.</p>
-          </div>
-        </div>
+  <!-- ===== Navbar Start ===== -->
+  <header class="fixed w-full z-50 bg-white/80 dark:bg-backgroundDark/80 backdrop-blur-md shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Brand -->
+      <a href="#home" class="text-2xl font-bold text-primary dark:text-primary">Racky</a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#home" class="hover:text-primary dark:hover:text-secondary transition">Home</a>
+        <a href="#about" class="hover:text-primary dark:hover:text-secondary transition">About</a>
+        <a href="#skills" class="hover:text-primary dark:hover:text-secondary transition">Skills</a>
+        <a href="#projects" class="hover:text-primary dark:hover:text-secondary transition">Projects</a>
+      </nav>
+
+      <!-- Right icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-toggle" class="text-xl focus:outline-none">
+          <i id="toggle-icon" class="fas fa-moon"></i>
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- Tech Stacks Section -->
-  <section id="skills" class="tech-stacks-container py-8">
-    <h3 class="text-2xl font-regular text-center text-white">Tech Stacks</h3>
-    <div class="flex flex-wrap justify-center gap-1 mt-6">
-      <!-- Tech Stack Cards -->
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-php-plain colored text-2xl"></i>
-        <span>PHP</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-javascript-plain colored text-2xl"></i>
-        <span>JavaScript</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-html5-plain colored text-2xl"></i>
-        <span>HTML</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-css3-plain colored text-2xl"></i>
-        <span>CSS</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-sass-original colored text-2xl"></i>
-        <span>Sass</span>
-      </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden bg-white dark:bg-backgroundDark px-6 py-4 space-y-4 shadow-md">
+      <a href="#home" class="block text-base hover:text-primary dark:hover:text-secondary">Home</a>
+      <a href="#about" class="block text-base hover:text-primary dark:hover:text-secondary">About</a>
+      <a href="#skills" class="block text-base hover:text-primary dark:hover:text-secondary">Skills</a>
+      <a href="#projects" class="block text-base hover:text-primary dark:hover:text-secondary">Projects</a>
+    </div>
+  </header>
+  <!-- ===== Navbar End ===== -->
 
+<!-- ===== Hero Section Start ===== -->
+<!-- ===== Hero Section Start (Centered, No Profile Image) ===== -->
+<section id="home" class="min-h-screen flex items-center justify-center text-center px-6 md:px-12 bg-gradient-to-br from-white to-gray-100 dark:from-backgroundDark dark:to-gray-800">
 
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-git-plain colored text-2xl"></i>
-        <span>Git</span>
-      </div>
-      
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-github-original colored text-2xl"></i>
-        <span>GitHub</span>
-      </div>
-      
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-gitlab-plain colored text-2xl"></i>
-        <span>GitLab</span>
-      </div>
-      
+  <div class="max-w-3xl">
+    <p class="text-primary dark:text-secondary text-lg mb-2">Hello, I'm</p>
+    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 dark:text-gray-100 mb-4">Racky</h1>
 
-
-
-
-
-
-
-
-
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-python-plain colored text-2xl"></i>
-        <span>Python</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-bash-plain colored text-2xl"></i>
-        <span>Bash Shell</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-react-original colored text-2xl"></i>
-        <span>React</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-laravel-plain colored text-2xl"></i>
-        <span>Laravel</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-bootstrap-plain colored text-2xl"></i>
-        <span>Bootstrap</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-tailwindcss-plain colored text-2xl"></i>
-        <span>Tailwind</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-amazonwebservices-plain colored text-2xl"></i>
-        <span>AWS</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-azure-plain colored text-2xl"></i>
-        <span>Azure</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-firebase-plain colored text-2xl"></i>
-        <span>Firebase</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-kubernetes-plain colored text-2xl"></i>
-        <span>Kubernetes</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-mysql-plain colored text-2xl"></i>
-        <span>MySQL</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-postgresql-plain colored text-2xl"></i>
-        <span>PostgreSQL</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-mongodb-plain colored text-2xl"></i>
-        <span>MongoDB</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-docker-plain colored text-2xl"></i>
-        <span>Docker</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg" alt="Ansible" class="h-6 w-6">
-        <span>Ansible</span>
-      </div>
-      
-      
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-jenkins-plain colored text-2xl"></i>
-        <span>Jenkins</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <i class="devicon-wordpress-plain colored text-2xl"></i>
-        <span>WordPress</span>
-      </div>
-      <div class="tech-stack-card flex items-center space-x-2 p-4 rounded-lg shadow-md bg-white hover:bg-gray-100">
-        <img src="squarespace-logo.png" alt="Squarespace" class="h-6 w-6">
-        <span>Squarespace</span>
-      </div>
-      
-      
-      
-        
+    <div class="flex flex-wrap justify-center gap-2 mb-6">
+      <span class="bg-secondary text-white text-xs font-bold py-1 px-4 rounded-full flex items-center gap-2">
+        <i class="fas fa-code"></i> Full Stack Developer
+      </span>
+      <span class="bg-primary text-[#0f172a] text-xs font-bold py-1 px-4 rounded-full flex items-center gap-2">
+        <i class="fas fa-cloud"></i> Cloud Engineer
+      </span>
+      <span class="bg-yellow-400 text-[#0f172a] text-xs font-bold py-1 px-4 rounded-full flex items-center gap-2">
+        <i class="fas fa-database"></i> Database Admin
+      </span>
     </div>
 
+    <p class="text-gray-600 dark:text-gray-300 text-xl mb-4">
+      I love building things for the web!
+    </p>
+    <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+      I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications.
+    </p>
 
-
-    
-    <h2 class="section-title text-center my-8 text-[#4fd1ff]">My Skills</h2>
-    <div class="flex flex-wrap justify-center mt-6">
-      <!-- Left Column for Skills -->
-      <div class="w-full md:w-1/2 px-6">
-        <div class="skill-set">
-          <h3>HTML & CSS, Sass</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-          </div>
-          <h3>JavaScript</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage almost" style="width: 90%;">90%</div>
-          </div>
-          <h3>Reactjs</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage almost" style="width: 90%;">90%</div>
-          </div>
-          <h3>Bootstrap</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-          </div>
-          <h3>Tailwind</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage expertise" style="width: 100%;">100%</div>
-          </div>
-          <h3>UI/UX</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage almost" style="width: 90%;">90%</div>
-          </div>
-          <h3>Responsive Design</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage almost" style="width: 90%;">90%</div>
-          </div>
-        </div>
-      </div>
-      <!-- Right Column for Skills -->
-      <div class="w-full md:w-1/2 px-6">
-        <div class="skill-set">
-          <h3>Laravel Framework</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-          </div>
-          <h3>PHP</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage branding" style="width: 100%;">100%</div>
-          </div>
-          <h3>Cloud Computing</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-          </div>
-          <h3>Database</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage branding" style="width: 100%;">100%</div>
-          </div>
-          <h3>Automation Script</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-          </div>
-          <h3>Network Support</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-          </div>
-          <h3>Site Troubleshooting & SEO</h3>
-          <div class="skill-bar">
-            <div class="skill-percentage wordpress" style="width: 90%;">90%</div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 px-6">
-        <h4 class="section-title text-center">Interpersonal/Life Skills</h4>
-        <ul class="mt-4">
-          <li>Good Team Player,</li>
-          <li>Detail-Oriented,</li>
-          <li>Multi-tasking,</li>
-          <li>Analytical Skills</li>
-        </ul>
-      </div>
-      <div class="w-full md:w-1/2 px-6">
-        <h4 class="section-title text-center">Communication Skills:</h4>
-        <ul class="mt-4">
-          <li>Filipino (Written and Verbal),</li>
-          <li>English (Written and Verbal),</li>
-        </ul>
-      </div>
+    <!-- CTA Buttons -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#contact" class="bg-primary text-[#0f172a] font-semibold px-6 py-3 rounded-lg hover:bg-secondary hover:text-white transition duration-300">
+        Contact Me
+      </a>
+      <a href="RackyTabilog-Resume.pdf" download="Racky_Resume.pdf" class="bg-secondary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary hover:text-[#0f172a] transition duration-300">
+        Download Resume
+      </a>
     </div>
-  </section>
 
-  <!-- Project Section -->
-  <section id="projects" class="py-16 project-section">
-    <div class="container mx-auto px-6">
-      <div class="flex justify-between items-center mb-8">
-        <div>
-          <h3 class="text-3xl font-regular text-[#ccd6f6]">Projects</h3>
-          <p class="text-[#ccd6f6]">
-            Check out some of my latest projects with creative ideas.
-          </p>
-        </div>
-        <!-- Uncomment below button if you wish to toggle project cards -->
-        <!-- <button onclick="toggleProjects()" id="see-all-btn" class="see-all-btn">See All Projects</button> -->
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-cards">
-        <!-- Project Card Example 1 -->
-        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="nvproject.png" alt="Netvoice Website" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">Netvoice Website</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Designed and developed the Netvoice website for communication services.
-            </p>
-            <a href="http://netvoice.com.ph" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-        <!-- Project Card Example 2 -->
-        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">Bulk SMS Webapp</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Developed a bulk SMS application with Laravel, integrated with messaging APIs.
-            </p>
-            <a href="http://20.188.106.199/login" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-        <!-- Project Card Example 3 -->
-        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">Fuel Management Webapp</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Developed a fuel management system with Laravel for real-time fuel tracking.
-            </p>
-            <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="download-btn"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-        <!-- Project Card Example 4 -->
-        <div class="project-card bg-[#edb51c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">Solar Smart Calculator</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Built a solar energy savings calculator using React for homeowners to calculate potential savings.
-            </p>
-            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-        <!-- Project Card Example 5: Automated Savings Script -->
-        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">Automated Savings Script</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Created a Python script to automate savings calculations and reports for energy management.
-            </p>
-            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-        <!-- Project Card Example 6: WalterMart Monitoring Sites -->
-        <div class="project-card bg-[#1f1c2c] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-          <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-40 object-cover" />
-          <div class="p-6">
-            <h4 class="text-xl font-semibold text-[#4fd1ff]">WalterMart Monitoring Sites</h4>
-            <hr />
-            <p class="text-[#ccd6f6] mb-4">
-              Developed monitoring tools for the WalterMart sites to ensure uptime and efficient operations.
-            </p>
-            <a href="#" class="download-btn" style="cursor: not-allowed;"><i class="fas fa-eye"></i>View Project</a>
-          </div>
-        </div>
-      </div>
+    <!-- Social Media Links -->
+    <div class="flex gap-6 mt-6 justify-center">
+      <a href="https://github.com/07ZeroSeven" target="_blank" class="text-2xl hover:text-primary dark:hover:text-secondary transition"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank" class="text-2xl hover:text-primary dark:hover:text-secondary transition"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/rackytabilog" target="_blank" class="text-2xl hover:text-primary dark:hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/akie.tabs" target="_blank" class="text-2xl hover:text-primary dark:hover:text-secondary transition"><i class="fab fa-facebook"></i></a>
+      <a href="viber://add?number=09992276570" target="_blank" class="text-2xl hover:text-primary dark:hover:text-secondary transition"><i class="fab fa-viber"></i></a>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer class="foot bg-gray-600 text-white py-2 text-center">
-    <div class="container mx-auto">
-      <p>&copy; 2024 R.C.T</p>
+</section>
+<!-- ===== Hero Section End ===== -->
+
+<!-- ===== About Me Section Start ===== -->
+<section id="about" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">About Me</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines. I craft efficient and scalable applications, always pushing for excellence in web technologies, cloud computing, and database management.
+      </p>
     </div>
-  </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Toggle mobile dropdown menu
-    function toggleMobileMenu() {
-      document.getElementById('mobile-menu').classList.toggle('open');
+    <!-- Info Grid -->
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- Left Column -->
+      <div class="space-y-8">
+
+        <!-- Education Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
+          <h3 class="text-2xl font-semibold text-primary dark:text-secondary mb-4">Education</h3>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li>
+              <strong>Bachelor of Science in Information Technology</strong><br/>
+              Cavite State University - CBE
+            </li>
+            <li>
+              <strong>Certificate in Computer Technician</strong><br/>
+              Cavite State University - CBE
+            </li>
+          </ul>
+        </div>
+
+        <!-- Interests Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
+          <h3 class="text-2xl font-semibold text-primary dark:text-secondary mb-4">Interests</h3>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li>💻 Computer</li>
+            <li>🏃‍♂️ Jogging / Running</li>
+            <li>🎬 Watching Movies</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-8">
+
+        <!-- What I'm Doing Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
+          <h3 class="text-2xl font-semibold text-primary dark:text-secondary mb-6">What I'm Doing</h3>
+
+          <!-- Services -->
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <i class="fas fa-laptop-code text-secondary text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Web Design</h4>
+                <p class="text-gray-600 dark:text-gray-400">High-quality designs made professionally at a modern level.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <i class="fas fa-code text-primary text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Web Development</h4>
+                <p class="text-gray-600 dark:text-gray-400">Development of high-performance websites and apps.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <i class="fas fa-cloud text-yellow-400 text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Cloud Computing</h4>
+                <p class="text-gray-600 dark:text-gray-400">Architecting scalable cloud solutions for modern businesses.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <i class="fas fa-robot text-green-400 text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Automation Scripting</h4>
+                <p class="text-gray-600 dark:text-gray-400">Building automation to boost efficiency and reduce workloads.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <i class="fas fa-database text-pink-400 text-3xl"></i>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Database Management</h4>
+                <p class="text-gray-600 dark:text-gray-400">Managing and optimizing databases for fast, secure data access.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== About Me Section End ===== -->
+<!-- ===== Skills Section Start ===== -->
+<section id="skills" class="py-20 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-white to-gray-100 dark:from-backgroundDark dark:to-gray-800">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Tech Stacks</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Technologies, frameworks, and tools I use regularly:
+      </p>
+    </div>
+
+    <!-- Tech Stack Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+      <!-- Language -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-html5-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">HTML5</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-css3-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">CSS3</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-javascript-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">JavaScript</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-php-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">PHP</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-python-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Python</p>
+      </div>
+
+      <!-- Frameworks -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-laravel-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Laravel</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-react-original colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">React</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-tailwindcss-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Tailwind CSS</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-bootstrap-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Bootstrap</p>
+      </div>
+
+      <!-- CMS -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-wordpress-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">WordPress</p>
+      </div>
+
+      <!-- Version Control -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-git-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Git</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-github-original colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">GitHub</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-gitlab-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">GitLab</p>
+      </div>
+
+      <!-- Databases -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-mysql-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">MySQL</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-postgresql-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">PostgreSQL</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-mongodb-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">MongoDB</p>
+      </div>
+
+      <!-- Cloud / DevOps -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-amazonwebservices-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">AWS</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-azure-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Azure</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-firebase-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Firebase</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-docker-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Docker</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <i class="devicon-kubernetes-plain colored text-4xl mb-2"></i>
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Kubernetes</p>
+      </div>
+
+      <!-- Extras -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg" alt="Ansible" class="h-10 mx-auto mb-2">
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Ansible</p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center shadow hover:shadow-xl transition">
+        <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/terraform.svg" alt="Terraform" class="h-10 mx-auto mb-2">
+        <p class="text-sm font-semibold text-gray-800 dark:text-white">Terraform</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ===== Skills Section End ===== -->
+
+<!-- ===== Projects Section Start ===== -->
+<section id="projects" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-100 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Projects</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Here are some projects I’ve worked on recently:
+      </p>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Project Example -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="nvproject.png" alt="Netvoice Website" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Netvoice Website</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Designed and developed the Netvoice website for communication services.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-laravel-plain colored text-base"></i> Laravel
+            </span>
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-tailwindcss-plain colored text-base"></i> Tailwind
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-mysql-plain colored text-base"></i> MySQL
+            </span>
+          </div>
+          <a href="http://netvoice.com.ph" target="_blank" class="inline-flex items-center gap-2 bg-primary text-[#0f172a] px-4 py-2 rounded-lg font-bold hover:bg-secondary hover:text-white transition">
+            <i class="fas fa-eye"></i> View Project
+          </a>
+        </div>
+      </div>
+
+      <!-- Copy this card structure for each project... (they will have the same badge format) -->
+
+      <!-- Project 2 - NetSolar Website -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="nets.png" alt="NetSolar Website" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">NetSolar Website</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Developed and maintained the NetSolar company website focused on renewable energy.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-laravel-plain colored text-base"></i> Laravel
+            </span>
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-bootstrap-plain colored text-base"></i> Bootstrap
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-mysql-plain colored text-base"></i> MySQL
+            </span>
+          </div>
+          <a href="https://netsolar.com.ph" target="_blank" class="inline-flex items-center gap-2 bg-primary text-[#0f172a] px-4 py-2 rounded-lg font-bold hover:bg-secondary hover:text-white transition">
+            <i class="fas fa-eye"></i> View Project
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3 - Email-to-SMS -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="emailsms.png" alt="Email-to-SMS Platform" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Email-to-SMS Platform</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Built a Laravel-based platform that sends SMS via Email integration.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-laravel-plain colored text-base"></i> Laravel
+            </span>
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-envelope text-sm"></i> Email
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-sms text-sm"></i> SMS API
+            </span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-gray-400 text-white px-4 py-2 rounded-lg font-bold cursor-not-allowed opacity-50">
+            <i class="fas fa-eye"></i> Private
+          </a>
+        </div>
+      </div>
+      <!-- Bulk SMS Webapp -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Bulk SMS Webapp</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Developed a bulk SMS application using Laravel integrated with messaging APIs.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-laravel-plain colored text-base"></i> Laravel
+            </span>
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-plug text-sm"></i> API
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-mysql-plain colored text-base"></i> MySQL
+            </span>
+          </div>
+          <a href="http://20.188.106.199/login" target="_blank" class="inline-flex items-center gap-2 bg-primary text-[#0f172a] px-4 py-2 rounded-lg font-bold hover:bg-secondary hover:text-white transition">
+            <i class="fas fa-eye"></i> View Project
+          </a>
+        </div>
+      </div>
+
+      <!-- Fuel Management Webapp -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Fuel Management Webapp</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Real-time fuel tracking management system built with PHP, Laravel, and MySQL.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-laravel-plain colored text-base"></i> Laravel
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-400 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-mysql-plain colored text-base"></i> MySQL
+            </span>
+          </div>
+          <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="inline-flex items-center gap-2 bg-primary text-[#0f172a] px-4 py-2 rounded-lg font-bold hover:bg-secondary hover:text-white transition">
+            <i class="fas fa-eye"></i> View Project
+          </a>
+        </div>
+      </div>
+
+      <!-- Solar Smart Calculator -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="smart.png" alt="Solar Smart Calculator" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Solar Smart Calculator</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Developed a React-based calculator to help homeowners estimate solar savings.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-react-original colored text-base"></i> React
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-400 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-javascript-plain colored text-base"></i> JavaScript
+            </span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-gray-400 text-white px-4 py-2 rounded-lg font-bold cursor-not-allowed opacity-50">
+            <i class="fas fa-eye"></i> Private
+          </a>
+        </div>
+      </div>
+
+      <!-- Automated Savings Script -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">Automated Savings Script</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Python scripts automating energy savings calculations and reporting systems.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-green-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-python-plain colored text-base"></i> Python
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-300 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-robot text-sm"></i> Automation
+            </span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-gray-400 text-white px-4 py-2 rounded-lg font-bold cursor-not-allowed opacity-50">
+            <i class="fas fa-eye"></i> Private
+          </a>
+        </div>
+      </div>
+
+      <!-- WalterMart Monitoring Sites -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300">
+        <img src="walter1.png" alt="WalterMart Monitoring Sites" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-primary dark:text-secondary mb-2">WalterMart Monitoring Sites</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">Created tools for real-time solar monitoring and performance tracking for multiple WalterMart mall sites.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="flex items-center gap-1 bg-primary text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="devicon-react-original colored text-base"></i> React
+            </span>
+            <span class="flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-plug text-sm"></i> API
+            </span>
+            <span class="flex items-center gap-1 bg-yellow-400 text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fas fa-server text-sm"></i> Monitoring
+            </span>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 bg-gray-400 text-white px-4 py-2 rounded-lg font-bold cursor-not-allowed opacity-50">
+            <i class="fas fa-eye"></i> Private
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ===== Projects Section End ===== -->
+
+<!-- ===== Footer Start ===== -->
+<footer class="py-6 bg-gray-200 dark:bg-gray-800 text-center">
+  <div class="text-gray-600 dark:text-gray-400 text-sm">
+    © 2024 Racky Tabilog. All Rights Reserved.
+  </div>
+</footer>
+<!-- ===== Footer End ===== -->
+
+
+<!-- ===== JavaScript Scripts ===== -->
+<script>
+  // Toggle Dark Mode
+  const darkToggle = document.getElementById('dark-toggle');
+  const toggleIcon = document.getElementById('toggle-icon');
+  const htmlElement = document.documentElement;
+
+  darkToggle.addEventListener('click', () => {
+    htmlElement.classList.toggle('dark');
+
+    // Change the icon (Moon/Sun)
+    if (htmlElement.classList.contains('dark')) {
+      toggleIcon.classList.remove('fa-moon');
+      toggleIcon.classList.add('fa-sun');
+    } else {
+      toggleIcon.classList.remove('fa-sun');
+      toggleIcon.classList.add('fa-moon');
     }
+  });
 
-    // Highlight active nav links based on scroll position
-    document.addEventListener('DOMContentLoaded', function () {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+  // Toggle Mobile Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-      function changeLinkState() {
-        let index = sections.length;
-        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-        navLinks.forEach(link => link.classList.remove('active-link'));
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${sections[index].id}`) {
-            link.classList.add('active-link');
-          }
-        });
-      }
-      changeLinkState();
-      window.addEventListener('scroll', changeLinkState);
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on click (optional enhancement)
+  const mobileLinks = document.querySelectorAll('#mobile-menu a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
