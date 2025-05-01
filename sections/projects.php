@@ -11,7 +11,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Project 1: Netvoice Website -->
-      <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
+      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
         <img src="nvproject.png" alt="Netvoice Website" class="w-full h-52 object-cover rounded-t-2xl">
         <div class="p-6">
           <h3 class="text-[22px] font-medium drop-shadow-md dark:text-white mb-4">Netvoice Website</h3>
