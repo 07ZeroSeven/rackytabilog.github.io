@@ -3,7 +3,7 @@
 
   <!-- Decorative Background Blobs -->
   <div class="absolute top-0 -right-20 w-[500px] h-[500px] bg-primary opacity-30 rounded-full blur-3xl dark:opacity-30"></div>
-  <div class="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-secondary opacity-20 rounded-full blur-3xl dark:opacity-20"></div>
+  <div class="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-primary opacity-20 rounded-full blur-3xl dark:opacity-20"></div>
 
   <div class="max-w-3xl relative z-10 animate-fadeInRight">
 
