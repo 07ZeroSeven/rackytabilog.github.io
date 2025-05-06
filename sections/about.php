@@ -11,7 +11,7 @@
   <!-- Section Header -->
   <div class="text-center mb-16">
     <h2 class="text-5xl font-medium text-primary dark:text-secondary tracking-wide mb-3 drop-shadow-md">
-      About Me
+    🙋 About Me
     </h2>
     <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed drop-shadow-sm">
       Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines.
@@ -110,4 +110,19 @@
 
   </div>
 </section>
+<section id="experience">
+  <h2>💼 Experience</h2>
+  <div class="job">
+    <h3>Netsolar Inc.</h3>
+    <p><em>Intermediate Web Developer / IT Support (2023 – Present)</em></p>
+    <ul>
+      <li>Maintaining and improving the NetSolar website</li>
+      <li>Built real-time Email-to-SMS system for critical alerts</li>
+      <li>Created real-time WalterMart solar monitoring dashboard</li>
+      <li>Managed cloud infra (Azure, AWS, GCP)</li>
+      <li>Developed smart calculator and Project FUEL app</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ===== About Me Section End ===== -->

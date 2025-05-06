@@ -18,7 +18,7 @@
     
     <!-- Section Title -->
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">Tech Stacks</h2>
+      <h2 class="text-4xl font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">🧰 Tech Stacks</h2>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Technologies, frameworks, and tools I use regularly:
       </p>
@@ -173,5 +173,26 @@
 
     </div>
   </div>
+  <!-- Background Blobs -->
+  <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-yellow-300/10 to-transparent rotate-45 rounded-3xl blur-2xl dark:hidden"></div>
+  <div class="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-indigo-300/10 to-transparent -rotate-45 rounded-3xl blur-[100px] dark:hidden"></div>
+  <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-yellow-500/10 to-transparent rotate-45 rounded-3xl blur-2xl hidden dark:block"></div>
+  <div class="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-indigo-400/10 to-transparent -rotate-45 rounded-3xl blur-[100px] hidden dark:block"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10 mt-20">
+    <!-- Title -->
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-medium text-gray-800 drop-shadow-md dark:text-white mb-4">📜 Certifications & Courses</h2>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Learning never stops—here are some courses and certifications I’ve completed:</p>
+    </div>
+
+    <!-- List -->
+    <ul class="space-y-4 max-w-3xl mx-auto text-lg text-gray-700 dark:text-gray-300">
+      <li><strong>Project management</strong> – Amazon Web Services</li>
+      <li><strong>Outsystems</strong> – Coursera, University of Michigan</li>
+    </ul>
+  </div>
 </section>
+
+
 <!-- ===== Skills Section End ===== -->

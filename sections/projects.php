@@ -2,7 +2,7 @@
    <section id="projects" class="py-20 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
-    <h2 class="text-4xl  font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">Projects</h2>
+    <h2 class="text-4xl  font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">🚀 Projects</h2>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Here are some projects I’ve worked on recently:
       </p>
@@ -14,7 +14,7 @@
       <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
         <img src="nvproject.png" alt="Netvoice Website" class="w-full h-52 object-cover">
         <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Netvoice Website</h3>
+          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4"> Netvoice Website</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Developed the Netvoice website to showcase VoIP solutions and communication services tailored for the Philippine market.</p>
           <div class="flex flex-wrap gap-2 mb-4 text-xs">
             <span class="badge"><i class="fas fa-globe"></i> Squarespace</span>
@@ -60,7 +60,7 @@
       <div class="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
         <img src="emailsms.png" alt="Email-to-SMS Platform" class="w-full h-52 object-cover">
         <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Email-to-SMS Alert Notification</h3>
+          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">✉️ Email-to-SMS Alert Notification</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Email-to-SMS alert system for real-time SMS notifications on solar and inverter issues to ensure quick response and uptime.</p>
           <div class="flex flex-wrap gap-2 mb-4 text-xs">
             <span class="badge"><i class="devicon-python-plain colored"></i> Python</span>
