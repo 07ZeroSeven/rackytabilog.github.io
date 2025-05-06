@@ -11,7 +11,7 @@
   <!-- Section Header -->
   <div class="text-center mb-16">
     <h2 class="text-5xl font-medium text-primary dark:text-secondary tracking-wide mb-3 drop-shadow-md">
-    🙋 About Me
+    👨‍💻 About Me
     </h2>
     <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed drop-shadow-sm">
       Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines.
