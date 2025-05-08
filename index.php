@@ -66,7 +66,7 @@
 <body class="bg-backgroundLight text-gray-900 dark:bg-backgroundDark dark:text-gray-100">
 
   <!-- ===== Navbar Start ===== -->
-  <header class="fixed w-full z-50 bg-white/80 dark:bg-backgroundDark/80 backdrop-blur-md shadow-md">
+  <header class="fixed w-full z-50 bg-white/20 dark:bg-backgroundDark/20 backdrop-blur-md shadow-md">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <!-- Brand -->
       <a href="#home" class="text-2xl font-medium tracking-wide text-primary dark:text-secondary drop-shadow-md ">R.C.T</a>
