@@ -70,7 +70,7 @@
   <header class="fixed w-full z-50 bg-white/80 dark:bg-backgroundDark/80 backdrop-blur-md shadow-md">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <!-- Brand -->
-      <a href="#home" class="text-2xl font-medium tracking-wide text-indigo-600 dark:text-secondary drop-shadow-md ">R.C.T</a>
+      <a href="#home" class="text-2xl font-medium tracking-wide text-indigo-600 dark:text-primary drop-shadow-md ">R.C.T</a>
       <!-- Desktop Menu -->
      <!-- Desktop Menu -->
 <nav class="hidden md:flex space-x-8 text-sm font-medium">
@@ -210,7 +210,7 @@ dark:from-secondary dark:to-secondary">
 
       <!-- Interests Card -->
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
-        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-secondary mb-3 drop-shadow-md">Interests</h3>
+        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-primary mb-3 drop-shadow-md">Interests</h3>
         <ul class="space-y-2 text-gray-700 dark:text-gray-300">
           <li>💻 Computer</li>
           <li>🏃‍♂️ Jogging / Running / Gym</li>
@@ -225,7 +225,7 @@ dark:from-secondary dark:to-secondary">
 
       <!-- What I'm Doing Card -->
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
-        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-secondary mb-3 drop-shadow-md">What I'm Doing</h3>
+        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-primary mb-3 drop-shadow-md">What I'm Doing</h3>
         
         <!-- Services -->
         <div class="space-y-6">
@@ -1032,9 +1032,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     navLinks.forEach(link => {
-      link.classList.remove("text-indigo-600", "dark:text-secondary", "font-semibold");
+      link.classList.remove("text-indigo-600", "dark:text-primary", "font-semibold");
       if (link.getAttribute("href").includes(currentSection)) {
-        link.classList.add("text-indigo-600", "dark:text-secondary", "font-semibold");
+        link.classList.add("text-indigo-600", "dark:text-primary", "font-semibold");
       }
     });
   }
