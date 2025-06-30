@@ -71,7 +71,7 @@
 }
 
 .dark .hero-bg {
-  background-image: url('../images/hero-bg.png');
+  background-image: url('/images/hero-bg.png');
 }
 
 
@@ -448,7 +448,7 @@ dark:from-primary dark:to-primary">
 
       <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
         <i class="devicon-bash-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Bash/Shell Shell</p>
+        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Bash/Shell</p>
       </div>
 
       <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
@@ -460,6 +460,17 @@ dark:from-primary dark:to-primary">
       <img src="Jenkins.png" alt="Jenkins" class="h-10 mx-auto mb-2">
         <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Jenkins</p>
       </div>
+      
+      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
+  <img src="https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg" alt="Netlify" class="h-10 mx-auto mb-2">
+  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Netlify</p>
+</div>
+
+<div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
+  <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="Supabase" class="h-10 mx-auto mb-2">
+  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Supabase</p>
+</div>
+
 
 <!-- FreePBX -->
 <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
@@ -490,6 +501,32 @@ dark:from-primary dark:to-primary">
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Project: OMCRM Tool -->
+<div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
+  <img src="omcrm.png" alt="OMCRM Tool" class="w-full h-52 object-cover">
+  <div class="p-6">
+    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🛠️ OMCRM Tool</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+      • Developed an internal CRM system for operations and management teams, enabling ticket tracking, client management, automated notifications, and modular design request handling.
+    </p>
+    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
+      <span class="badge"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+      <span class="badge"><i class="devicon-supabase-plain colored"></i> Supabase</span>
+      <span class="badge"><i class="fas fa-bell"></i> Notifications</span>
+      <span class="badge"><i class="fas fa-tools"></i> CRM</span>
+    </div>
+    <button onclick="openModal('omcrm')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
+      dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
+      <span>View Project</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
       
       <!-- Project 1: Netvoice Website -->
       <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
@@ -692,6 +729,45 @@ dark:from-primary dark:to-primary">
 </section>
 <!-- ===== Projects Section End ===== -->
 <!-- ===== Project Modals Section Start ===== -->
+<!-- Modal: OMCRM Tool -->
+<div id="modal-omcrm" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('omcrm')">
+  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
+
+    <!-- Carousel -->
+    <div class="w-full mb-6">
+      <div class="relative w-full overflow-hidden rounded-lg">
+        <div id="main-carousel-omcrm" class="transition-all duration-500 ease-in-out">
+          <img id="main-slide-omcrm" src="omcrm.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
+        </div>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="flex justify-center mt-4 gap-2" id="thumbs-omcrm">
+        <img src="omcrm.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('omcrm', 0, true)">
+        <img src="omcrm2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('omcrm', 1, true)">
+        <img src="omcrm3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('omcrm', 2, true)">
+      </div>
+    </div>
+
+    <!-- Modal Content -->
+    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">OMCRM Tool</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+      An internal CRM platform tailored for operations and management workflows. It includes modules for tracking support tickets, managing client and design requirements, sending automated notifications, and handling project interactions—all built for high performance and ease of use.
+    </p>
+
+    <!-- Tech Stack Badges -->
+    <div class="flex flex-wrap gap-3 mb-6 text-sm">
+      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
+      <span class="badge"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+      <span class="badge"><i class="devicon-supabase-plain colored"></i> Supabase</span>
+      <span class="badge"><i class="fas fa-bell"></i> Realtime Alerts</span>
+      <span class="badge"><i class="fas fa-tools"></i> CRM Modules</span>
+    </div>
+
+    <!-- Call to Action -->
+    <p class="text-center text-gray-400">Internal Tool – Access Restricted</p>
+  </div>
+</div>
 
 <!-- Modal: Netvoice Website -->
 <div id="modal-netvoice" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('netvoice')">
@@ -1067,6 +1143,11 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
   <script>
     const slideData = {
+      omcrm: {
+  index: 0,
+  images: ["omcrm.png", "omcrm2.png", "omcrm3.png"],
+  intervalId: null
+},
       netvoice: {
         index: 0,
         images: ["nvproject.png", "nvproject2.png", "nvproject3.png"],
