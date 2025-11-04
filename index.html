@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Racky | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Racky | Full-Stack Developer</title>
 
-  <!-- TailwindCSS CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  
-  <!-- Enable Tailwind Dark Mode -->
+
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -18,1251 +17,1079 @@
           colors: {
             primary: '#4fd1ff',
             secondary: '#f72585',
-            backgroundLight: '#f9fafb',
-            backgroundDark: '#0f172a',
+            ink: '#0b1020',
           },
           fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
+            montserrat: ['Montserrat','system-ui','-apple-system','Segoe UI','Roboto','sans-serif'],
+          },
+          backgroundImage: {
+            aurora: 'radial-gradient(800px 400px at 10% 0%, rgba(79,209,255,.16), transparent), radial-gradient(600px 400px at 90% 10%, rgba(247,37,133,.12), transparent)',
           }
         }
       }
     }
   </script>
 
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Devicon for Tech Stack Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css">
+  <!-- Icons / Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css"/>
 
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    html, body { font-family: 'Montserrat', sans-serif; }
+
+    /* ===== Premium weight tuning ===== */
+    h1, .h1 { font-weight: 700; letter-spacing: -0.01em; }
+    h2, .h2 { font-weight: 700; }
+    h3, .h3 { font-weight: 700; }
+    .title-underline::after{
+      content:''; display:block; height:3px; width:86px; margin:.7rem auto 0;
+      background: linear-gradient(90deg, #4fd1ff, #60a5fa, #a78bfa);
+      border-radius: 9999px;
     }
-   
-  @keyframes fadeInRight {
-    0% {
+    .card {
+      border-radius: 16px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(148,163,184,.22);
+      transition: box-shadow .25s ease, background .25s ease;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 32px rgba(2,6,23,.10);
+    }
+    .dark .card { background: rgba(14,21,42,.70); border-color: rgba(148,163,184,.16) }
+
+    /* Softer chips & buttons */
+    .chip {
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.45rem .7rem;border-radius:9999px;font-weight:600;font-size:.85rem;
+      border:1px solid rgba(148,163,184,.35); background: rgba(255,255,255,.75); color:#0f172a;
+    }
+    .dark .chip { background: rgba(255,255,255,.06); color: #e5e7eb; border-color: rgba(148,163,184,.2) }
+    .active-link { color:#2563eb !important }
+    .dark .active-link { color: #4fd1ff !important }
+
+    /* Buttons (reduced weights) */
+    .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      padding:.75rem 1.25rem; border-radius: 14px; font-weight: 600;
+      border:1px solid rgba(148,163,184,.55); background:#f1f5f9; color:#0f172a;
+      transition: all .3s ease; box-shadow: 0 1px 2px rgba(2,6,23,.06);
+    }
+    .btn-ghost:hover{ color:#fff; background-image: linear-gradient(90deg, #38bdf8, #6366f1) }
+    .dark .btn-ghost{ background: rgba(255,255,255,.1); color:#fff; border-color: rgba(148,163,184,.35) }
+    .dark .btn-ghost:hover{ background-image: linear-gradient(90deg, #38bdf8, #6366f1) }
+
+    .btn-primary{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      padding:.85rem 1.35rem; border-radius: 14px; font-weight: 700;
+      color:#fff; background-image: linear-gradient(135deg, #60a5fa, #6366f1);
+      border: 1px solid rgba(148,163,184,.25);
+    }
+
+    /* Home rain (home only) */
+    #homeRain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: .22; }
+    .dark #homeRain { opacity: .18; }
+
+    /* Terminal */
+    .terminal {
+      background: rgba(2,6,23,.70);
+      border: 1px solid rgba(148,163,184,.2);
+      box-shadow: 0 10px 40px rgba(2,8,23,.30), inset 0 0 0 1px rgba(255,255,255,.04);
+      border-radius: 18px;
+    }
+
+    /* Section wrappers */
+    .sec { position:relative; overflow:clip; }
+    .section-bg::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image: linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px),
+                       linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px);
+      background-size: 22px 22px; opacity:.12;
+    }
+    .dark .section-bg::after { opacity:.08; }
+
+    /* Unique premium backgrounds per section */
+    .about-decor, .certs-decor, .projects-decor, .contact-decor {
+      position:absolute; inset:0; z-index:0; pointer-events:none;
+    }
+    .about-decor{
+      background-image:
+        radial-gradient(600px 300px at 5% 10%, rgba(79,209,255,.12), transparent),
+        radial-gradient(500px 260px at 95% 0%, rgba(167,139,250,.10), transparent);
+    }
+    .certs-decor{
+      background:
+        conic-gradient(from 210deg at 10% 10%, rgba(99,102,241,.08), transparent 35%),
+        conic-gradient(from 30deg at 90% 0%, rgba(56,189,248,.10), transparent 40%);
+    }
+    .projects-decor{
+      background-image:
+        linear-gradient(transparent, transparent),
+        repeating-linear-gradient(0deg, rgba(99,102,241,.08), rgba(99,102,241,.08) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(90deg, rgba(99,102,241,.08), rgba(99,102,241,.08) 1px, transparent 1px, transparent 24px);
+    }
+    .dark .projects-decor{ opacity:.55 }
+    .contact-decor{
+      background-image:
+        radial-gradient(500px 220px at 15% 25%, rgba(56,189,248,.16), transparent),
+        radial-gradient(500px 260px at 85% 15%, rgba(244,63,94,.12), transparent),
+        radial-gradient(600px 280px at 50% 100%, rgba(167,139,250,.12), transparent);
+    }
+
+    /* Skills Constellation – behind content */
+    #skillsConstellation { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:-1; opacity:.82; }
+    .dark #skillsConstellation { opacity:.5; }
+
+    /* Skills tabs (reduced weight) */
+    .tabs { display:flex; flex-wrap:wrap; gap:.5rem }
+    .tab { padding:.55rem .9rem; border-radius:9999px; font-weight:700; font-size:.85rem; border:1px solid rgba(148,163,184,.45); background:rgba(255,255,255,.85); cursor:pointer }
+    .dark .tab{ background:rgba(255,255,255,.06); border-color:rgba(148,163,184,.25); color:#e5e7eb }
+    .tab-active { color:#fff; border-color:transparent; background-image: linear-gradient(90deg, #38bdf8, #6366f1) }
+
+    /* Project showcase (no motion) */
+    .showcase {
+      display:grid; grid-template-columns: 1fr; gap:0;
+      border-radius: 18px; overflow:hidden; position:relative;
+      border:1px solid rgba(148,163,184,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.8));
+      box-shadow: 0 14px 48px rgba(2,6,23,.12);
+    }
+    .dark .showcase { background: linear-gradient(180deg, rgba(14,21,42,.9), rgba(14,21,42,.75)); border-color: rgba(148,163,184,.16) }
+    .view img { width:100%; height: 220px; object-fit:cover }
+    .panel { padding: 18px 18px 20px }
+    .panel h3 { font-weight: 700 } /* was 800 */
+
+    /* Premium Modals */
+    .modal-backdrop { background: rgba(0,0,0,.6); }
+    .modal-card {
+      border-radius: 20px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(148,163,184,.2);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 30px 120px rgba(2,6,23,.45);
+      position: relative;
+      overflow: hidden;
+      transform: scale(.98);
       opacity: 0;
-      transform: translateX(100px);
+      transition: transform .25s ease, opacity .25s ease;
     }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+    .modal-card.opacity-100{ opacity:1 }
+    .modal-card.scale-100{ transform: scale(1) }
+    .dark .modal-card { background: rgba(14,21,42,.88); border-color: rgba(148,163,184,.18); }
+    .thumbs img{ border:2px solid transparent; border-radius:10px; cursor:pointer }
+    .thumbs img.active{ border-color:#38bdf8 }
 
-  @layer utilities {
-    .animate-fadeInRight {
-      animation: fadeInRight 3s ease-out both;
-    }
-  }
-  .hero-bg {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  
-    /* Light Mode Background */
-    .hero-bg {
-  background-image: url('/images/hero-bgwhite.png');
-}
+    /* ===== Your requested custom effects ===== */
 
-.dark .hero-bg {
-  background-image: url('/images/hero-bg.png');
-}
+    /* About circuit traces */
+    @keyframes dash { 0% { stroke-dashoffset: 600; } 100% { stroke-dashoffset: 0; } }
+    .circuit path { stroke: rgba(79,209,255,.35); stroke-width: 1.4; fill: none; stroke-dasharray: 600; animation: dash 8s linear infinite; }
+    .dark .circuit path { stroke: rgba(79,209,255,.28) }
 
-
+    /* Contact nodes */
+    @keyframes drift { 0%,100% { transform: translateY(0)} 50% { transform: translateY(-8px)} }
+    .node { position:absolute; width:14px; height:14px; border-radius:9999px; background: radial-gradient(circle at 30% 30%, #fff, #4fd1ff 40%, #2563eb 90%); opacity:.85; animation: drift 6s ease-in-out infinite; box-shadow: 0 4px 18px rgba(79,209,255,.55); }
+    .dark .node { background: radial-gradient(circle at 30% 30%, #8ecfff, #4fd1ff 40%, #60a5fa 90%); opacity:.8; box-shadow: 0 4px 18px rgba(79,209,255,.35); }
   </style>
-  
 </head>
 
-<body class="bg-backgroundLight text-gray-900 dark:bg-backgroundDark dark:text-gray-100">
+<body class="bg-white text-slate-800 dark:bg-ink dark:text-slate-100">
+  <!-- NAV -->
+  <header class="fixed top-0 w-full z-50">
+    <div class="mx-auto max-w-7xl px-4">
+      <nav class="mt-4 mb-3 flex items-center justify-between rounded-2xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md py-3 px-4 shadow">
+        <a href="#home" class="text-xl font-bold tracking-wide text-slate-900 dark:text-primary">R.C.T</a>
 
-  <!-- ===== Navbar Start ===== -->
-  <header class="fixed w-full z-50 bg-white/20 dark:bg-backgroundDark/20 backdrop-blur-md shadow-md">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Brand -->
-      <a href="#home" class="text-2xl font-medium tracking-wide text-indigo-600 dark:text-primary drop-shadow-md ">R.C.T</a>
-      <!-- Desktop Menu -->
-     <!-- Desktop Menu -->
-<nav class="hidden md:flex space-x-8 text-sm font-medium">
-  <a href="#home" class="nav-link transition hover:text-indigo-600 dark:hover:text-secondary">Home</a>
-  <a href="#about" class="nav-link transition hover:text-indigo-600 dark:hover:text-secondary">About</a>
-  <a href="#skills" class="nav-link transition hover:text-indigo-600 dark:hover:text-secondary">Skills</a>
-  <a href="#projects" class="nav-link transition hover:text-indigo-600 dark:hover:text-secondary">Projects</a>
-</nav>
+        <div class="hidden md:flex items-center gap-6 text-sm font-semibold">
+          <a href="#home" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">Home</a>
+          <a href="#about" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">About</a>
+          <a href="#skills" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">Skills</a>
+          <a href="#certifications" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">Certifications</a>
+          <a href="#projects" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">Projects</a>
+          <a href="#contact" class="nav-link hover:text-indigo-600 dark:hover:text-secondary">Contact</a>
+        </div>
 
+        <div class="flex items-center gap-3">
+          <button id="dark-toggle" class="text-lg w-9 h-9 grid place-items-center rounded-full border border-white/20 dark:border-white/10 hover:bg-white/50 dark:hover:bg-white/10">
+            <i id="toggle-icon" class="fas fa-moon"></i>
+          </button>
+          <button id="menu-toggle" class="md:hidden text-xl w-9 h-9 grid place-items-center rounded-full border border-white/20 dark:border-white/10 hover:bg-white/50 dark:hover:bg-white/10">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
 
-
-
-      <!-- Right icons -->
-      <div class="flex items-center space-x-4">
-        <!-- Dark Mode Toggle Button -->
-        <button id="dark-toggle" class="text-xl focus:outline-none">
-          <i id="toggle-icon" class="fas fa-moon"></i>
-        </button>
-
-        <!-- Mobile Hamburger -->
-        <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
+      <!-- Mobile -->
+      <div id="mobile-menu" class="hidden md:hidden rounded-xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md px-6 py-4 shadow">
+        <a href="#home" class="nav-link block py-2">Home</a>
+        <a href="#about" class="nav-link block py-2">About</a>
+        <a href="#skills" class="nav-link block py-2">Skills</a>
+        <a href="#certifications" class="nav-link block py-2">Certifications</a>
+        <a href="#projects" class="nav-link block py-2">Projects</a>
+        <a href="#contact" class="nav-link block py-2">Contact</a>
       </div>
     </div>
-
-    <!-- Mobile Menu Dropdown -->
-    <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden bg-white dark:bg-backgroundDark px-6 py-4 space-y-4 shadow-md">
-  <a href="#home" class="nav-link block text-base transition hover:text-indigo-600 dark:hover:text-secondary">Home</a>
-  <a href="#about" class="nav-link block text-base transition hover:text-indigo-600 dark:hover:text-secondary">About</a>
-  <a href="#skills" class="nav-link block text-base transition hover:text-indigo-600 dark:hover:text-secondary">Skills</a>
-  <a href="#projects" class="nav-link block text-base transition hover:text-indigo-600 dark:hover:text-secondary">Projects</a>
-</div>
   </header>
-  <!-- ===== Navbar End ===== -->
-  <main >
-   
-<!-- ===== Hero Section Start (Light & Dark Mode Backgrounds) ===== -->
-<section id="home"
-class="relative overflow-hidden min-h-screen flex items-center justify-center text-center px-6 md:px-12
-       bg-gradient-to-br from-white to-gray-100 dark:bg-none hero-bg">
 
-<!-- Overlay for better text visibility -->
-<div class="absolute inset-0 bg-white/80 dark:bg-black/40 z-0 pointer-events-none"></div>
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section id="home"
+  class="relative min-h-[92vh] flex items-center pb-16 md:pb-0 ...">
 
-<!-- Decorative Background Blobs -->
-<div class="absolute top-0 -right-20 w-[500px] h-[500px] bg-primary opacity-30 rounded-full blur-3xl dark:opacity-30"></div>
-<div class="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-primary opacity-20 rounded-full blur-3xl dark:opacity-20"></div>
+      <div class="absolute inset-0 bg-aurora"></div>
+      <canvas id="homeRain"></canvas>
 
-<!-- Hero Content -->
-<div class="max-w-3xl relative z-10 animate-fadeInRight">
-  <p class="text-indigo-600 dark:text-primary text-lg mb-1">Hello, I'm</p>
-  <h1 class="text-6xl font-medium tracking-wide text-gray-800 dark:text-gray-100 mb-4 drop-shadow-md">Racky</h1>
+      <div class="mx-auto max-w-7xl px-6 pt-28 md:pt-40 relative z-10 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div>
+            <div class="inline-flex items-center gap-2 chip mb-5">
+              <i class="fa-solid fa-layer-group"></i> Full-Stack • Cloud • DevOps
+            </div>
+            <h1 class="text-[32px] leading-[1.1] sm:text-5xl md:text-6xl font-bold">
+              I build <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-500 to-indigo-500">fast, reliable</span> web software end-to-end.
+            </h1>
+            <p class="mt-4 text-slate-700 dark:text-slate-300 max-w-xl text-base sm:text-lg">
+              From UI to infra—React, Laravel/PHP, Python, SQL/NoSQL, CI/CD, and cloud orchestration.
+            </p>
 
-  <div class="flex flex-wrap justify-center gap-2 mb-6">
-    <span class="bg-indigo-600 text-white text-xs drop-shadow-md font-medium py-1 px-4 rounded-full flex items-center gap-2">
-      <i class="fas fa-code"></i> Full Stack Developer
-    </span>
-    <span class="bg-sky-400 text-white text-xs drop-shadow-md font-medium py-1 px-4 rounded-full flex items-center gap-2">
-      <i class="fas fa-cloud"></i> Cloud Engineer
-    </span>
-    <span class="bg-yellow-400 text-white text-xs drop-shadow-md font-medium py-1 px-4 rounded-full flex items-center gap-2">
-      <i class="fas fa-database"></i> Database Admin
-    </span>
-  </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#contact" class="btn-primary">Contact Me</a>
+              <a href="RackyTabilog-Resume.pdf" download="Racky_Resume.pdf" class="btn-ghost">Download Resume</a>
+            </div>
 
-  <p class="drop-shadow-lg font-medium text-gray-900 dark:text-white text-xl mb-4">
-    I love building things on the web!
-  </p>
-  <p class="text-gray-700 dark:text-white max-w-2xl mx-auto mb-6 drop-shadow-lg">
-    I started unintentionally with small web projects, and now I'm here intentionally to create visually stunning and responsive web applications.
-  </p>
-
-  <!-- CTA Buttons -->
-  <div class="flex flex-wrap gap-4 justify-center">
-    <a href="#contact" class="bg-sky-400 text-[#0f172a] drop-shadow-md font-medium px-6 py-3 rounded-lg hover:bg-sky-500 hover:text-white transition duration-300">
-      Contact Me
-    </a>
-    <a href="RackyTabilog-Resume.pdf" download="Racky_Resume.pdf" class="bg-indigo-600 text-white drop-shadow-md font-medium px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-white transition duration-300">
-      Download Resume
-    </a>
-  </div>
-
-  <!-- Social Media Links -->
-  <div class="flex gap-6 mt-6 justify-center">
-    <a href="https://github.com/07ZeroSeven" target="_blank" class="text-2xl hover:text-indigo-600 dark:hover:text-secondary transition"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank" class="text-2xl hover:text-indigo-600 dark:hover:text-secondary transition"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.instagram.com/rackytabilog" target="_blank" class="text-2xl hover:text-indigo-600 dark:hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/akie.tabs" target="_blank" class="text-2xl hover:text-indigo-600 dark:hover:text-secondary transition"><i class="fab fa-facebook"></i></a>
-    <a href="viber://add?number=09992276570" target="_blank" class="text-2xl hover:text-indigo-600 dark:hover:text-secondary transition"><i class="fab fa-viber"></i></a>
-  </div>
-</div>
-</section>
-<!-- ===== Hero Section End ===== -->
-
-
-   <!-- ===== About Me Section Start ===== -->
-<section id="about" class="relative bg-gray-50 dark:bg-gray-900 overflow-hidden pt-0 shadow-[0_10px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(255,255,255,0.03)] rounded-xl">
-
-<!-- Premium Gradient Underline -->
-<div class="h-1 w-24 mx-auto mt-8 mb-6 rounded-full 
-bg-gradient-to-r from-indigo-600 to-indigo-600 shadow-md
-dark:from-primary dark:to-primary">
-</div>
-
-
-<!-- Section Header -->
-<div class="text-center mb-16 px-4 mt-8">
-  <h2 class="text-4xl font-medium dark:text-white tracking-wide text-gray-800 mb-3 drop-shadow-md">
-    👨‍💻 About me
-  </h2>
-  <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed drop-shadow-sm">
-    Hello! I'm Racky Tabilog, a passionate Full Stack Web Developer and Cloud Engineer based in the Philippines.
-    I craft efficient and scalable applications, always pushing for excellence in web technologies,
-    cloud computing, and database management.
-  </p>
-</div>
-
-<!-- Main Content Container -->
-<div class="py-10 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto relative z-10">
-
-  <!-- Grid Layout -->
-  <div class="grid md:grid-cols-2 gap-12">
-
-    <!-- Left Column -->
-    <div class="space-y-8">
-
-      <!-- Education Card -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
-        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-primary mb-3 drop-shadow-md">Education</h3>
-        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-          <li>
-            <strong class="drop-shadow-md font-semibold text-lg">Bachelor of Science in Information Technology</strong><br />
-            - Cavite State University - CBE
-          </li>
-          <br>
-          <li>
-            <strong class="drop-shadow-md font-semibold text-lg">Certificate in Computer Technician</strong><br />
-            - Cavite State University - CBE
-          </li>
-        </ul>
-      </div>
-
-      <!-- Interests Card -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
-        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-primary mb-3 drop-shadow-md">Interests</h3>
-        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-          <li>💻 Computer</li>
-          <li>🏃‍♂️ Jogging / Running / Gym</li>
-          <li>🎬 Watching Movies</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Right Column -->
-    <div class="space-y-8">
-
-      <!-- What I'm Doing Card -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition hover:shadow-xl">
-        <h3 class="text-2xl font-medium tracking-wide text-indigo-600  dark:text-primary mb-3 drop-shadow-md">What I'm Doing</h3>
-        
-        <!-- Services -->
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <i class="fas fa-laptop-code text-secondary text-3xl"></i>
-            <div>
-              <h4 class="drop-shadow-md font-semibold text-md">Web Design</h4>
-              <p class="text-gray-600 dark:text-gray-400">High-quality designs made professionally at a modern level.</p>
+            <div class="mt-6 flex gap-5 text-xl sm:text-2xl">
+              <a href="https://github.com/07ZeroSeven" target="_blank" class="hover:text-indigo-600 dark:hover:text-secondary"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank" class="hover:text-indigo-600 dark:hover:text-secondary"><i class="fab fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/rackytabilog" target="_blank" class="hover:text-indigo-600 dark:hover:text-secondary"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/akie.tabs" target="_blank" class="hover:text-indigo-600 dark:hover:text-secondary"><i class="fab fa-facebook"></i></a>
+              <a href="viber://add?number=09992276570" target="_blank" class="hover:text-indigo-600 dark:hover:text-secondary"><i class="fab fa-viber"></i></a>
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
-            <i class="fas fa-code text-indigo-600 text-3xl"></i>
-            <div>
-              <h4 class="drop-shadow-md font-semibold text-md">Web Development</h4>
-              <p class="text-gray-600 dark:text-gray-400">Development of high-performance websites and apps.</p>
+          <div class="order-last md:order-none">
+            <div class="terminal p-4 sm:p-5">
+              <div class="flex items-center gap-2 mb-3 text-sm text-slate-300">
+                <span class="w-3 h-3 rounded-full bg-rose-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+                <span class="ml-2 text-xs sm:text-sm">~/racky/build.sh</span>
+              </div>
+<pre class="text-[11px] sm:text-[12px] md:text-[13px] leading-relaxed text-slate-100 overflow-auto"><code>
+$ whoami
+&gt; Racky — Full-Stack Developer / Cloud Engineer
+
+$ tech --top
+&gt; React · Laravel · Tailwind · Node · PHP · Python · MySQL · MongoDB · Azure · Docker · Kubernetes · Jenkins
+
+$ deploy --target=prod
+&gt; Tests... ✅  Build... ✅  Migrations... ✅
+&gt; Shipping ✈️  https://{your-app}.com  ✅
+
+$ motto
+&gt; “Ship value fast. Keep it clean.”
+</code></pre>
             </div>
           </div>
-
-          <div class="flex items-start gap-4">
-            <i class="fas fa-cloud text-yellow-400 text-3xl"></i>
-            <div>
-              <h4 class="drop-shadow-md font-semibold text-md">Cloud Computing</h4>
-              <p class="text-gray-600 dark:text-gray-400">Architecting scalable cloud solutions for modern businesses.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <i class="fas fa-robot text-green-400 text-3xl"></i>
-            <div>
-              <h4 class="drop-shadow-md font-semibold text-md">Automation Scripting</h4>
-              <p class="text-gray-600 dark:text-gray-400">Building automation to boost efficiency and reduce workloads.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4">
-            <i class="fas fa-database text-pink-400 text-3xl"></i>
-            <div>
-              <h4 class="drop-shadow-md font-semibold text-md">Database Management</h4>
-              <p class="text-gray-600 dark:text-gray-400">Managing and optimizing databases for fast, secure data access.</p>
-            </div>
-          </div>
-
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="sec section-bg relative py-20 md:py-24">
+      <div class="about-decor"></div>
 
-  </div>
-</div>
-</section>
-<!-- ===== About Me Section End ===== -->
-
-    <!-- ===== Skills Section Start ===== -->
-<section id="skills" class="relative py-20 px-6 md:px-12 lg:px-24 overflow-hidden 
-  bg-gradient-to-br from-[#f9fafb] via-[#f0f4f8] to-[#e6efff] 
-  dark:bg-gradient-to-br dark:from-[#0f172a] dark:via-[#1e2a47] dark:to-[#101827]">
-
-<!-- Light Mode -->
-<div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-pink-300/5 to-transparent rotate-45 rounded-3xl blur-2xl dark:hidden"></div>
-
-<div class="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-cyan-300/5 to-transparent -rotate-45 rounded-3xl blur-[100px] dark:hidden"></div>
-
-<!-- Dark Mode -->
-<div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-pink-500/5 to-transparent rotate-45 rounded-3xl blur-2xl hidden dark:block"></div>
-
-<div class="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-cyan-400/5 to-transparent -rotate-45 rounded-3xl blur-[100px] hidden dark:block"></div>
-
-<div class="max-w-7xl mx-auto relative z-10">
-
-    
-    <!-- Section Title -->
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">🧰 Tech Stacks</h2>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Technologies, frameworks, and tools I use regularly:
-      </p>
-    </div>
-
-    <!-- Tech Stack Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-
-      <!-- Example Card -->
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-html5-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">HTML5</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-css3-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">CSS3</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-javascript-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">JavaScript</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-php-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">PHP</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-python-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md drop-shadow-md text-gray-800 dark:text-white">Python</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-laravel-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Laravel</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-react-original colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">React</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-tailwindcss-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Tailwind CSS</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-bootstrap-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Bootstrap</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-wordpress-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">WordPress</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-git-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Git</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-github-original colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">GitHub</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-gitlab-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">GitLab</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-mysql-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">MySQL</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-postgresql-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">PostgreSQL</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-mongodb-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">MongoDB</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-      <img src="aws.png" alt="aws" class="h-10 mx-auto mb-2">
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">AWS</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-azure-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Azure</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-firebase-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Firebase</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-docker-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Docker</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-kubernetes-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Kubernetes</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg" alt="Ansible" class="h-10 mx-auto mb-2">
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Ansible</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <img src="terraform.svg" alt="Terraform" class="h-10 mx-auto mb-2">
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Terraform</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <i class="devicon-bash-plain colored text-4xl mb-2"></i>
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Bash/Shell</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-        <img src="squarespace-logo.png" alt="Squarespace" class="h-10 mx-auto mb-2">
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Squarespace</p>
-      </div>
-
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-      <img src="Jenkins.png" alt="Jenkins" class="h-10 mx-auto mb-2">
-        <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Jenkins</p>
-      </div>
-      
-      <div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-  <img src="https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg" alt="Netlify" class="h-10 mx-auto mb-2">
-  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Netlify</p>
-</div>
-
-<div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-  <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="Supabase" class="h-10 mx-auto mb-2">
-  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">Supabase</p>
-</div>
-
-
-<!-- FreePBX -->
-<div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-  <img src="freepbx.png" alt="FreePBX" class="h-10 mx-auto mb-2 ">
-  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">FreePBX</p>
-</div>
-
-<!-- Google Cloud Platform (GCP) -->
-<div class="bg-white/100 dark:bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-center shadow-md hover:shadow-xl hover:scale-105 transition">
-<img src="gcp.png" alt="gcp" class="h-10 mx-auto mb-2 ">
-  <p class="text-sm font-medium drop-shadow-md text-gray-800 dark:text-white">GCP</p>
-</div>
-
-
-    </div>
-  </div>
-</section>
-<!-- ===== Skills Section End ===== -->
-
-   <!-- ===== Projects Section Start ===== -->
-<section id="projects" class="py-20 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-    <h2 class="text-4xl  font-medium text-gray-800 drop-shadow-md tracking-wide dark:text-white mb-4">🚀 Projects</h2>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Here are some projects I’ve worked on recently:
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Project: OMCRM Tool -->
-<div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-  <img src="omcrm.png" alt="OMCRM Tool" class="w-full h-52 object-cover">
-  <div class="p-6">
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🛠️ OMCRM Tool</h3>
-    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-      • Developed an internal CRM system for operations and management teams, enabling ticket tracking, client management, automated notifications, and modular design request handling.
-    </p>
-    <div class="flex flex-wrap gap-2 mb-4 text-xs">
-      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-      <span class="badge"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
-      <span class="badge"><i class="devicon-supabase-plain colored"></i> Supabase</span>
-      <span class="badge"><i class="fas fa-bell"></i> Notifications</span>
-      <span class="badge"><i class="fas fa-tools"></i> CRM</span>
-    </div>
-    <button onclick="openModal('omcrm')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-      dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-      <span>View Project</span>
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+      <!-- Animated circuit overlay -->
+      <svg class="circuit absolute inset-0 w-full h-full pointer-events-none -z-0" viewBox="0 0 1200 600" preserveAspectRatio="none">
+        <path d="M40 90 H1160" />
+        <path d="M40 190 H1160" />
+        <path d="M40 290 H1160" />
+        <path d="M40 390 H1160" />
+        <path d="M40 490 H1160" />
+        <path d="M160 90 V200 H260" />
+        <path d="M420 190 V300 H520" />
+        <path d="M780 290 V160 H980" />
+        <path d="M980 390 V520 H820" />
+        <path d="M300 490 V360 H140" />
+        <path d="M600 90 V140 H640" />
+        <path d="M640 390 H700 V330" />
+        <path d="M480 290 H540 V240" />
       </svg>
-    </button>
-  </div>
-</div>
 
-      
-      <!-- Project 1: Netvoice Website -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="nvproject.png" alt="Netvoice Website" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🌐 Netvoice Website</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Developed the Netvoice website to showcase VoIP solutions and communication services tailored for the Philippine market.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="fas fa-globe"></i> Squarespace</span>
-            <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-            <span class="badge"><i class="devicon-css3-plain colored"></i> CSS</span>
-            <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+      <div class="mx-auto max-w-7xl px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">About Me</h2>
+
+        <div class="grid lg:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-14">
+          <div class="card p-6 md:p-7 lg:col-span-2">
+            <h3 class="text-xl font-bold mb-3 text-primary">Who I Am</h3>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+              Philippines-based Full-Stack Developer & Cloud Engineer. I ship clean, performant web software and automate workflows so teams move faster.
+            </p>
+            <div class="mt-6 grid sm:grid-cols-3 gap-4">
+              <div class="p-4 rounded-xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-white/5 text-center">
+                <div class="text-2xl md:text-3xl font-bold">6+ yrs</div>
+                <div class="text-xs opacity-70 font-semibold">Building Products</div>
+              </div>
+              <div class="p-4 rounded-xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-white/5 text-center">
+                <div class="text-2xl md:text-3xl font-bold">20+ </div>
+                <div class="text-xs opacity-70 font-semibold">Projects Shipped</div>
+              </div>
+              <div class="p-4 rounded-xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-white/5 text-center">
+                <div class="text-2xl md:text-3xl font-bold">99.9%</div>
+                <div class="text-xs opacity-70 font-semibold">Uptime Targets</div>
+              </div>
+            </div>
           </div>
-          <button onclick="openModal('netvoice')" class="flex items-center justify-center gap-2 bg-gradient-to-r  from-cyan-500 to-blue-600  dark:from-pink-400 dark:to-rose-600 
-  dark:hover:from-rose-400 dark:hover:to-pink-600  text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
 
-  
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 2: NetSolar Website -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="nets.png" alt="NetSolar Website" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🌐 NetSolar Website</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Maintain and update the NetSolar website to ensure content accuracy, improved performance, and alignment with the company’s renewable energy goals.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="fas fa-globe"></i> Squarespace</span>
-            <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-            <span class="badge"><i class="devicon-css3-plain colored"></i> CSS</span>
-            <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+          <div class="card p-6 md:p-7">
+            <h3 class="text-xl font-bold mb-3 text-primary">Education</h3>
+            <ul class="space-y-3 text-slate-700 dark:text-slate-300">
+              <li><strong>Bachelor of Science in Information Technology</strong><br/> Cavite State University – CBE</li>
+              <li><strong>Certificate in Computer Technician</strong><br/> Cavite State University – CBE</li>
+            </ul>
           </div>
-          <button onclick="openModal('netsolar')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-   
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-      <!-- Project 3: Email-to-SMS Platform -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-lg rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="emailsms.png" alt="Email-to-SMS Platform" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">✉️ Email-to-SMS Alert Notification</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Email-to-SMS alert system for real-time SMS notifications on solar and inverter issues to ensure quick response and uptime.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="devicon-python-plain colored"></i> Python</span>
-            <span class="badge"><i class="fas fa-terminal"></i> Bash/Shell</span>
-            <span class="badge"><i class="fas fa-flask"></i> Flask</span>
-            <span class="badge"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
+
+          <div class="card p-6 md:p-7 lg:col-span-2">
+            <h3 class="text-xl font-bold mb-3 text-primary">What I Do</h3>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="chip w-full justify-center"><i class="fa-solid fa-pen-ruler"></i> Web Design</div>
+              <div class="chip w-full justify-center"><i class="fa-solid fa-code"></i> Web Development</div>
+              <div class="chip w-full justify-center"><i class="fa-solid fa-cloud"></i> Cloud Architecture</div>
+              <div class="chip w-full justify-center"><i class="fa-solid fa-database"></i> DB Management</div>
+              <div class="chip w-full justify-center"><i class="fa-solid fa-robot"></i> Automation</div>
+              <div class="chip w-full justify-center"><i class="fa-solid fa-shield-halved"></i> App Security</div>
+            </div>
           </div>
-          <button onclick="openModal('emailsms')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-  
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
 
-      <!-- Project 4: Bulk SMS Webapp -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="smswebapp.png" alt="Bulk SMS Webapp" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">📨 Bulk SMS Webapp</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Built a web-based Bulk SMS platform for clients to send local and international text messages for business communications and outreach.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-            <span class="badge"><i class="fas fa-plug"></i> API</span>
-            <span class="badge"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-            <span class="badge"><i class="fas fa-sms"></i> SMS</span>
-            <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-            <span class="badge"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-          </div>
-          <button onclick="openModal('smswebapp')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
- 
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 5: Fuel Management Webapp -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="projectfuel1.png" alt="Fuel Management Webapp" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">📊 Fuel Management Webapp</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Built an internal web app for HR to manage and distribute employee rewards (“Fuel”) based on performance and engagement metrics.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-            <span class="badge"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-            <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-            <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-          </div>
-          <button onclick="openModal('fuel')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-  
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-      <!-- Project 6: Solar Smart Calculator -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="smart1.png" alt="Solar Smart Calculator" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🧮 Solar Smart Calculator</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Created a Solar Smart Calculator that lets users calculate roof size, panel requirements, and projected savings for quick solar energy planning.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-            <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-            <span class="badge"><i class="devicon-php-plain colored"></i> PHP</span>
-            <span class="badge"><i class="fas fa-brush"></i> SASS</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-          </div>
-          <button onclick="openModal('smart')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-  
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 7: Automated Savings Script -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="solarsavings.png" alt="Automated Savings Script" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">💰 Automated Savings Script</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Built an automated script to notify clients of their monthly solar production and cost savings, enabling easy performance tracking.</p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="devicon-python-plain colored"></i> Python</span>
-            <span class="badge"><i class="fas fa-terminal"></i>  Bash/Shell</span>
-            <span class="badge"><i class="fas fa-cogs"></i> Automation</span>
-            <span class="badge"><i class="fas fa-plug"></i> API</span>
-            <span class="badge"><i class="fas fa-file-excel"></i> Excel</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-          </div>
-          <button onclick="openModal('savings')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-  
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 8: WalterMart Monitoring Sites -->
-      <div class="bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-2xl shadow-xl transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-up">
-        <img src="walt.png" alt="WalterMart Monitoring Dashboard" class="w-full h-52 object-cover">
-        <div class="p-6">
-          <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">🛰️ WalterMart Monitoring Dashboard</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">• Created a centralized dashboard for WalterMart to track solar energy production and consumption across various locations in real time.
-
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4 text-xs">
-            <span class="badge"><i class="fas fa-plug"></i> API</span>
-            <span class="badge"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
-            <span class="badge"><i class="devicon-php-plain colored"></i> PHP</span>
-            <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-            <span class="badge"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-          </div>
-          <button onclick="openModal('waltermart')" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-pink-400 dark:to-rose-600 
-   
-  dark:hover:from-rose-400 dark:hover:to-pink-600 text-white font-semibold py-2 px-4 text-sm rounded-xl shadow-lg hover:from-blue-600 hover:to-cyan-500 transition-all">
-          <span>View Project</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-</svg>
- 
-
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ===== Projects Section End ===== -->
-<!-- ===== Project Modals Section Start ===== -->
-<!-- Modal: OMCRM Tool -->
-<div id="modal-omcrm" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('omcrm')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-
-    <!-- Carousel -->
-    <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-omcrm" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-omcrm" src="omcrm.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
-        </div>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-omcrm">
-        <img src="omcrm.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('omcrm', 0, true)">
-        <img src="omcrm2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('omcrm', 1, true)">
-        <img src="omcrm3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('omcrm', 2, true)">
-      </div>
-    </div>
-
-    <!-- Modal Content -->
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">OMCRM Tool</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      An internal CRM platform tailored for operations and management workflows. It includes modules for tracking support tickets, managing client and design requirements, sending automated notifications, and handling project interactions—all built for high performance and ease of use.
-    </p>
-
-    <!-- Tech Stack Badges -->
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-      <span class="badge"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
-      <span class="badge"><i class="devicon-supabase-plain colored"></i> Supabase</span>
-      <span class="badge"><i class="fas fa-bell"></i> Realtime Alerts</span>
-      <span class="badge"><i class="fas fa-tools"></i> CRM Modules</span>
-    </div>
-
-    <!-- Call to Action -->
-    <p class="text-center text-gray-400">Internal Tool – Access Restricted</p>
-  </div>
-</div>
-
-<!-- Modal: Netvoice Website -->
-<div id="modal-netvoice" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('netvoice')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-     <!-- Carousel -->
-     <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-netvoice" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-netvoice" src="nvproject.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
-        </div>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-netvoice">
-        <img src="nvproject.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('netvoice', 0, true)">
-        <img src="nvproject2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('netvoice', 1, true)">
-        <img src="nvproject3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('netvoice', 2, true)">
-      </div>
-    </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Netvoice Website</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      A modern, responsive website built with Squarespace, enhanced using JavaScript and CSS, to showcase Netvoice’s VoIP and SMS communication services.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="fas fa-globe"></i> Squarespace</span>
-      <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-      <span class="badge"><i class="devicon-css3-plain colored"></i> CSS</span>
-      <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-    </div>
-    <a href="http://netvoice.com.ph" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
-
-<!-- Modal: NetSolar Website -->
-<div id="modal-netsolar" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('netsolar')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-    <!-- Carousel -->
-    <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-netsolar" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-netsolar" src="nets.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
-        </div>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-netsolar">
-        <img src="nets.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('netsolar', 0, true)">
-        <img src="nets2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('netsolar', 1, true)">
-        <img src="nets3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('netsolar', 2, true)">
-     </div>
-    </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">NetSolar Website</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      A sleek and professional corporate site built on Squarespace, customized with JavaScript and CSS, to promote NetSolar’s innovative solar energy solutions and projects.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="fas fa-globe"></i> Squarespace</span>
-      <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-      <span class="badge"><i class="devicon-css3-plain colored"></i> CSS</span>
-      <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-    </div>
-    <a href="https://netsolar.com.ph" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
-
-<!-- Modal: Email-to-SMS Platform -->
-<div id="modal-emailsms" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('emailsms')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-    <!-- Carousel -->
-    <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-emailsms" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-emailsms" src="emailsms.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
-        </div>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-emailsms">
-        <img src="emailsms.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('emailsms', 0, true)">
-        <img src="emailsms2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('emailsms', 1, true)">
-        <img src="emailsms3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('emailsms', 2, true)">
-      </div>
-    </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Email-to-SMS Alert Notification</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      A Python-based automation tool that converts critical inbound emails into real-time SMS alerts using an API—ideal for urgent system or support notifications.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-python-plain colored"></i> Python</span>
-      <span class="badge"><i class="fas fa-terminal"></i> Bas/Shell</span>
-      <span class="badge"><i class="fas fa-flask"></i> Flask</span>
-      <span class="badge"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-    </div>
-    <a href="http://sms.netsolar.com.ph:5000/" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
-
-<!-- Modal: Bulk SMS Webapp -->
-<div id="modal-smswebapp" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('smswebapp')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-      <!-- Carousel -->
-      <div class="w-full mb-6">
-        <div class="relative w-full overflow-hidden rounded-lg">
-          <div id="main-carousel-smswebapp" class="transition-all duration-500 ease-in-out">
-            <img id="main-slide-smswebapp" src="smswebapp.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
+          <div class="card p-6 md:p-7">
+            <h3 class="text-xl font-bold mb-3 text-primary">Interests</h3>
+            <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+              <li>🏃‍♂️ Jogging / Gym</li>
+              <li>🎬 Movies</li>
+              <li>💻 Developer Tooling & UI</li>
+            </ul>
           </div>
         </div>
-  
-        <!-- Thumbnails -->
-        <div class="flex justify-center mt-4 gap-2" id="thumbs-smswebapp">
-          <img src="smswebapp.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('smswebapp', 0, true)">
-          <img src="smswebapp2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('smswebapp', 1, true)">
-          <img src="smswebapp3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('smswebapp', 2, true)">
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="sec section-bg relative py-20 md:py-24">
+      <canvas id="skillsConstellation" class="-z-10"></canvas>
+      <div class="mx-auto max-w-7xl px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Skills</h2>
+
+        <!-- Tabs -->
+        <div class="mt-8 tabs justify-center">
+          <button class="tab tab-active" data-skill-filter="all">All</button>
+          <button class="tab" data-skill-filter="frontend">Front-End</button>
+          <button class="tab" data-skill-filter="backend">Back-End</button>
+          <button class="tab" data-skill-filter="cloud">DevOps / Cloud</button>
+          <button class="tab" data-skill-filter="db">Databases</button>
+          <button class="tab" data-skill-filter="tools">Tools</button>
+        </div>
+
+        <!-- Grid -->
+        <div id="skillsGrid" class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+          <!-- FRONT-END -->
+          <div class="card p-4 text-center" data-cat="frontend">
+            <i class="devicon-html5-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">HTML5</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="frontend">
+            <i class="devicon-css3-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">CSS3</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="frontend">
+            <i class="devicon-javascript-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">JavaScript</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="frontend">
+            <i class="devicon-react-original colored text-3xl mb-2"></i><div class="font-semibold text-sm">React</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="frontend">
+            <i class="devicon-tailwindcss-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Tailwind</div>
+          </div>
+
+          <!-- BACK-END -->
+          <div class="card p-4 text-center" data-cat="backend">
+            <i class="devicon-php-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">PHP</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="backend">
+            <i class="devicon-laravel-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Laravel</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="backend">
+            <i class="devicon-python-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Python</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="backend">
+            <i class="devicon-nodejs-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Node.js</div>
+          </div>
+
+          <!-- DATABASES -->
+          <div class="card p-4 text-center" data-cat="db">
+            <i class="devicon-mysql-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">MySQL</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="db">
+            <i class="devicon-postgresql-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">PostgreSQL</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="db">
+            <i class="devicon-mongodb-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">MongoDB</div>
+          </div>
+
+          <!-- DEVOPS / CLOUD -->
+          <div class="card p-4 text-center" data-cat="cloud">
+            <img src="aws.png" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">AWS</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="cloud">
+            <i class="devicon-azure-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Azure</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="cloud">
+            <i class="devicon-docker-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Docker</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="cloud">
+            <i class="devicon-kubernetes-plain colored text-3xl mb-2"></i><div class="font-semibold text-sm">Kubernetes</div>
+          </div>
+
+          <!-- TOOLS -->
+          <div class="card p-4 text-center" data-cat="tools">
+            <img src="https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">Netlify</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="tools">
+            <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">Supabase</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="tools">
+            <img src="Jenkins.png" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">Jenkins</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="tools">
+            <img src="squarespace-logo.png" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">Squarespace</div>
+          </div>
+          <div class="card p-4 text-center" data-cat="tools">
+            <img src="https://static-00.iconduck.com/assets.00/bolt-icon-2048x2048-q1q9943b.png" class="h-7 mx-auto mb-2" alt=""><div class="font-semibold text-sm">Bolt.ai</div>
+          </div>
         </div>
       </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Bulk SMS Webapp</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      Web-based platform built with Laravel for sending local and international SMS for business communications, with CSV upload, API integration, and delivery tracking.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-      <span class="badge"><i class="fas fa-plug"></i> API</span>
-      <span class="badge"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-      <span class="badge"><i class="fas fa-sms"></i> SMS</span>
-      <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-      <span class="badge"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-    </div>
-    <a href="http://13.76.129.80/login" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
-<!-- Modal: Fuel Management Webapp -->
-<div id="modal-fuel" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('fuel')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-     <!-- Carousel -->
-     <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-fuel" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-fuel" src="projectfuel1.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
+    </section>
+
+    <!-- ==================== CERTIFICATIONS ==================== -->
+    <section id="certifications" class="sec section-bg relative py-20 md:py-24">
+      <div class="certs-decor"></div>
+      <div class="mx-auto max-w-7xl px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Certifications</h2>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-14">
+          <div class="card p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-sky-500/15 text-sky-500"><i class="fa-solid fa-diagram-project"></i></div>
+              <div><h3 class="font-bold">Project Management</h3><div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Agile • Scrum • Delivery</div></div>
+            </div>
+            <p class="text-sm text-slate-700 dark:text-slate-300">Scoping, sprint planning, stakeholder alignment, and shipping outcomes.</p>
+          </div>
+
+          <div class="card p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-rose-500/15 text-rose-500"><i class="fa-solid fa-bolt"></i></div>
+              <div><h3 class="font-bold">OutSystems</h3><div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Low-Code • Rapid Dev</div></div>
+            </div>
+            <p class="text-sm text-slate-700 dark:text-slate-300">Low-code app development, data modeling, and integration patterns.</p>
+          </div>
+
+          <div class="card p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 grid place-items-center rounded-xl bg-emerald-500/15 text-emerald-500"><i class="fa-solid fa-shield-halved"></i></div>
+              <div><h3 class="font-bold">Cyber Security</h3><div class="text-xs text-slate-500 dark:text-slate-400 font-medium">SecOps • Hardening</div></div>
+            </div>
+            <p class="text-sm text-slate-700 dark:text-slate-300">Security fundamentals, risk assessment, hardened configs, incident response.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-fuel">
-        <img src="projectfuel1.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('fuel', 0, true)">
-        <img src="projectfuel2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('fuel', 1, true)">
-        <img src="nvproject.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('fuel', 2, true)">
-      </div>
-    </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Fuel Management Webapp</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      An internal HR tool to manage and distribute employee rewards (“Fuel”) based on performance and engagement metrics.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-      <span class="badge"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-      <span class="badge"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-    </div>
-    <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="sec section-bg relative py-20 md:py-24">
+      <div class="projects-decor"></div>
+      <div class="mx-auto max-w-7xl px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Projects</h2>
+        <p class="text-center text-slate-500 dark:text-slate-400 mt-3">Premium browser-style showcases</p>
 
-<!-- Modal: Solar Smart Calculator -->
-<div id="modal-smart" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('smart')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-   <!-- Carousel -->
-   <div class="w-full mb-6">
-    <div class="relative w-full overflow-hidden rounded-lg">
-      <div id="main-carousel-smart" class="transition-all duration-500 ease-in-out">
-        <img id="main-slide-smart" src="smart1.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
-      </div>
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-10 md:mt-12">
+          <!-- OMCRM -->
+          <article class="showcase">
+            <div class="view"><img src="omcrm.png" alt="OMCRM Tool"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">🛠️ OMCRM — Operations CRM Platform</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">
+                Internal CRM for operations: ticket workflows, client modules, design requests, activity logs, realtime notifications.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-react-original"></i> React</span>
+                <span class="chip"><i class="devicon-typescript-plain"></i> TypeScript</span>
+                <span class="chip"><i class="devicon-supabase-plain"></i> Supabase</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('omcrm')" class="btn-ghost">View Screens</button>
+                <span class="chip"><i class="fa-solid fa-lock"></i> Internal</span>
+              </div>
+            </div>
+          </article>
 
-    <!-- Thumbnails -->
-    <div class="flex justify-center mt-4 gap-2" id="thumbs-smart">
-      <img src="smart1.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('smart', 0, true)">
-      <img src="smart2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('smart', 1, true)">
-      <img src="smart3.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('smart', 2, true)">
-    </div>
-  </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Solar Smart Calculator</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      A React-based tool that helps users estimate roof size, panel needs, and potential savings for residential and commercial solar installations.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-react-original colored"></i> React</span>
-      <span class="badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-      <span class="badge"><i class="devicon-php-plain colored"></i> PHP</span>
-      <span class="badge"><i class="fas fa-brush"></i> SASS</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-    </div>
-    <p class="text-center text-gray-400">Private Tool – No Public Link</p>
-  </div>
-</div>
+          <!-- Netvoice -->
+          <article class="showcase">
+            <div class="view"><img src="nvproject.png" alt="Netvoice"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">🌐 Netvoice — VoIP & SMS</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Responsive site for enterprise communication services in PH market.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip">Squarespace</span>
+                <span class="chip"><i class="devicon-javascript-plain"></i> JavaScript</span>
+                <span class="chip"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('netvoice')" class="btn-ghost">View Screens</button>
+                <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+              </div>
+            </div>
+          </article>
 
-<!-- Modal: Automated Savings Script -->
-<div id="modal-savings" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('savings')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-     <!-- Carousel -->
-     <div class="w-full mb-6">
-      <div class="relative w-full overflow-hidden rounded-lg">
-        <div id="main-carousel-savings" class="transition-all duration-500 ease-in-out">
-          <img id="main-slide-savings" src="solarsavings.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
+          <!-- NetSolar -->
+          <article class="showcase">
+            <div class="view"><img src="nets.png" alt="NetSolar"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">☀️ NetSolar — Corporate Website</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Professional site highlighting renewable projects and case studies.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip">Squarespace</span>
+                <span class="chip"><i class="devicon-javascript-plain"></i> JavaScript</span>
+                <span class="chip"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('netsolar')" class="btn-ghost">View Screens</button>
+                <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Email-to-SMS -->
+          <article class="showcase">
+            <div class="view"><img src="emailsms.png" alt="Email-to-SMS"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">✉️ Email-to-SMS Alerts</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Transforms critical emails into SMS for fast response times.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-python-plain"></i> Python</span>
+                <span class="chip"><i class="fa-solid fa-flask"></i> Flask</span>
+                <span class="chip">MongoDB</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('emailsms')" class="btn-ghost">View Screens</button>
+                <a href="http://sms.netsolar.com.ph:5000/" target="_blank" class="btn-ghost">Visit Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bulk SMS -->
+          <article class="showcase">
+            <div class="view"><img src="smswebapp.png" alt="Bulk SMS"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">📨 Bulk SMS Webapp</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Send local & international SMS at scale with robust audit logs.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-laravel-plain"></i> Laravel</span>
+                <span class="chip"><i class="devicon-mysql-plain"></i> MySQL</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('smswebapp')" class="btn-ghost">View Screens</button>
+                <a href="http://13.76.129.80/login" target="_blank" class="btn-ghost">Visit</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Fuel -->
+          <article class="showcase">
+            <div class="view"><img src="projectfuel1.png" alt="Fuel"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">📊 Fuel Management Webapp</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">HR tool for assigning & tracking rewards with analytics dashboards.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-laravel-plain"></i> Laravel</span>
+                <span class="chip"><i class="devicon-react-original"></i> React</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('fuel')" class="btn-ghost">View Screens</button>
+                <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="btn-ghost">Visit</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Smart -->
+          <article class="showcase">
+            <div class="view"><img src="smart1.png" alt="Smart Calculator"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">🧮 Solar Smart Calculator</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Estimate panels, savings, and capacity from quick inputs.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-react-original"></i> React</span>
+                <span class="chip"><i class="devicon-php-plain"></i> PHP</span>
+                <span class="chip">SASS</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('smart')" class="btn-ghost">View Screens</button>
+                <span class="chip"><i class="fa-solid fa-lock"></i> Private</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Waltermart -->
+          <article class="showcase">
+            <div class="view"><img src="walt.png" alt="Waltermart"></div>
+            <div class="panel">
+              <h3 class="text-xl md:text-2xl">🛰️ Waltermart Monitoring Dashboard</h3>
+              <p class="mt-2 text-slate-700 dark:text-slate-300">Consolidated multi-site production & consumption analytics.</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="fa-solid fa-plug"></i> API</span>
+                <span class="chip"><i class="devicon-php-plain"></i> PHP</span>
+                <span class="chip">MongoDB</span>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button onclick="openModal('waltermart')" class="btn-ghost">View Screens</button>
+                <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost">Visit</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- Thumbnails -->
-      <div class="flex justify-center mt-4 gap-2" id="thumbs-savings">
-        <img src="solarsavings.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('savings', 0, true)">
-       </div>
-    </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Automated Savings Script</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      Python script that tracks monthly solar production and savings, then auto-notifies clients with performance and cost reports.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="devicon-python-plain colored"></i> Python</span>
-      <span class="badge"><i class="fas fa-terminal"></i> Bash/Shell</span>
-      <span class="badge"><i class="fas fa-cogs"></i> Automation</span>
-      <span class="badge"><i class="fas fa-plug"></i> API</span>
-      <span class="badge"><i class="fas fa-file-excel"></i> Excel</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-    </div>
-    <p class="text-center text-gray-400">Private Script – No Public Link</p>
-  </div>
-</div>
-
-<!-- Modal: WalterMart Monitoring Sites -->
-<div id="modal-waltermart" class="fixed inset-0 hidden flex items-center justify-center bg-black/60 z-50" onclick="closeModal('waltermart')">
-  <div class="bg-white dark:bg-gray-900 opacity-0 scale-90 transition-all duration-300 ease-out p-8 rounded-xl max-w-xl w-full shadow-2xl border border-gray-200 dark:border-gray-700 transform" onclick="event.stopPropagation();">
-  <!-- Carousel -->
-  <div class="w-full mb-6">
-    <div class="relative w-full overflow-hidden rounded-lg">
-      <div id="main-carousel-waltermart" class="transition-all duration-500 ease-in-out">
-        <img id="main-slide-waltermart" src="walt.png" class="w-full h-64 object-cover rounded-lg shadow" alt="Slide">
+    <!-- ==================== PROJECT MODALS ==================== -->
+    <!-- (unchanged structure; styles already softened) -->
+    <div id="modal-omcrm" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('omcrm')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>OMCRM — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-omcrm" src="omcrm.png" class="w-full h-72 object-cover" alt="OMCRM slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="omcrm.png" class="w-16 h-12 object-cover active" onclick="showSlide('omcrm',0,true)">
+            <img src="omcrm2.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',1,true)">
+            <img src="omcrm3.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',2,true)">
+          </div>
+          <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('omcrm')">Close</button></div>
+        </div>
       </div>
     </div>
 
-    <!-- Thumbnails -->
-    <div class="flex justify-center mt-4 gap-2" id="thumbs-waltermart">
-      <img src="walt.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-green-500" onclick="showSlide('waltermart', 0, true)">
-      <img src="walt2.png" class="w-14 h-10 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-400" onclick="showSlide('waltermart', 1, true)">
+    <div id="modal-netvoice" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netvoice')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Netvoice — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-netvoice" src="nvproject.png" class="w-full h-72 object-cover" alt="Netvoice slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="nvproject.png" class="w-16 h-12 object-cover active" onclick="showSlide('netvoice',0,true)">
+            <img src="nvproject2.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',1,true)">
+            <img src="nvproject3.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',2,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+            <button class="btn-ghost" onclick="closeModal('netvoice')">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-    <h3 class="text-[22px] font-medium drop-shadow-md tracking-wide dark:text-white mb-4">Waltermart Monitoring Dashboard</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-      A real-time dashboard to monitor solar production and consumption across multiple WalterMart sites using API data integration.
-    </p>
-    <div class="flex flex-wrap gap-3 mb-6 text-sm">
-      <span class="badge"><i class="fas fa-plug"></i> API</span>
-      <span class="badge"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</span>
-      <span class="badge"><i class="devicon-php-plain colored"></i> PHP</span>
-      <span class="badge"><i class="fas fa-cloud"></i> Azure</span>
-      <span class="badge"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+
+    <div id="modal-netsolar" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netsolar')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>NetSolar — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-netsolar" src="nets.png" class="w-full h-72 object-cover" alt="NetSolar slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="nets.png" class="w-16 h-12 object-cover active" onclick="showSlide('netsolar',0,true)">
+            <img src="nets2.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',1,true)">
+            <img src="nets3.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',2,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+            <button class="btn-ghost" onclick="closeModal('netsolar')">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300">
-      Visit Site
-    </a>
-  </div>
-</div>
 
-<!-- ===== Project Modals Section End ===== -->
+    <div id="modal-emailsms" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('emailsms')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Email-to-SMS — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-emailsms" src="emailsms.png" class="w-full h-72 object-cover" alt="Email-to-SMS slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="emailsms.png" class="w-16 h-12 object-cover active" onclick="showSlide('emailsms',0,true)">
+            <img src="emailsms2.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',1,true)">
+            <img src="emailsms3.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',2,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="http://sms.netsolar.com.ph:5000/" target="_blank" class="btn-ghost">Visit</a>
+            <button class="btn-ghost" onclick="closeModal('emailsms')">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- JS to toggle modal animation -->
-<script>
-  function openModal(id) {
-    const modal = document.getElementById('modal-' + id);
-    const content = modal.querySelector('div[onclick*="event.stopPropagation"]');
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-      content.classList.remove('opacity-0', 'scale-90');
-      content.classList.add('opacity-100', 'scale-100');
-    }, 10);
-    document.body.classList.add('overflow-hidden');
-  }
+    <div id="modal-smswebapp" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smswebapp')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Bulk SMS — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-smswebapp" src="smswebapp.png" class="w-full h-72 object-cover" alt="Bulk SMS slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="smswebapp.png" class="w-16 h-12 object-cover active" onclick="showSlide('smswebapp',0,true)">
+            <img src="smswebapp2.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',1,true)">
+            <img src="smswebapp3.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',2,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="http://13.76.129.80/login" target="_blank" class="btn-ghost">Visit</a>
+            <button class="btn-ghost" onclick="closeModal('smswebapp')">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  function closeModal(id) {
-    const modal = document.getElementById('modal-' + id);
-    const content = modal.querySelector('div[onclick*="event.stopPropagation"]');
-    content.classList.add('opacity-0', 'scale-90');
-    content.classList.remove('opacity-100', 'scale-100');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-    }, 300);
-  }
-</script>
+    <div id="modal-fuel" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('fuel')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Fuel — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-fuel" src="projectfuel1.png" class="w-full h-72 object-cover" alt="Fuel slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="projectfuel1.png" class="w-16 h-12 object-cover active" onclick="showSlide('fuel',0,true)">
+            <img src="projectfuel2.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',1,true)">
+            <img src="projectfuel3.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',2,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="btn-ghost">Visit</a>
+            <button class="btn-ghost" onclick="closeModal('fuel')">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   <!-- ===== Footer Start ===== -->
-<footer class="py-6 bg-gray-200 dark:bg-gray-800 text-center">
-  <div class="text-gray-600 dark:text-gray-400 text-sm">
-    © 2024 Racky Tabilog. All Rights Reserved.
-  </div>
-</footer>
-<!-- ===== Footer End ===== -->
+    <div id="modal-smart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smart')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Smart Calculator — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-smart" src="smart1.png" class="w-full h-72 object-cover" alt="Smart slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="smart1.png" class="w-16 h-12 object-cover active" onclick="showSlide('smart',0,true)">
+            <img src="smart2.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',1,true)">
+            <img src="smart3.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',2,true)">
+          </div>
+          <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('smart')">Close</button></div>
+        </div>
+      </div>
+    </div>
 
+    <div id="modal-waltermart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('waltermart')">
+      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+        <div class="p-4 border-b border-white/20 dark:border-white/10 flex items-center gap-2">
+          <strong>Waltermart — Screens</strong>
+        </div>
+        <div class="p-4">
+          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+            <img id="main-slide-waltermart" src="walt.png" class="w-full h-72 object-cover" alt="Waltermart slide">
+          </div>
+          <div class="thumbs flex gap-2 justify-center">
+            <img src="walt.png" class="w-16 h-12 object-cover active" onclick="showSlide('waltermart',0,true)">
+            <img src="walt2.png" class="w-16 h-12 object-cover" onclick="showSlide('waltermart',1,true)">
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost">Visit</a>
+            <button class="btn-ghost" onclick="closeModal('waltermart')">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="sec section-bg relative py-20 md:py-24">
+      <div class="contact-decor"></div>
+
+      <!-- Floating nodes -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-0">
+        <span class="node" style="top:14%; left:12%; animation-delay:0s;"></span>
+        <span class="node" style="top:28%; left:78%; width:12px; height:12px; animation-delay:.6s;"></span>
+        <span class="node" style="top:60%; left:18%; width:10px; height:10px; animation-delay:.3s;"></span>
+        <span class="node" style="top:70%; left:68%; width:16px; height:16px; animation-delay:1.1s;"></span>
+        <span class="node" style="top:45%; left:50%; width:13px; height:13px; animation-delay:.9s;"></span>
+        <span class="node" style="top:82%; left:36%; width:11px; height:11px; animation-delay:1.6s;"></span>
+      </div>
+
+      <div class="mx-auto max-w-3xl px-6 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Contact</h2>
+
+        <div class="card p-6 md:p-7 mt-10 md:mt-12">
+          <h3 class="text-xl font-bold mb-4">Let’s talk</h3>
+          <ul class="space-y-3 text-slate-700 dark:text-slate-300">
+            <li><i class="fa-solid fa-location-dot mr-2"></i> Philippines (GMT+8)</li>
+            <li><i class="fa-solid fa-envelope mr-2"></i> <a class="underline" href="mailto:tabstabilog@gmail.com">tabstabilog@gmail.com</a></li>
+            <li><i class="fa-brands fa-linkedin mr-2"></i> <a class="underline" target="_blank" href="https://www.linkedin.com/in/racky-t-818127183/">LinkedIn</a></li>
+            <li><i class="fa-brands fa-github mr-2"></i> <a class="underline" target="_blank" href="https://github.com/07ZeroSeven">GitHub</a></li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs">
+            <span class="chip"><i class="fa-solid fa-bolt"></i> Quick Responses</span>
+            <span class="chip"><i class="fa-solid fa-shield"></i> NDA Friendly</span>
+            <span class="chip"><i class="fa-solid fa-globe"></i> Remote Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-6 bg-slate-200/70 dark:bg-slate-900/70 text-center">
+      <div class="text-slate-600 dark:text-slate-400 text-sm">© 2025 Racky Tabilog. All Rights Reserved.</div>
+    </footer>
   </main>
+
+  <!-- =============== SCRIPTS =============== -->
   <script>
-    
-// Dark Mode Toggle
-const darkToggleButton = document.getElementById('dark-toggle');
-const htmlElement = document.documentElement;
-const toggleIcon = document.getElementById('toggle-icon');
-if (darkToggleButton) {
-  darkToggleButton.addEventListener('click', () => {
-    htmlElement.classList.toggle('dark');
-    if (htmlElement.classList.contains('dark')) {
-      toggleIcon.classList.remove('fa-moon');
-      toggleIcon.classList.add('fa-sun');
-    } else {
-      toggleIcon.classList.remove('fa-sun');
-      toggleIcon.classList.add('fa-moon');
+    // Dark Mode
+    const darkBtn = document.getElementById('dark-toggle');
+    const htmlEl = document.documentElement;
+    const iconEl = document.getElementById('toggle-icon');
+    darkBtn?.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      iconEl.classList.toggle('fa-moon');
+      iconEl.classList.toggle('fa-sun');
+    });
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Active link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    function updateActive() {
+      let cur = '';
+      sections.forEach(s => {
+        const top = s.offsetTop - 120, h = s.offsetHeight;
+        if (scrollY >= top && scrollY < top + h) cur = s.getAttribute('id');
+      });
+      navLinks.forEach(l => {
+        l.classList.remove('active-link','font-semibold');
+        if (cur && l.getAttribute('href').includes(cur)) { l.classList.add('active-link','font-semibold'); }
+      });
     }
-  });
-}
+    window.addEventListener('scroll', updateActive); updateActive();
 
-// Mobile Menu Toggle
-const menuToggleButton = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if (menuToggleButton && mobileMenu) {
-  menuToggleButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-}
+    // HOME-ONLY Matrix rain
+    (function(){
+      const canvas = document.getElementById('homeRain');
+      const home = document.getElementById('home');
+      if(!canvas || !home) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, cols, drops;
+      const chars = 'アカサタナハマヤラワ0123456789ABCDEF<>/{}[]=+()*'.split('');
 
-// Auto-close Mobile Menu when clicking link
-const mobileLinks = document.querySelectorAll('#mobile-menu a');
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  function updateActiveLink() {
-    let currentSection = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        currentSection = section.getAttribute("id");
+      function sizeCanvas(){
+        const rect = home.getBoundingClientRect();
+        canvas.width = rect.width; canvas.height = rect.height;
+        w = canvas.width; h = canvas.height;
+        cols = Math.floor(w / 16);
+        drops = Array(cols).fill(0);
       }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("text-indigo-600", "dark:text-primary", "font-semibold");
-      if (link.getAttribute("href").includes(currentSection)) {
-        link.classList.add("text-indigo-600", "dark:text-primary", "font-semibold");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", updateActiveLink);
-});
-
-  </script>
-  <script>
-    const slideData = {
-      omcrm: {
-  index: 0,
-  images: ["omcrm.png", "omcrm2.png", "omcrm3.png"],
-  intervalId: null
-},
-      netvoice: {
-        index: 0,
-        images: ["nvproject.png", "nvproject2.png", "nvproject3.png"],
-        intervalId: null
-      },
-      netsolar: {
-        index: 0,
-        images: ["nets.png", "nets2.png","nets3.png"],
-        intervalId: null
-      },
-      emailsms: {
-        index: 0,
-        images: ["emailsms.png", "emailsms2.png", "emailsms3.png"],
-        intervalId: null
-      },
-      smswebapp: {
-        index: 0,
-        images: ["smswebapp.png", "smswebapp2.png", "smswebapp3.png"],
-        intervalId: null
-      },
-      fuel: {
-        index: 0,
-        images: ["projectfuel1.png", "projectfuel2.png", "projectfuel3.png"],
-        intervalId: null
-      },
-      smart: {
-        index: 0,
-        images: ["smart1.png", "smart2.png", "smart3.png"],
-        intervalId: null
-      },
-      savings: {
-        index: 0,
-        images: ["solarsavings.png"],
-        intervalId: null
-      },
-      waltermart: {
-        index: 0,
-        images: ["walt.png", "walt2.png"],
-        intervalId: null
-      }
-    };
-  
-    function showSlide(id, index, isManual = false) {
-      const data = slideData[id];
-      data.index = index;
-      document.getElementById(`main-slide-${id}`).src = data.images[index];
-  
-      const thumbs = document.querySelectorAll(`#thumbs-${id} img`);
-      thumbs.forEach((img, i) => {
-        img.classList.remove('border-green-500');
-        img.classList.add('border-transparent');
-        if (i === index) {
-          img.classList.remove('border-transparent');
-          img.classList.add('border-green-500');
+      function draw(){
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
+        ctx.fillRect(0,0,w,h);
+        for(let i=0;i<drops.length;i++){
+          const t = chars[Math.floor(Math.random()*chars.length)];
+          ctx.fillStyle = 'rgba(79,209,255,.85)';
+          ctx.font = '14px monospace';
+          ctx.fillText(t, i*16, drops[i]*16);
+          if (drops[i]*16 > h && Math.random() > .975) drops[i]=0;
+          drops[i]++;
         }
+        requestAnimationFrame(draw);
+      }
+      sizeCanvas();
+      const ro = new ResizeObserver(sizeCanvas);
+      ro.observe(home);
+      window.addEventListener('resize', sizeCanvas);
+      draw();
+    })();
+
+    // ===== Carousel / Modals =====
+    const slideData = {
+      omcrm: { index: 0, images: ["omcrm.png","omcrm2.png","omcrm3.png"], intervalId: null },
+      netvoice: { index: 0, images: ["nvproject.png","nvproject2.png","nvproject3.png"], intervalId: null },
+      netsolar: { index: 0, images: ["nets.png","nets2.png","nets3.png"], intervalId: null },
+      emailsms: { index: 0, images: ["emailsms.png","emailsms2.png","emailsms3.png"], intervalId: null },
+      smswebapp: { index: 0, images: ["smswebapp.png","smswebapp2.png","smswebapp3.png"], intervalId: null },
+      fuel: { index: 0, images: ["projectfuel1.png","projectfuel2.png","projectfuel3.png"], intervalId: null },
+      smart: { index: 0, images: ["smart1.png","smart2.png","smart3.png"], intervalId: null },
+      waltermart: { index: 0, images: ["walt.png","walt2.png"], intervalId: null }
+    };
+
+    function setThumbActive(id, idx){
+      document.querySelectorAll(`#modal-${id} .thumbs img`).forEach((el,i)=>{
+        el.classList.toggle('active', i===idx);
       });
-  
-      if (isManual) resetAutoSlide(id);
     }
-  
-    function changeSlide(id, direction, isManual = false) {
-      const data = slideData[id];
-      const total = data.images.length;
-      data.index = (data.index + direction + total) % total;
-      showSlide(id, data.index, isManual);
+
+    function showSlide(id, idx, manual=false){
+      const data = slideData[id]; data.index = idx;
+      const main = document.getElementById(`main-slide-${id}`);
+      if (main) main.src = data.images[idx];
+      setThumbActive(id, idx);
+      if (manual) resetAuto(id);
     }
-  
-    function startAutoSlide(id) {
+    function changeSlide(id, dir){
+      const d = slideData[id], n = d.images.length;
+      d.index = (d.index + dir + n) % n; showSlide(id, d.index);
+    }
+    function startAuto(id){
       if (slideData[id].intervalId) clearInterval(slideData[id].intervalId);
-      slideData[id].intervalId = setInterval(() => {
-        changeSlide(id, 1);
-      }, 5000); // every 5 seconds
+      slideData[id].intervalId = setInterval(()=>changeSlide(id,1), 5000);
     }
-  
-    function resetAutoSlide(id) {
-      clearInterval(slideData[id].intervalId);
-      startAutoSlide(id);
-    }
-  
-    // Open modal and reset carousel to first image
-    function openModal(id) {
-      const modal = document.getElementById('modal-' + id);
-      const content = modal.querySelector('div[onclick*="event.stopPropagation"]');
-      modal.classList.remove('hidden');
-  
-      // Reset to first slide
-      showSlide(id, 0, true);
-  
-      setTimeout(() => {
-        content.classList.remove('opacity-0', 'scale-90');
-        content.classList.add('opacity-100', 'scale-100');
-      }, 10);
+    function resetAuto(id){ clearInterval(slideData[id].intervalId); startAuto(id); }
+
+    function openModal(id){
+      const m = document.getElementById('modal-'+id);
+      if(!m) return;
+      const c = m.querySelector('.modal-card');
+      m.classList.remove('hidden'); m.classList.add('flex');
+      setTimeout(()=>{ c.classList.add('opacity-100','scale-100'); }, 10);
+      showSlide(id,0,true);
       document.body.classList.add('overflow-hidden');
+      startAuto(id);
     }
-  
-    // Close modal with animation
-    function closeModal(id) {
-      const modal = document.getElementById('modal-' + id);
-      const content = modal.querySelector('div[onclick*="event.stopPropagation"]');
-      content.classList.add('opacity-0', 'scale-90');
-      content.classList.remove('opacity-100', 'scale-100');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-      }, 300);
+    function closeModal(id){
+      const m = document.getElementById('modal-'+id);
+      if(!m) return;
+      const c = m.querySelector('.modal-card');
+      c.classList.remove('opacity-100','scale-100');
+      setTimeout(()=>{ m.classList.add('hidden'); m.classList.remove('flex'); document.body.classList.remove('overflow-hidden'); }, 250);
+      clearInterval(slideData[id].intervalId);
     }
-  
-    // Start auto-slide on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      Object.keys(slideData).forEach(id => {
-        showSlide(id, 0);
-        startAutoSlide(id);
+
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.showSlide = showSlide;
+
+    // ===== SKILLS CONSTELLATION =====
+    (function(){
+      const canvas = document.getElementById('skillsConstellation');
+      const section = document.getElementById('skills');
+      if(!canvas || !section) return;
+      const ctx = canvas.getContext('2d');
+      let W,H, nodes = [], density = 0.00012;
+
+      function isDark(){ return document.documentElement.classList.contains('dark'); }
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+
+      function resize(){
+        const rect = section.getBoundingClientRect();
+        canvas.width = rect.width; canvas.height = rect.height;
+        W = canvas.width; H = canvas.height;
+
+        const target = Math.max(48, Math.min(120, Math.floor(W*H*density)));
+        nodes = [];
+        for(let i=0;i<target;i++){
+          nodes.push({
+            x: rand(0,W), y: rand(0,H),
+            vx: rand(-0.10,0.10), vy: rand(-0.10,0.10),
+            r: rand(isDark()?0.6:0.9, isDark()?1.2:1.4),
+            a: rand(isDark()?0.30:0.55, isDark()?0.65:0.85)
+          });
+        }
+      }
+
+      function drawLinks(n1, n2, dist){
+        const maxDist = isDark()? 130 : 170;
+        if (dist > maxDist) return;
+        const alpha = Math.max(0, 1 - dist / maxDist) * (isDark()? 0.18 : 0.25);
+        ctx.strokeStyle = isDark()
+          ? `rgba(79,209,255,${alpha})`
+          : `rgba(37,99,235,${alpha})`;
+        ctx.lineWidth = isDark()? 0.5 : 0.7;
+        ctx.beginPath();
+        ctx.moveTo(n1.x, n1.y);
+        ctx.lineTo(n2.x, n2.y);
+        ctx.stroke();
+      }
+
+      function step(){
+        ctx.clearRect(0,0,W,H);
+        for(let i=0;i<nodes.length;i++){
+          const n1 = nodes[i];
+          for(let j=i+1;j<nodes.length;j++){
+            const n2 = nodes[j];
+            const dx = n1.x - n2.x, dy = n1.y - n2.y;
+            const d = Math.hypot(dx,dy);
+            drawLinks(n1, n2, d);
+          }
+        }
+        for(let i=0;i<nodes.length;i++){
+          const n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if (n.x<0||n.x>W) n.vx*=-1;
+          if (n.y<0||n.y>H) n.vy*=-1;
+
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+          ctx.fillStyle = isDark()
+            ? `rgba(79,209,255,${n.a})`
+            : `rgba(37,99,235,${Math.min(1,n.a)})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      const ro = new ResizeObserver(resize);
+      ro.observe(section);
+      window.addEventListener('resize', resize);
+      const themeObserver = new MutationObserver(()=>{ resize(); });
+      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+      resize(); step();
+    })();
+
+    // ===== Skills filter tabs =====
+    (function(){
+      const tabs = document.querySelectorAll('.tab');
+      const items = document.querySelectorAll('#skillsGrid > .card');
+      function apply(filter){
+        items.forEach(el=>{
+          const cat = el.getAttribute('data-cat');
+          el.style.display = (filter==='all' || filter===cat) ? '' : 'none';
+        });
+      }
+      tabs.forEach(t=>{
+        t.addEventListener('click', ()=>{
+          tabs.forEach(x=>x.classList.remove('tab-active'));
+          t.classList.add('tab-active');
+          apply(t.getAttribute('data-skill-filter'));
+        });
       });
-    });
+      apply('all');
+    })();
   </script>
-  
 </body>
 </html>
