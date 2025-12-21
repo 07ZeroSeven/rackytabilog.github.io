@@ -146,11 +146,13 @@
     .tab-active { color:#fff; border-color:transparent; background-image: linear-gradient(90deg, #38bdf8, #6366f1) }
 
     /* ===== NEW PROJECTS RAIL + SPOTLIGHT ===== */
-    .projects-shell{
-      margin-top:2.5rem;
-      display:grid;
-      gap:1.5rem;
-    }
+   .projects-shell{
+  margin-top:2.5rem;
+  display:grid;
+  gap:1.5rem;
+  align-items: start; /* ✅ prevents left/right columns from stretching to same height */
+}
+
     @media (min-width:768px){
       .projects-shell{
         margin-top:3rem;
@@ -249,17 +251,20 @@
     }
 
     .projects-spotlight{
-      position:relative;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid rgba(148,163,184,.28);
-      background:
-        radial-gradient(circle at 0 0, rgba(56,189,248,.18), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(236,72,153,.18), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
-      box-shadow:0 18px 70px rgba(15,23,42,.45);
-      min-height:340px;
-    }
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(148,163,184,.28);
+  background:
+    radial-gradient(circle at 0 0, rgba(56,189,248,.18), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(236,72,153,.18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+  box-shadow:0 18px 70px rgba(15,23,42,.45);
+  min-height: 0;          /* ✅ allow shrinking */
+  height: auto;
+  transition: height .25s ease; /* optional: smooth resize */
+}
+
     .dark .projects-spotlight{
       background:
         radial-gradient(circle at 0 0, rgba(56,189,248,.22), transparent 55%),
@@ -853,1160 +858,1134 @@ $ motto
     </section>
 
     <!-- ==================== PROJECTS ==================== -->
-    <section id="projects" class="sec section-bg relative py-20 md:py-24">
-      <div class="projects-decor"></div>
-      <div class="mx-auto max-w-7xl px-6 relative z-10">
-       <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Projects</h2>
+    <!-- ==================== PROJECTS ==================== -->
+<section id="projects" class="sec section-bg relative py-20 md:py-24">
+  <div class="projects-decor"></div>
+  <div class="mx-auto max-w-7xl px-6 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Projects</h2>
 
-<!-- Simple project filters -->
-<div class="mt-4 flex justify-center gap-3">
-  <button class="proj-filter tab-active" data-filter="all">All</button>
-  <button class="proj-filter" data-filter="latest">Latest &amp; Ongoing</button>
-  <button class="proj-filter" data-filter="closed">Closed Projects</button>
+    <!-- Simple project filters -->
+    <div class="mt-4 flex justify-center gap-3">
+      <button class="proj-filter tab-active" data-filter="all">All</button>
+      <button class="proj-filter" data-filter="latest">Latest &amp; Ongoing</button>
+      <button class="proj-filter" data-filter="closed">Closed Projects</button>
+    </div>
+
+    <!-- Caption -->
+    <p class="text-center text-slate-500 dark:text-slate-400 mt-2 text-sm">
+      Every project shown here was designed and developed by me, end-to-end.
+    </p>
+
+    <div class="projects-shell">
+
+      <!-- Left rail -->
+      <aside class="card projects-rail p-4 md:p-6">
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-4">
+          Project Rail
+        </p>
+
+        <div class="space-y-2.5 relative">
+
+          <!-- OMCRM -->
+          <button type="button" class="project-pill project-pill-active" data-project-pill="omcrm" data-category="latest ongoing">
+
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>OMCRM — Operations CRM</span>
+              <span class="project-pill-meta">Internal • Ops</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Ticket workflows, client modules, design requests, real-time alerts.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-typescript-plain text-xs"></i> TS</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Supabase</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Bolt.new - AI</span>
+            </div>
+          </button>
+
+          <!-- EDW -->
+          <button type="button" class="project-pill" data-project-pill="edw" data-category="latest edw">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>EDW — Asana to Azure DW</span>
+              <span class="project-pill-meta">Internal • Data</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Centralized enterprise data warehouse integrating Asana tasks to Azure SQL and Power BI.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Azure</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Power BI</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Data Warehouse</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">MS Sql</span>
+            </div>
+          </button>
+
+          <!-- NetSolar (UPDATED stack) -->
+          <button type="button" class="project-pill" data-project-pill="netsolar" data-category="latest netsolar">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>NetSolar — Corporate Platform</span>
+              <span class="project-pill-meta">Public • Brand</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Corporate platform rebuilt in Laravel with Graph API integrations.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
+            </div>
+          </button>
+
+          <!-- Waltermart (MOVED next to NetSolar + MongoDB -> MySQL) -->
+          <button type="button" class="project-pill" data-project-pill="waltermart" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Waltermart Monitoring</span>
+              <span class="project-pill-meta">Ops • Energy</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Multi-site production &amp; consumption analytics dashboard.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">API</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
+            </div>
+          </button>
+
+          <!-- Email-to-SMS (UPDATED: Graph API + System Automation) -->
+          <button type="button" class="project-pill" data-project-pill="emailsms" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Email-to-SMS Alerts</span>
+              <span class="project-pill-meta">Infra • Alerts</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Converts critical inbox noise into focused SMS alerts.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-python-plain text-xs"></i> Python</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Flask</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-gear text-[10px] mr-1"></i> System Automation</span>
+            </div>
+          </button>
+
+          <!-- Bulk SMS (UPDATED: add Bootstrap) -->
+          <button type="button" class="project-pill" data-project-pill="smswebapp" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Bulk SMS Webapp</span>
+              <span class="project-pill-meta">Product • Comms</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              High-volume SMS sending with audit logs &amp; role-based access.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
+            </div>
+          </button>
+
+          <!-- Smart (UPDATED: add Tailwind) -->
+          <button type="button" class="project-pill" data-project-pill="smart" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Solar Smart Calculator</span>
+              <span class="project-pill-meta">Tool • Solar</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Estimates panels, savings, and capacity from quick form inputs.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">SASS</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
+            </div>
+          </button>
+
+          <!-- Netvoice (MOVED: second to last) -->
+          <button type="button" class="project-pill" data-project-pill="netvoice" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Netvoice — VoIP &amp; SMS</span>
+              <span class="project-pill-meta">Public • B2B</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Enterprise-grade communications site for the PH market.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Squarespace</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
+            </div>
+          </button>
+
+          <!-- Fuel (MOVED: last) -->
+          <button type="button" class="project-pill" data-project-pill="fuel" data-category="closed">
+            <span class="project-pill-dot" aria-hidden="true"></span>
+            <div class="project-pill-title">
+              <span>Fuel Management Webapp</span>
+              <span class="project-pill-meta">Internal • HR</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300/80">
+              Rewards, usage tracking, and analytics for company perks.
+            </p>
+            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px] !font-semibold">
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+            </div>
+          </button>
+
+        </div>
+      </aside>
+
+      <!-- Right spotlight -->
+      <section class="projects-spotlight" id="projectsSpotlight">
+
+
+        <!-- OMCRM -->
+        <article class="spotlight-panel spotlight-panel-active" data-project-panel="omcrm">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="omcrm.png" alt="OMCRM preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+       
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-shield-halved text-[9px]"></i> Internal Tool
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold flex flex-wrap items-center gap-2">
+                OMCRM — Operations CRM Platform
+                <span class="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase text-emerald-700 dark:text-emerald-200">
+                  Ops Backbone
+                </span>
+              </h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                Internal CRM that centralizes tickets, client accounts, design requests, and activity logs
+                into one source of truth for the operations team.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• Modular architecture: tickets, clients, sites, design pulls, and follow-ups.</li>
+                <li>• Real-time notifications via Supabase channels and email.</li>
+                <li>• Role-based access: support, design, management views.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
+                <span class="chip"><i class="devicon-typescript-plain text-sm"></i> TypeScript</span>
+                <span class="chip"><i class="devicon-supabase-plain text-sm"></i> Supabase</span>
+                <span class="chip"><i class="devicon-supabase-plain text-sm"></i> Bolt.new - AI</span>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-semibold">Impact</span>
+                  <span class="text-[11px] uppercase tracking-[0.14em] opacity-70">Ops</span>
+                </div>
+                <p>Replaced spreadsheets and email threads with a trackable, auditable workflow.</p>
+              </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">My Role</div>
+                <p>Full-stack dev &amp; architecture: schema, APIs, UI, and deployment pipeline.</p>
+              </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('omcrm')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Internal Access</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="spotlight-footer">
+            <span>✅ Reduced status check-ins &amp; manual follow-ups across teams.</span>
+            <span>📈 Built for daily use by operations, design, and management.</span>
+          </div>
+        </article>
+
+        <!-- EDW -->
+        <article class="spotlight-panel" data-project-panel="edw">
+          <div class="spotlight-media mb-4 sm:mb-5 flex items-center justify-center relative
+            bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950
+            border border-white/10 rounded-xl h-64 sm:h-72">
+
+  <div class="text-center text-slate-300">
+    <i class="fa-solid fa-image-slash text-3xl mb-2 opacity-70"></i>
+    <p class="text-sm font-semibold tracking-wide">No Preview Image Yet</p>
+    <p class="text-xs opacity-70 mt-1">Screens will be added soon</p>
+  </div>
+
+  <!-- chrome header (keeps consistency with other projects) -->
+  <div class="spotlight-media-chrome absolute top-0 left-0 right-0">
+    <div class="spotlight-media-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+      <i class="fa-solid fa-database text-[9px]"></i> Data Warehouse
+    </span>
+  </div>
 </div>
 
-<!-- Caption -->
-<p class="text-center text-slate-500 dark:text-slate-400 mt-2 text-sm">
-  Every project shown here was designed and developed by me, end-to-end.
-</p>
 
-<div class="projects-shell">
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold flex flex-wrap items-center gap-2">
+                EDW — Enterprise Data Warehouse
+                <span class="inline-flex items-center rounded-full border border-sky-300/60 bg-sky-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase text-sky-700 dark:text-sky-200">
+                  Asana → Azure → Mssql → PBI
+                </span>
+              </h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                Centralized data warehouse that ingests Asana work management data into Azure SQL
+                and powers organization-wide analytics in Power BI.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• ETL pipeline from Asana API into a modeled Azure SQL data warehouse.</li>
+                <li>• Star-schema design for tasks, projects, users, and time dimensions.</li>
+                <li>• Power BI dashboards for throughput, SLAs, and workload visibility.</li>
+              </ul>
 
-          <!-- Left rail -->
-
-          <aside class="card projects-rail p-4 md:p-6">
-            <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-4">
-              Project Rail
-            </p>
-            <div class="space-y-2.5 relative">
-              
-              <!-- OMCRM -->
-             <button type="button" class="project-pill project-pill-active" data-project-pill="omcrm" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>OMCRM — Operations CRM</span>
-                  <span class="project-pill-meta">Internal • Ops</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Ticket workflows, client modules, design requests, real-time alerts.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-typescript-plain text-xs"></i> TS</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Supabase</span>
-                </div>
-              </button>
-
-              <!-- EDW -->
-              <button type="button" class="project-pill" data-project-pill="edw" data-category="latest edw">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>EDW — Asana to Azure DW</span>
-                  <span class="project-pill-meta">Internal • Data</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Centralized enterprise data warehouse integrating Asana tasks to Azure SQL and Power BI.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Azure</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Power BI</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Data Warehouse</span>
-                </div>
-              </button>
-
-              <!-- Netvoice -->
-            <button type="button" class="project-pill" data-project-pill="netvoice" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Netvoice — VoIP &amp; SMS</span>
-                  <span class="project-pill-meta">Public • B2B</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Enterprise-grade communications site for the PH market.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Squarespace</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
-                </div>
-              </button>
-
-              <!-- NetSolar -->
-              <button type="button" class="project-pill" data-project-pill="netsolar" data-category="latest netsolar">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>NetSolar — Corporate Site</span>
-                  <span class="project-pill-meta">Public • Brand</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Premium solar brand presence with case studies &amp; projects.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Squarespace</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
-                </div>
-              </button>
-
-              <!-- Email-to-SMS -->
-              <button type="button" class="project-pill" data-project-pill="emailsms" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Email-to-SMS Alerts</span>
-                  <span class="project-pill-meta">Infra • Alerts</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Converts critical inbox noise into focused SMS alerts.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-python-plain text-xs"></i> Python</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">Flask</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">MongoDB</span>
-                </div>
-              </button>
-
-              <!-- Bulk SMS -->
-              <button type="button" class="project-pill" data-project-pill="smswebapp" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Bulk SMS Webapp</span>
-                  <span class="project-pill-meta">Product • Comms</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  High-volume SMS sending with audit logs &amp; role-based access.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
-                </div>
-              </button>
-
-              <!-- Fuel -->
-              <button type="button" class="project-pill" data-project-pill="fuel" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Fuel Management Webapp</span>
-                  <span class="project-pill-meta">Internal • HR</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Rewards, usage tracking, and analytics for company perks.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px] !font-semibold">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-                </div>
-              </button>
-
-              <!-- Smart -->
-             <button type="button" class="project-pill" data-project-pill="smart" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Solar Smart Calculator</span>
-                  <span class="project-pill-meta">Tool • Solar</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Estimates panels, savings, and capacity from quick form inputs.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">SASS</span>
-                </div>
-              </button>
-
-              <!-- Waltermart -->
-              <button type="button" class="project-pill" data-project-pill="waltermart" data-category="closed">
-
-                <span class="project-pill-dot" aria-hidden="true"></span>
-                <div class="project-pill-title">
-                  <span>Waltermart Monitoring</span>
-                  <span class="project-pill-meta">Ops • Energy</span>
-                </div>
-                <p class="text-xs text-slate-600 dark:text-slate-300/80">
-                  Multi-site production &amp; consumption analytics dashboard.
-                </p>
-                <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">MongoDB</span>
-                  <span class="chip px-2 py-1 !text-[10px] !font-semibold">API</span>
-                </div>
-              </button>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip">Azure SQL</span>
+                <span class="chip">Asana API</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">Ms Sql</span>
+              </div>
             </div>
-          </aside>
-          <!-- Right spotlight -->
-          <section class="projects-spotlight">
-            <!-- OMCRM -->
-            <article class="spotlight-panel spotlight-panel-active" data-project-panel="omcrm">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="omcrm.png" alt="OMCRM preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">internal.omcrm.app • /tickets</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-shield-halved text-[9px]"></i> Internal Tool
-                  </span>
-                </div>
+
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Goal</div>
+                <p>Provide a single, trusted source of project and task data across teams.</p>
               </div>
-
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold flex flex-wrap items-center gap-2">
-                    OMCRM — Operations CRM Platform
-                    <span class="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase text-emerald-700 dark:text-emerald-200">
-                      Ops Backbone
-                    </span>
-                  </h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    Internal CRM that centralizes tickets, client accounts, design requests, and activity logs
-                    into one source of truth for the operations team.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• Modular architecture: tickets, clients, sites, design pulls, and follow-ups.</li>
-                    <li>• Real-time notifications via Supabase channels and email.</li>
-                    <li>• Role-based access: support, design, management views.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
-                    <span class="chip"><i class="devicon-typescript-plain text-sm"></i> TypeScript</span>
-                    <span class="chip"><i class="devicon-supabase-plain text-sm"></i> Supabase</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="flex items-center justify-between mb-1">
-                      <span class="font-semibold">Impact</span>
-                      <span class="text-[11px] uppercase tracking-[0.14em] opacity-70">Ops</span>
-                    </div>
-                    <p>Replaced spreadsheets and email threads with a trackable, auditable workflow.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">My Role</div>
-                    <p>Full-stack dev &amp; architecture: schema, APIs, UI, and deployment pipeline.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('omcrm')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Internal Access</span>
-                  </div>
-                </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Role</div>
+                <p>Designed the data model, built the ETL jobs, and connected Power BI reports.</p>
               </div>
-
-              <div class="spotlight-footer">
-                <span>✅ Reduced status check-ins &amp; manual follow-ups across teams.</span>
-                <span>📈 Built for daily use by operations, design, and management.</span>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <!--<button onclick="openModal('edw')" class="btn-ghost text-xs md:text-sm">View Screens</button>-->
+                <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Internal Analytics</span>
               </div>
-            </article>
+            </div>
+          </div>
 
-            <!-- EDW -->
-            <article class="spotlight-panel" data-project-panel="edw">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="edw.png" alt="EDW preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">internal • edw.netsolar</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-database text-[9px]"></i> Data Warehouse
-                  </span>
-                </div>
+          <div class="spotlight-footer">
+            <span>📊 Unified reporting for project delivery and capacity.</span>
+            <span>⚙️ Automated refresh from Asana into Azure + Power BI.</span>
+          </div>
+        </article>
+
+        <!-- NetSolar (UPDATED content + chips) -->
+        <article class="spotlight-panel" data-project-panel="netsolar">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="nets.png" alt="NetSolar preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+           
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-sun text-[9px]"></i> Solar Brand
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">NetSolar — Corporate Platform</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                Corporate presence for a solar EPC, rebuilt into a Laravel platform to support richer content,
+                better maintainability, and integrations.
+              </p>
+
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• Rebuilt into a Laravel-powered site for better control and scalability.</li>
+                <li>• JavaScript enhancements for smoother UX and interactive sections.</li>
+                <li>• Graph API integration for lead/contact routing and email workflows.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-laravel-plain text-sm"></i> Laravel</span>
+                <span class="chip"><i class="devicon-javascript-plain text-sm"></i> JavaScript</span>
+                <span class="chip"><i class="fa-solid fa-envelope text-sm"></i> Graph API</span>
               </div>
+            </div>
 
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold flex flex-wrap items-center gap-2">
-                    EDW — Enterprise Data Warehouse
-                    <span class="inline-flex items-center rounded-full border border-sky-300/60 bg-sky-500/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase text-sky-700 dark:text-sky-200">
-                      Asana → Azure → PBI
-                    </span>
-                  </h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    Centralized data warehouse that ingests Asana work management data into Azure SQL
-                    and powers organization-wide analytics in Power BI.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• ETL pipeline from Asana API into a modeled Azure SQL data warehouse.</li>
-                    <li>• Star-schema design for tasks, projects, users, and time dimensions.</li>
-                    <li>• Power BI dashboards for throughput, SLAs, and workload visibility.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip">Azure SQL</span>
-                    <span class="chip">Asana API</span>
-                    <span class="chip">Power BI</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Goal</div>
-                    <p>Provide a single, trusted source of project and task data across teams.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Role</div>
-                    <p>Designed the data model, built the ETL jobs, and connected Power BI reports.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('edw')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Internal Analytics</span>
-                  </div>
-                </div>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Goal</div>
+                <p>Make solar investments feel premium, while keeping content easy to maintain and expand.</p>
               </div>
-
-              <div class="spotlight-footer">
-                <span>📊 Unified reporting for project delivery and capacity.</span>
-                <span>⚙️ Automated refresh from Asana into Azure + Power BI.</span>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">My Role</div>
+                <p>Full build: UI layout, backend structure, integrations, deployment alignment.</p>
               </div>
-            </article>
-
-            <!-- Netvoice -->
-            <article class="spotlight-panel" data-project-panel="netvoice">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="nvproject.png" alt="Netvoice preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">netvoice.com.ph</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-globe text-[9px]"></i> Live Site
-                  </span>
-                </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('netsolar')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost text-xs md:text-sm">Visit Site</a>
               </div>
+            </div>
+          </div>
 
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Netvoice — VoIP &amp; SMS Website</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    Marketing site for enterprise-grade voice and messaging services for the Philippine market,
-                    with clear product breakdown and CTAs.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• Built responsive sections to tell the story from SMB to enterprise.</li>
-                    <li>• Clean plans &amp; pricing layout with highlight states for featured offers.</li>
-                    <li>• Custom JS hooks for smoother in-page navigation and scroll behavior.</li>
-                  </ul>
+          <div class="spotlight-footer">
+            <span>🏗️ Built for long-term brand positioning + maintainability.</span>
+            <span>🔌 Ready for integrations and scalable content management.</span>
+          </div>
+        </article>
 
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip">Squarespace</span>
-                    <span class="chip"><i class="devicon-javascript-plain text-sm"></i> JavaScript</span>
-                    <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i> Bootstrap</span>
-                  </div>
-                </div>
+        <!-- Waltermart (UPDATED MySQL + chips) -->
+        <article class="spotlight-panel" data-project-panel="waltermart">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="walt.png" alt="Waltermart Monitoring preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+    
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-satellite-dish text-[9px]"></i> Multi-Site Monitoring
+              </span>
+            </div>
+          </div>
 
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Focus</div>
-                    <p>Make a technical product feel approachable for non-technical buyers.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Highlights</div>
-                    <p>Hero messaging tuned for conversions, plus clear service breakdown.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('netvoice')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit Site
-                    </a>
-                  </div>
-                </div>
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Waltermart Solar Monitoring Dashboard</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                A custom dashboard that pulls from multiple SolarEdge sites
+                to show live production, consumption, and savings across branches.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• Multi-site API aggregation and normalization.</li>
+                <li>• Tailwind-based layout tuned for wall displays and laptops.</li>
+                <li>• Data stored and queried using MySQL for history and reporting.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-php-plain text-sm"></i> PHP</span>
+                <span class="chip"><i class="devicon-mysql-plain text-sm"></i> MySQL</span>
+                <span class="chip"><i class="fa-solid fa-plug text-sm"></i> API</span>
+                <span class="chip"><i class="devicon-tailwindcss-plain text-sm"></i> Tailwind</span>
               </div>
+            </div>
 
-              <div class="spotlight-footer">
-                <span>🎯 Clear positioning for VoIP &amp; SMS offerings.</span>
-                <span>📱 Fully responsive on phones, tablets, and desktops.</span>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Usage</div>
+                <p>Used by internal teams to quickly spot underperforming sites.</p>
               </div>
-            </article>
-
-            <!-- NetSolar -->
-            <article class="spotlight-panel" data-project-panel="netsolar">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="nets.png" alt="NetSolar preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">netsolar.com.ph</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-sun text-[9px]"></i> Solar Brand
-                  </span>
-                </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Design</div>
+                <p>Built to be legible at a glance from a distance.</p>
               </div>
-
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">NetSolar — Corporate Website</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    Corporate presence for a solar EPC, built to highlight projects, case studies,
-                    and the company’s technical depth.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• Strong hero with proof points and trust indicators.</li>
-                    <li>• Project gallery for commercial &amp; industrial installations.</li>
-                    <li>• Clean contact and “Get a Quote” flows.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip">Squarespace</span>
-                    <span class="chip"><i class="devicon-javascript-plain text-sm"></i> JavaScript</span>
-                    <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i> Bootstrap</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Goal</div>
-                    <p>Make solar investments feel premium, not generic.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Role</div>
-                    <p>Layout, microcopy support, and implementation of interactive sections.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('netsolar')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit Site
-                    </a>
-                  </div>
-                </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('waltermart')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost text-xs md:text-sm">Visit</a>
               </div>
+            </div>
+          </div>
 
-              <div class="spotlight-footer">
-                <span>🏗️ Built for long-term brand positioning.</span>
-                <span>🌏 Highlights real installations across PH.</span>
+          <div class="spotlight-footer">
+            <span>📊 Gives a single view of many branches.</span>
+            <span>⚡ Surfaces PV vs grid patterns for decision-making.</span>
+          </div>
+        </article>
+
+        <!-- Email-to-SMS (UPDATED Graph API + System Automation) -->
+        <article class="spotlight-panel" data-project-panel="emailsms">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="emailsms.png" alt="Email-to-SMS preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+        
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-bell text-[9px]"></i> Alerts
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Email-to-SMS Alert Platform</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                A small but high-impact service that listens to key inboxes and forwards
+                critical messages as SMS to on-call numbers.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• Microsoft Graph API integration for filtered mailbox monitoring.</li>
+                <li>• Runs via system automation (service/daemon scheduling) for reliability.</li>
+                <li>• SMS gateway integration with delivery tracking.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-python-plain text-sm"></i> Python</span>
+                <span class="chip"><i class="fa-solid fa-flask text-sm"></i> Flask</span>
+                <span class="chip"><i class="fa-solid fa-envelope text-sm"></i> Graph API</span>
+                <span class="chip"><i class="fa-solid fa-gear text-sm"></i> System Automation</span>
               </div>
-            </article>
+            </div>
 
-            <!-- Email-to-SMS -->
-            <article class="spotlight-panel" data-project-panel="emailsms">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="emailsms.png" alt="Email-to-SMS preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">sms.netsolar.com.ph</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-bell text-[9px]"></i> Alerts
-                  </span>
-                </div>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Why</div>
+                <p>Some alerts cannot wait for someone to “check email later”.</p>
               </div>
-
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Email-to-SMS Alert Platform</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    A small but high-impact service that listens to key inboxes and forwards
-                    critical messages as SMS to on-call numbers.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• Gmail / Graph API integration for filtered messages.</li>
-                    <li>• SMS gateway integration with delivery tracking.</li>
-                    <li>• Web UI for seeing history and tweaking routing.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-python-plain text-sm"></i> Python</span>
-                    <span class="chip"><i class="fa-solid fa-flask text-sm"></i> Flask</span>
-                    <span class="chip">MongoDB</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Why</div>
-                    <p>Some alerts cannot wait for someone to “check email later”.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Reliability</div>
-                    <p>Resilient to crashes using background loops &amp; error handling.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('emailsms')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="http://sms.netsolar.com.ph:5000/" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit Demo
-                    </a>
-                  </div>
-                </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Reliability</div>
+                <p>Resilient background loop, retries, and centralized logging for failures.</p>
               </div>
-
-              <div class="spotlight-footer">
-                <span>📲 Faster human response to infra incidents.</span>
-                <span>🔁 Designed to plug into multiple inboxes.</span>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('emailsms')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <a href="http://sms.netsolar.com.ph" target="_blank" class="btn-ghost text-xs md:text-sm">Visit Demo</a>
               </div>
-            </article>
+            </div>
+          </div>
 
-            <!-- Bulk SMS -->
-            <article class="spotlight-panel" data-project-panel="smswebapp">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="smswebapp.png" alt="Bulk SMS preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">13.76.129.80 • /login</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-paper-plane text-[9px]"></i> Bulk Messaging
-                  </span>
-                </div>
+          <div class="spotlight-footer">
+            <span>📲 Faster human response to infra incidents.</span>
+            <span>🔁 Designed to plug into multiple inboxes.</span>
+          </div>
+        </article>
+
+        <!-- Bulk SMS (UPDATED Bootstrap chip) -->
+        <article class="spotlight-panel" data-project-panel="smswebapp">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="smswebapp.png" alt="Bulk SMS preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+           
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-paper-plane text-[9px]"></i> Bulk Messaging
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Bulk SMS Web Application</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                A full web platform for sending local and international SMS at scale,
+                with upload templates and robust logging.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• CSV/XLSX upload with validation for thousands of recipients.</li>
+                <li>• Campaign-level audit history instead of noisy per-SMS logs.</li>
+                <li>• Admin and standard user roles.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-laravel-plain text-sm"></i> Laravel</span>
+                <span class="chip"><i class="devicon-mysql-plain text-sm"></i> MySQL</span>
+                <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i> Bootstrap</span>
               </div>
+            </div>
 
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Bulk SMS Web Application</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    A full web platform for sending local and international SMS at scale,
-                    with upload templates and robust logging.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• CSV/XLSX upload with validation for thousands of recipients.</li>
-                    <li>• Campaign-level audit history instead of noisy per-SMS logs.</li>
-                    <li>• Admin and standard user roles.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-laravel-plain text-sm"></i> Laravel</span>
-                    <span class="chip"><i class="devicon-mysql-plain text-sm"></i> MySQL</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Problem</div>
-                    <p>Teams were relying on manual sends and basic gateways with no history.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Stack</div>
-                    <p>Laravel on Azure VM, with API-based SMS provider integration.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('smswebapp')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="http://13.76.129.80/login" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit
-                    </a>
-                  </div>
-                </div>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Problem</div>
+                <p>Teams were relying on manual sends and basic gateways with no history.</p>
               </div>
-
-              <div class="spotlight-footer">
-                <span>📤 Handles campaigns from small blasts to large sends.</span>
-                <span>🧾 Clear history per campaign for compliance.</span>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Stack</div>
+                <p>Laravel on Azure VM, with API-based SMS provider integration.</p>
               </div>
-            </article>
-
-            <!-- Fuel -->
-            <article class="spotlight-panel" data-project-panel="fuel">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="projectfuel1.png" alt="Fuel Management preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">20.6.104.138 • /gamification2</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-gas-pump text-[9px]"></i> Fuel &amp; Rewards
-                  </span>
-                </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('smswebapp')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
               </div>
+            </div>
+          </div>
 
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Fuel Management &amp; Rewards Webapp</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    A Laravel + React system to assign fuel rewards, track consumption,
-                    and visualize usage patterns for HR and admins.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• React dashboards for quick at-a-glance usage.</li>
-                    <li>• Backend logic for allocation rules and redemptions.</li>
-                    <li>• Exportable reports for finance and management.</li>
-                  </ul>
+          <div class="spotlight-footer">
+            <span>📤 Handles campaigns from small blasts to large sends.</span>
+            <span>🧾 Clear history per campaign for compliance.</span>
+          </div>
+        </article>
 
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-laravel-plain text-sm"></i> Laravel</span>
-                    <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
-                  </div>
-                </div>
+        <!-- Smart Calculator (UPDATED Tailwind chip) -->
+        <article class="spotlight-panel" data-project-panel="smart">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="smart1.png" alt="Smart Calculator preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
 
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Value</div>
-                    <p>Gives HR a fair, transparent way to distribute and track fuel allowances.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Infra</div>
-                    <p>Hosted on Azure, structured for future features like gamification.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('fuel')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit
-                    </a>
-                  </div>
-                </div>
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-solar-panel text-[9px]"></i> Calculator
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Solar Smart Calculator</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                A guided calculator that estimates system size, expected savings,
+                and ROI based on rooftop area and billing info.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• React front-end with smooth multi-step flow.</li>
+                <li>• PHP backend logic for sizing and financial modeling.</li>
+                <li>• Tailwind styling for a modern, clean UI.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
+                <span class="chip"><i class="devicon-php-plain text-sm"></i> PHP</span>
+                <span class="chip">SASS</span>
+                <span class="chip"><i class="devicon-tailwindcss-plain text-sm"></i> Tailwind</span>
               </div>
+            </div>
 
-              <div class="spotlight-footer">
-                <span>⛽ Makes fuel rewards measurable, not guesswork.</span>
-                <span>📊 Data exported for analysis and audits.</span>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Outcome</div>
+                <p>Turns a complex technical proposal into an understandable story.</p>
               </div>
-            </article>
-
-            <!-- Smart Calculator -->
-            <article class="spotlight-panel" data-project-panel="smart">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="smart1.png" alt="Smart Calculator preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">internal • solar-calc</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-solar-panel text-[9px]"></i> Calculator
-                  </span>
-                </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Status</div>
+                <p>Internal tool with private deployments.</p>
               </div>
-
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Solar Smart Calculator</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    A guided calculator that estimates system size, expected savings,
-                    and ROI based on rooftop area and billing info.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• React front-end with smooth multi-step flow.</li>
-                    <li>• PHP backend logic for sizing and financial modeling.</li>
-                    <li>• Designed to plug into sales workflows and follow-ups.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
-                    <span class="chip"><i class="devicon-php-plain text-sm"></i> PHP</span>
-                    <span class="chip">SASS</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Outcome</div>
-                    <p>Turns a complex technical proposal into an understandable story.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Status</div>
-                    <p>Internal tool with private deployments.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('smart')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
-                  </div>
-                </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('smart')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
               </div>
+            </div>
+          </div>
 
-              <div class="spotlight-footer">
-                <span>🔍 Helps sales talk in numbers, not guesses.</span>
-                <span>📉 Visualizes pre-solar vs post-solar bills.</span>
+          <div class="spotlight-footer">
+            <span>🔍 Helps sales talk in numbers, not guesses.</span>
+            <span>📉 Visualizes pre-solar vs post-solar bills.</span>
+          </div>
+        </article>
+
+        <!-- Netvoice (MOVED near end, unchanged stack) -->
+        <article class="spotlight-panel" data-project-panel="netvoice">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="nvproject.png" alt="Netvoice preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+      
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-globe text-[9px]"></i> Live Site
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Netvoice — VoIP &amp; SMS Website</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                Marketing site for enterprise-grade voice and messaging services for the Philippine market,
+                with clear product breakdown and CTAs.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• Built responsive sections to tell the story from SMB to enterprise.</li>
+                <li>• Clean plans &amp; pricing layout with highlight states for featured offers.</li>
+                <li>• Custom JS hooks for smoother in-page navigation and scroll behavior.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip">Squarespace</span>
+                <span class="chip"><i class="devicon-javascript-plain text-sm"></i> JavaScript</span>
+                <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i> Bootstrap</span>
               </div>
-            </article>
+            </div>
 
-            <!-- Waltermart -->
-            <article class="spotlight-panel" data-project-panel="waltermart">
-              <div class="spotlight-media mb-4 sm:mb-5">
-                <img src="walt.png" alt="Waltermart Monitoring preview">
-                <div class="spotlight-media-gradient"></div>
-                <div class="spotlight-media-chrome">
-                  <div class="spotlight-media-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <span class="hidden sm:inline text-[11px] opacity-80">monitoring.netsolar.com.ph</span>
-                  <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
-                    <i class="fa-solid fa-satellite-dish text-[9px]"></i> Multi-Site Monitoring
-                  </span>
-                </div>
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Focus</div>
+                <p>Make a technical product feel approachable for non-technical buyers.</p>
               </div>
-
-              <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-bold">Waltermart Solar Monitoring Dashboard</h3>
-                  <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
-                    A custom dashboard that pulls from multiple SolarEdge sites
-                    to show live production, consumption, and savings across branches.
-                  </p>
-                  <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
-                    <li>• Multi-site API aggregation and normalization.</li>
-                    <li>• Tailwind-based layout tuned for wall displays and laptops.</li>
-                    <li>• Metrics for PV vs grid usage and system health.</li>
-                  </ul>
-
-                  <div class="mt-4 flex flex-wrap gap-2 text-xs">
-                    <span class="chip"><i class="devicon-php-plain text-sm"></i> PHP</span>
-                    <span class="chip">MongoDB</span>
-                    <span class="chip"><i class="fa-solid fa-plug text-sm"></i> API</span>
-                  </div>
-                </div>
-
-                <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Usage</div>
-                    <p>Used by internal teams to quickly spot underperforming sites.</p>
-                  </div>
-                  <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
-                    <div class="font-semibold mb-1">Design</div>
-                    <p>Built to be legible at a glance from a distance.</p>
-                  </div>
-                  <div class="flex flex-wrap gap-3 pt-1">
-                    <button onclick="openModal('waltermart')" class="btn-ghost text-xs md:text-sm">
-                      View Screens
-                    </button>
-                    <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost text-xs md:text-sm">
-                      Visit
-                    </a>
-                  </div>
-                </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Highlights</div>
+                <p>Hero messaging tuned for conversions, plus clear service breakdown.</p>
               </div>
-
-              <div class="spotlight-footer">
-                <span>📊 Gives a single view of many branches.</span>
-                <span>⚡ Surfaces PV vs grid patterns for decision-making.</span>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('netvoice')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost text-xs md:text-sm">Visit Site</a>
               </div>
-            </article>
-          </section>
-        </div>
+            </div>
+          </div>
+
+          <div class="spotlight-footer">
+            <span>🎯 Clear positioning for VoIP &amp; SMS offerings.</span>
+            <span>📱 Fully responsive on phones, tablets, and desktops.</span>
+          </div>
+        </article>
+
+        <!-- Fuel (MOVED last) -->
+        <article class="spotlight-panel" data-project-panel="fuel">
+          <div class="spotlight-media mb-4 sm:mb-5">
+            <img src="projectfuel1.png" alt="Fuel Management preview">
+            <div class="spotlight-media-gradient"></div>
+            <div class="spotlight-media-chrome">
+              <div class="spotlight-media-dots"><span></span><span></span><span></span></div>
+          
+              <span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] bg-black/30 px-2 py-1 rounded-full">
+                <i class="fa-solid fa-gas-pump text-[9px]"></i> Fuel &amp; Rewards
+              </span>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] gap-4 md:gap-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">Fuel Management &amp; Rewards Webapp</h3>
+              <p class="mt-2 text-sm md:text-[15px] text-slate-700 dark:text-slate-200">
+                A Laravel + React system to assign fuel rewards, track consumption,
+                and visualize usage patterns for HR and admins.
+              </p>
+              <ul class="mt-3 space-y-1.5 text-xs md:text-[13px] text-slate-600 dark:text-slate-300">
+                <li>• React dashboards for quick at-a-glance usage.</li>
+                <li>• Backend logic for allocation rules and redemptions.</li>
+                <li>• Exportable reports for finance and management.</li>
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="chip"><i class="devicon-laravel-plain text-sm"></i> Laravel</span>
+                <span class="chip"><i class="devicon-react-original text-sm"></i> React</span>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-[13px] text-slate-600 dark:text-slate-200">
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Value</div>
+                <p>Gives HR a fair, transparent way to distribute and track fuel allowances.</p>
+              </div>
+              <div class="border border-white/20 dark:border-white/10 rounded-xl p-3 bg-white/60 dark:bg-white/5">
+                <div class="font-semibold mb-1">Infra</div>
+                <p>Hosted on Azure, structured for future features like gamification.</p>
+              </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <button onclick="openModal('fuel')" class="btn-ghost text-xs md:text-sm">View Screens</button>
+                <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="spotlight-footer">
+            <span>⛽ Makes fuel rewards measurable, not guesswork.</span>
+            <span>📊 Data exported for analysis and audits.</span>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECT MODALS (UPDATED) ==================== -->
+
+<!-- OMCRM Modal -->
+<div id="modal-omcrm" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('omcrm')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>OMCRM — Screens</strong>
       </div>
-    </section>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-omcrm" src="omcrm.png" class="w-full h-72 object-cover" alt="OMCRM slide">
+      </div>
 
-    <!-- ==================== PROJECT MODALS (with descriptions) ==================== -->
-    <div id="modal-omcrm" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('omcrm')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>OMCRM — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-omcrm" src="omcrm.png" class="w-full h-72 object-cover" alt="OMCRM slide">
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          OMCRM is an internal operations CRM that centralizes tickets, client accounts,
+          design requests, and activity logs into one source of truth for the team.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Modular structure: tickets, clients, sites, and design pulls.</li>
+          <li>Real-time notifications via Supabase channels and email.</li>
+          <li>Role-based access for support, design, and management.</li>
+        </ul>
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              OMCRM is an internal operations CRM that centralizes tickets, client accounts,
-              design requests, and activity logs into one source of truth for the team.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Modular structure: tickets, clients, sites, and design pulls.</li>
-              <li>Real-time notifications via Supabase channels and email.</li>
-              <li>Role-based access for support, design, and management.</li>
-            </ul>
-          </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="omcrm.png" class="w-16 h-12 object-cover active" onclick="showSlide('omcrm',0,true)">
+        <img src="omcrm2.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',1,true)">
+        <img src="omcrm3.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',2,true)">
+      </div>
+      <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('omcrm')">Close</button></div>
+    </div>
+  </div>
+</div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="omcrm.png" class="w-16 h-12 object-cover active" onclick="showSlide('omcrm',0,true)">
-            <img src="omcrm2.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',1,true)">
-            <img src="omcrm3.png" class="w-16 h-12 object-cover" onclick="showSlide('omcrm',2,true)">
-          </div>
-          <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('omcrm')">Close</button></div>
-        </div>
+<!-- EDW Modal -->
+<div id="modal-edw" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('edw')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>EDW — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-edw" src="edw.png" class="w-full h-72 object-cover" alt="EDW slide">
+      </div>
+
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          EDW (Enterprise Data Warehouse) centralizes operational data by ingesting Asana work items
+          into Azure SQL and serving curated datasets to Power BI.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Automated ETL from Asana API into Azure SQL tables.</li>
+          <li>Dimensional model for tasks, projects, users, and time.</li>
+          <li>Power BI dashboards for delivery KPIs, SLAs, and workloads.</li>
+        </ul>
+      </div>
+
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="edw.png" class="w-16 h-12 object-cover active" onclick="showSlide('edw',0,true)">
+        <img src="edw2.png" class="w-16 h-12 object-cover" onclick="showSlide('edw',1,true)">
+        <img src="edw3.png" class="w-16 h-12 object-cover" onclick="showSlide('edw',2,true)">
+      </div>
+      <div class="mt-4 text-right">
+        <button class="btn-ghost" onclick="closeModal('edw')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- EDW MODAL -->
-    <div id="modal-edw" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('edw')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>EDW — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-edw" src="edw.png" class="w-full h-72 object-cover" alt="EDW slide">
-          </div>
+<!-- Netvoice Modal -->
+<div id="modal-netvoice" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netvoice')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Netvoice — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-netvoice" src="nvproject.png" class="w-full h-72 object-cover" alt="Netvoice slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              EDW (Enterprise Data Warehouse) centralizes operational data by ingesting Asana work items
-              into Azure SQL and serving curated datasets to Power BI.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Automated ETL from Asana API into Azure SQL tables.</li>
-              <li>Dimensional model for tasks, projects, users, and time.</li>
-              <li>Power BI dashboards for delivery KPIs, SLAs, and workloads.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          Netvoice is a marketing site for enterprise-grade VoIP &amp; SMS services in the Philippines,
+          focused on clear messaging and conversion-oriented layouts.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Responsive sections tuned for SMB to enterprise audiences.</li>
+          <li>Plans &amp; pricing designed with emphasis on featured offers.</li>
+          <li>Custom JavaScript for smoother navigation and scrolling.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="edw.png" class="w-16 h-12 object-cover active" onclick="showSlide('edw',0,true)">
-            <img src="edw2.png" class="w-16 h-12 object-cover" onclick="showSlide('edw',1,true)">
-            <img src="edw3.png" class="w-16 h-12 object-cover" onclick="showSlide('edw',2,true)">
-          </div>
-          <div class="mt-4 text-right">
-            <button class="btn-ghost" onclick="closeModal('edw')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="nvproject.png" class="w-16 h-12 object-cover active" onclick="showSlide('netvoice',0,true)">
+        <img src="nvproject2.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',1,true)">
+        <img src="nvproject3.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',2,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+        <button class="btn-ghost" onclick="closeModal('netvoice')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-netvoice" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netvoice')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Netvoice — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-netvoice" src="nvproject.png" class="w-full h-72 object-cover" alt="Netvoice slide">
-          </div>
+<!-- NetSolar Modal (UPDATED) -->
+<div id="modal-netsolar" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netsolar')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>NetSolar — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-netsolar" src="nets.png" class="w-full h-72 object-cover" alt="NetSolar slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              Netvoice is a marketing site for enterprise-grade VoIP &amp; SMS services in the Philippines,
-              focused on clear messaging and conversion-oriented layouts.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Responsive sections tuned for SMB to enterprise audiences.</li>
-              <li>Plans &amp; pricing designed with emphasis on featured offers.</li>
-              <li>Custom JavaScript for smoother navigation and scrolling.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          NetSolar is a corporate platform for a solar EPC company, rebuilt into Laravel for improved control,
+          scalability, and integrations.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Laravel-based structure for long-term maintainability.</li>
+          <li>JavaScript enhancements for interactive UI.</li>
+          <li>Graph API integration for email workflows and lead/contact routing.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="nvproject.png" class="w-16 h-12 object-cover active" onclick="showSlide('netvoice',0,true)">
-            <img src="nvproject2.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',1,true)">
-            <img src="nvproject3.png" class="w-16 h-12 object-cover" onclick="showSlide('netvoice',2,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="http://netvoice.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
-            <button class="btn-ghost" onclick="closeModal('netvoice')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="nets.png" class="w-16 h-12 object-cover active" onclick="showSlide('netsolar',0,true)">
+        <img src="nets2.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',1,true)">
+        <img src="nets3.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',2,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
+        <button class="btn-ghost" onclick="closeModal('netsolar')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-netsolar" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('netsolar')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>NetSolar — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-netsolar" src="nets.png" class="w-full h-72 object-cover" alt="NetSolar slide">
-          </div>
+<!-- Email-to-SMS Modal (UPDATED) -->
+<div id="modal-emailsms" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('emailsms')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Email-to-SMS — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-emailsms" src="emailsms.png" class="w-full h-72 object-cover" alt="Email-to-SMS slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              NetSolar is a corporate website for a solar EPC company, built to showcase projects,
-              case studies, and technical capabilities in a premium way.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Hero section with trust indicators and proof points.</li>
-              <li>Project gallery for commercial and industrial installations.</li>
-              <li>Smooth “Get a Quote” and contact flows.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          This platform monitors key mailboxes and forwards critical messages as SMS to on-call numbers.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Microsoft Graph API mailbox monitoring.</li>
+          <li>Runs via system automation (service/daemon scheduling).</li>
+          <li>SMS gateway integration with routing and delivery tracking.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="nets.png" class="w-16 h-12 object-cover active" onclick="showSlide('netsolar',0,true)">
-            <img src="nets2.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',1,true)">
-            <img src="nets3.png" class="w-16 h-12 object-cover" onclick="showSlide('netsolar',2,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="https://netsolar.com.ph" target="_blank" class="btn-ghost">Visit Site</a>
-            <button class="btn-ghost" onclick="closeModal('netsolar')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="emailsms.png" class="w-16 h-12 object-cover active" onclick="showSlide('emailsms',0,true)">
+        <img src="emailsms2.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',1,true)">
+        <img src="emailsms3.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',2,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <a href="http://sms.netsolar.com.ph" target="_blank" class="btn-ghost">Visit</a>
+        <button class="btn-ghost" onclick="closeModal('emailsms')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-emailsms" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('emailsms')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Email-to-SMS — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-emailsms" src="emailsms.png" class="w-full h-72 object-cover" alt="Email-to-SMS slide">
-          </div>
+<!-- Bulk SMS Modal (UPDATED Bootstrap) -->
+<div id="modal-smswebapp" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smswebapp')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Bulk SMS — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-smswebapp" src="smswebapp.png" class="w-full h-72 object-cover" alt="Bulk SMS slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              This platform listens to key inboxes and forwards critical messages as SMS to on-call numbers,
-              so important alerts are not buried in email noise.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Filters messages via Gmail / Graph APIs.</li>
-              <li>Integrates with an SMS gateway for delivery tracking.</li>
-              <li>Includes a UI for history review and routing tweaks.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          A full-featured Bulk SMS platform for sending campaigns at scale with proper logging,
+          history, and role-based access.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>CSV/XLSX upload with validation for large recipient lists.</li>
+          <li>Campaign-level history instead of per-SMS spam in logs.</li>
+          <li>Laravel + MySQL backend with Bootstrap UI.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="emailsms.png" class="w-16 h-12 object-cover active" onclick="showSlide('emailsms',0,true)">
-            <img src="emailsms2.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',1,true)">
-            <img src="emailsms3.png" class="w-16 h-12 object-cover" onclick="showSlide('emailsms',2,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="http://sms.netsolar.com.ph:5000/" target="_blank" class="btn-ghost">Visit</a>
-            <button class="btn-ghost" onclick="closeModal('emailsms')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="smswebapp.png" class="w-16 h-12 object-cover active" onclick="showSlide('smswebapp',0,true)">
+        <img src="smswebapp2.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',1,true)">
+        <img src="smswebapp3.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',2,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
+        <button class="btn-ghost" onclick="closeModal('smswebapp')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-smswebapp" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smswebapp')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Bulk SMS — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-smswebapp" src="smswebapp.png" class="w-full h-72 object-cover" alt="Bulk SMS slide">
-          </div>
+<!-- Fuel Modal -->
+<div id="modal-fuel" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('fuel')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Fuel — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-fuel" src="projectfuel1.png" class="w-full h-72 object-cover" alt="Fuel slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              A full-featured Bulk SMS platform for sending campaigns at scale with proper logging,
-              history, and role-based access.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>CSV/XLSX upload with validation for large recipient lists.</li>
-              <li>Campaign-level history instead of per-SMS spam in logs.</li>
-              <li>Admin / standard users with different privileges.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          Fuel Management &amp; Rewards tracks fuel allocations, usage, and rewards for employees,
+          giving HR and management a clear view of consumption.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>React dashboards for quick usage snapshots.</li>
+          <li>Laravel backend rules for allocation and redemption logic.</li>
+          <li>Exportable reports for finance and audits.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="smswebapp.png" class="w-16 h-12 object-cover active" onclick="showSlide('smswebapp',0,true)">
-            <img src="smswebapp2.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',1,true)">
-            <img src="smswebapp3.png" class="w-16 h-12 object-cover" onclick="showSlide('smswebapp',2,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="http://13.76.129.80/login" target="_blank" class="btn-ghost">Visit</a>
-            <button class="btn-ghost" onclick="closeModal('smswebapp')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="projectfuel1.png" class="w-16 h-12 object-cover active" onclick="showSlide('fuel',0,true)">
+        <img src="projectfuel2.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',1,true)">
+        <img src="projectfuel3.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',2,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <span class="chip text-[11px]"><i class="fa-solid fa-lock text-[10px] mr-1"></i> Private</span>
+        <button class="btn-ghost" onclick="closeModal('fuel')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-fuel" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('fuel')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Fuel — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-fuel" src="projectfuel1.png" class="w-full h-72 object-cover" alt="Fuel slide">
-          </div>
+<!-- Smart Modal (UPDATED Tailwind) -->
+<div id="modal-smart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smart')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Smart Calculator — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-smart" src="smart1.png" class="w-full h-72 object-cover" alt="Smart slide">
+      </div>
 
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              Fuel Management &amp; Rewards tracks fuel allocations, usage, and rewards for employees,
-              giving HR and management a clear view of consumption.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>React dashboards for quick usage snapshots.</li>
-              <li>Laravel backend rules for allocation and redemption logic.</li>
-              <li>Exportable reports for finance and audits.</li>
-            </ul>
-          </div>
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          The Solar Smart Calculator helps estimate system size, monthly savings, and ROI
+          from a few key inputs like rooftop area and electricity bills.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>Multi-step React UI flow.</li>
+          <li>PHP-based sizing and financial calculations.</li>
+          <li>Tailwind styling for a premium, modern UI.</li>
+        </ul>
+      </div>
 
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="projectfuel1.png" class="w-16 h-12 object-cover active" onclick="showSlide('fuel',0,true)">
-            <img src="projectfuel2.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',1,true)">
-            <img src="projectfuel3.png" class="w-16 h-12 object-cover" onclick="showSlide('fuel',2,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="http://20.6.104.138/gamification2/login.php" target="_blank" class="btn-ghost">Visit</a>
-            <button class="btn-ghost" onclick="closeModal('fuel')">Close</button>
-          </div>
-        </div>
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="smart1.png" class="w-16 h-12 object-cover active" onclick="showSlide('smart',0,true)">
+        <img src="smart2.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',1,true)">
+        <img src="smart3.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',2,true)">
+      </div>
+      <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('smart')">Close</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Waltermart Modal (UPDATED MySQL) -->
+<div id="modal-waltermart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('waltermart')">
+  <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <span class="flex items-center gap-1">
+          <span class="modal-dot red"></span>
+          <span class="modal-dot amber"></span>
+          <span class="modal-dot green"></span>
+        </span>
+        <strong>Waltermart — Screens</strong>
+      </div>
+      <span class="modal-pill">Project Preview</span>
+    </div>
+    <div class="p-4">
+      <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
+        <img id="main-slide-waltermart" src="walt.png" class="w-full h-72 object-cover" alt="Waltermart slide">
+      </div>
+
+      <div class="text-sm text-slate-200 space-y-2 mb-4">
+        <h4 class="font-semibold text-slate-100">About this project</h4>
+        <p class="text-xs md:text-sm text-slate-200">
+          Waltermart Monitoring is a multi-site solar dashboard that aggregates data from multiple SolarEdge sites
+          to show production and consumption insights across branches.
+        </p>
+        <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
+          <li>API aggregation from multiple branches.</li>
+          <li>Tailwind layout tuned for wall displays and laptops.</li>
+          <li>MySQL storage for historical reporting and analytics.</li>
+        </ul>
+      </div>
+
+      <div class="thumbs flex gap-2 justify-center">
+        <img src="walt.png" class="w-16 h-12 object-cover active" onclick="showSlide('waltermart',0,true)">
+        <img src="walt2.png" class="w-16 h-12 object-cover" onclick="showSlide('waltermart',1,true)">
+      </div>
+      <div class="mt-4 flex justify-end gap-2">
+        <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost">Visit</a>
+        <button class="btn-ghost" onclick="closeModal('waltermart')">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <div id="modal-smart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('smart')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Smart Calculator — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-smart" src="smart1.png" class="w-full h-72 object-cover" alt="Smart slide">
-          </div>
-
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              The Solar Smart Calculator helps estimate system size, monthly savings, and ROI
-              from a few key inputs like rooftop area and electricity bills.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>Multi-step React UI flow.</li>
-              <li>PHP-based sizing and financial calculations.</li>
-              <li>Designed to plug into sales follow-up workflows.</li>
-            </ul>
-          </div>
-
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="smart1.png" class="w-16 h-12 object-cover active" onclick="showSlide('smart',0,true)">
-            <img src="smart2.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',1,true)">
-            <img src="smart3.png" class="w-16 h-12 object-cover" onclick="showSlide('smart',2,true)">
-          </div>
-          <div class="mt-4 text-right"><button class="btn-ghost" onclick="closeModal('smart')">Close</button></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal-waltermart" class="fixed inset-0 hidden items-center justify-center modal-backdrop z-50" onclick="closeModal('waltermart')">
-      <div class="modal-card max-w-3xl w-[92%]" onclick="event.stopPropagation();">
-        <div class="modal-head">
-          <div class="modal-head-left">
-            <span class="flex items-center gap-1">
-              <span class="modal-dot red"></span>
-              <span class="modal-dot amber"></span>
-              <span class="modal-dot green"></span>
-            </span>
-            <strong>Waltermart — Screens</strong>
-          </div>
-          <span class="modal-pill">Project Preview</span>
-        </div>
-        <div class="p-4">
-          <div class="rounded-xl overflow-hidden border border-white/20 dark:border-white/10 mb-4">
-            <img id="main-slide-waltermart" src="walt.png" class="w-full h-72 object-cover" alt="Waltermart slide">
-          </div>
-
-          <!-- Description -->
-          <div class="text-sm text-slate-200 space-y-2 mb-4">
-            <h4 class="font-semibold text-slate-100">About this project</h4>
-            <p class="text-xs md:text-sm text-slate-200">
-              Waltermart Monitoring is a multi-site solar dashboard that aggregates data from
-              multiple SolarEdge sites to show live production and consumption.
-            </p>
-            <ul class="list-disc list-inside text-xs md:text-sm text-slate-300 space-y-1">
-              <li>API aggregation from multiple branches.</li>
-              <li>Tailwind layout tuned for wall displays and laptops.</li>
-              <li>Highlights PV vs grid usage and system health.</li>
-            </ul>
-          </div>
-
-          <div class="thumbs flex gap-2 justify-center">
-            <img src="walt.png" class="w-16 h-12 object-cover active" onclick="showSlide('waltermart',0,true)">
-            <img src="walt2.png" class="w-16 h-12 object-cover" onclick="showSlide('waltermart',1,true)">
-          </div>
-          <div class="mt-4 flex justify-end gap-2">
-            <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn-ghost">Visit</a>
-            <button class="btn-ghost" onclick="closeModal('waltermart')">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- ==================== CONTACT ==================== -->
     <section id="contact" class="sec section-bg relative py-20 md:py-24">
       <div class="contact-decor"></div>
@@ -2360,42 +2339,67 @@ $ motto
 
     // ===== Projects rail -> spotlight sync =====
     (function(){
-      const pills = document.querySelectorAll('[data-project-pill]');
-      const panels = document.querySelectorAll('[data-project-panel]');
-      if (!pills.length || !panels.length) return;
+    const pills = document.querySelectorAll('[data-project-pill]');
+    const panels = document.querySelectorAll('[data-project-panel]');
+    const spotlight = document.getElementById('projectsSpotlight');
 
-      function activate(id){
-        pills.forEach(p=>{
-          const active = p.getAttribute('data-project-pill') === id;
-          p.classList.toggle('project-pill-active', active);
-        });
-        panels.forEach(panel=>{
-          const active = panel.getAttribute('data-project-panel') === id;
-          panel.classList.toggle('spotlight-panel-active', active);
-        });
-      }
+    if (!pills.length || !panels.length || !spotlight) return;
 
+    function adjustSpotlightHeight(){
+      const activePanel = spotlight.querySelector('.spotlight-panel-active');
+      if(!activePanel) return;
+
+      // allow layout to compute, then set height
+      requestAnimationFrame(() => {
+        // small extra buffer so footer never clips
+        const extra = 16;
+        spotlight.style.height = (activePanel.scrollHeight + extra) + 'px';
+      });
+    }
+
+    function activate(id){
       pills.forEach(p=>{
-        p.addEventListener('click', ()=> activate(p.getAttribute('data-project-pill')));
+        const active = p.getAttribute('data-project-pill') === id;
+        p.classList.toggle('project-pill-active', active);
       });
 
-      // default selection
-      activate('omcrm');
-    })();
+      panels.forEach(panel=>{
+        const active = panel.getAttribute('data-project-panel') === id;
+        panel.classList.toggle('spotlight-panel-active', active);
+      });
 
-    // ===== PROJECT FILTERING =====
-(function(){
-  const filterBtns = document.querySelectorAll('.proj-filter');
-  const pills = document.querySelectorAll('[data-project-pill]');
+      adjustSpotlightHeight();
+    }
 
-  filterBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const filter = btn.getAttribute('data-filter');
+    pills.forEach(p=>{
+      p.addEventListener('click', ()=> activate(p.getAttribute('data-project-pill')));
+    });
 
-      // active button UI
-      filterBtns.forEach(b=>b.classList.remove('tab-active'));
-      btn.classList.add('tab-active');
+    // make activate() usable by the filter script below
+    window.__activateProject = activate;
+    window.__adjustSpotlightHeight = adjustSpotlightHeight;
 
+    // default selection
+    activate('omcrm');
+
+    // keep height correct on resize
+    window.addEventListener('resize', adjustSpotlightHeight);
+  })();
+
+
+  // ===== PROJECT FILTERING (AUTO SELECT FIRST VISIBLE + HEIGHT FIX) =====
+  (function(){
+    const filterBtns = document.querySelectorAll('.proj-filter');
+    const pills = document.querySelectorAll('[data-project-pill]');
+
+    function firstVisiblePill(){
+      for (const p of pills) {
+        if (p.style.display !== 'none') return p;
+      }
+      return null;
+    }
+
+    function applyFilter(filter){
       // show/hide pills
       pills.forEach(p=>{
         const cat = p.getAttribute('data-category') || '';
@@ -2405,9 +2409,32 @@ $ motto
           p.style.display = 'none';
         }
       });
+
+      // auto activate the first visible project after filtering
+      const first = firstVisiblePill();
+      if(first && window.__activateProject){
+        window.__activateProject(first.getAttribute('data-project-pill'));
+      }
+
+      // final safety height adjust
+      if(window.__adjustSpotlightHeight) window.__adjustSpotlightHeight();
+    }
+
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const filter = btn.getAttribute('data-filter');
+
+        // active button UI
+        filterBtns.forEach(b=>b.classList.remove('tab-active'));
+        btn.classList.add('tab-active');
+
+        applyFilter(filter);
+      });
     });
-  });
-})();
+
+    // initial load
+    applyFilter('all');
+  })();
 
   </script>
 </body>
