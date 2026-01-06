@@ -493,6 +493,19 @@
   filter: blur(0);
   transform: translateX(0);
 }
+/* ===== Mobile Projects: simple list only ===== */
+@media (max-width: 767px){
+  /* Hide the desktop rail/spotlight layout on mobile */
+  .projects-desktop { display:none !important; }
+
+  /* Hide filters on mobile to keep it simple */
+  .projects-filters { display:none !important; }
+}
+
+/* Show desktop layout only on md+ */
+@media (min-width: 768px){
+  .projects-mobile { display:none !important; }
+}
 
   </style>
 </head>
@@ -865,187 +878,342 @@ $ motto
     <h2 class="text-3xl md:text-4xl font-bold text-center title-underline">Projects</h2>
 
     <!-- Simple project filters -->
-    <div class="mt-4 flex justify-center gap-3">
-      <button class="proj-filter tab-active" data-filter="all">All</button>
-      <button class="proj-filter" data-filter="latest">Latest &amp; Ongoing</button>
-      <button class="proj-filter" data-filter="closed">Closed Projects</button>
+  <div class="projects-filters mt-4 flex justify-center gap-3">
+  <button class="proj-filter tab-active" data-filter="all">All</button>
+  <button class="proj-filter" data-filter="latest">Latest &amp; Ongoing</button>
+  <button class="proj-filter" data-filter="closed">Closed Projects</button>
+</div>
+
+<!-- Caption -->
+<p class="text-center text-slate-500 dark:text-slate-400 mt-2 text-sm">
+  Every project shown here was designed and developed by me, end-to-end.
+</p>
+
+<!-- ================= MOBILE SIMPLE LIST (no modals, no spotlight) ================= -->
+<div class="projects-mobile mt-8 space-y-4">
+
+  <!-- OMCRM -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">OMCRM — Operations CRM</h3>
+      
     </div>
-
-    <!-- Caption -->
-    <p class="text-center text-slate-500 dark:text-slate-400 mt-2 text-sm">
-      Every project shown here was designed and developed by me, end-to-end.
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Ticket workflows, client modules, design requests, and real-time alerts for the operations team.
     </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-react-original text-sm"></i></span>
+      <span class="chip"><i class="devicon-typescript-plain text-sm"></i></span>
+      <span class="chip">Supabase</span>
+      <span class="chip">Bolt.new</span>
+    </div>
+  </article>
 
-    <div class="projects-shell">
+  <!-- EDW -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">EDW — Asana to Azure DW</h3>
+   
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Enterprise data warehouse ingesting Asana work items into Azure SQL and powering Power BI analytics.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip">Azure SQL</span>
+      <span class="chip">Asana API</span>
+      <span class="chip">MS SQL</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">Data Warehouse</span>
+    </div>
+  </article>
 
-      <!-- Left rail -->
-      <aside class="card projects-rail p-4 md:p-6">
-        <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-4">
-          Project Rail
-        </p>
+  <!-- NetSolar -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">NetSolar — Corporate Platform</h3>
+  
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Corporate platform rebuilt in Laravel with Graph API integrations for lead/contact routing workflows.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-laravel-plain text-sm"></i></span>
+      <span class="chip"><i class="devicon-javascript-plain text-sm"></i> </span>
+      <span class="chip"><i class="fa-solid fa-envelope text-sm"></i> </span>
+    </div>
+  </article>
 
-        <div class="space-y-2.5 relative">
+  <!-- Waltermart -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Waltermart Monitoring</h3>
+  
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Multi-site solar production &amp; consumption dashboard with history and branch-level insights.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-php-plain text-sm"></i> </span>
+      <span class="chip"><i class="devicon-mysql-plain text-sm"></i> </span>
+      <span class="chip"><i class="fa-solid fa-plug text-sm"></i> </span>
+      <span class="chip"><i class="devicon-tailwindcss-plain text-sm"></i> </span>
+    </div>
+  </article>
 
-          <!-- OMCRM -->
-          <button type="button" class="project-pill project-pill-active" data-project-pill="omcrm" data-category="latest ongoing">
+  <!-- Email-to-SMS -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Email-to-SMS Alerts</h3>
 
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>OMCRM — Operations CRM</span>
-              <span class="project-pill-meta">Internal • Ops</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Ticket workflows, client modules, design requests, real-time alerts.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-typescript-plain text-xs"></i> TS</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Supabase</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Bolt.new - AI</span>
-            </div>
-          </button>
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Converts critical mailbox events into SMS alerts using Microsoft Graph API and system automation.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-python-plain text-sm"></i> </span>
+      <span class="chip"><i class="fa-solid fa-flask text-sm"></i> </span>
+      <span class="chip"><i class="fa-solid fa-envelope text-sm"></i> </span>
+      <span class="chip"><i class="fa-solid fa-gear text-sm"></i> </span>
+    </div>
+  </article>
 
-          <!-- EDW -->
-          <button type="button" class="project-pill" data-project-pill="edw" data-category="latest edw">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>EDW — Asana to Azure DW</span>
-              <span class="project-pill-meta">Internal • Data</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Centralized enterprise data warehouse integrating Asana tasks to Azure SQL and Power BI.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Azure</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Power BI</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Data Warehouse</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">MS Sql</span>
-            </div>
-          </button>
+  <!-- Bulk SMS -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Bulk SMS Webapp</h3>
+  
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Bulk SMS sending platform with templates, campaign history, and role-based access.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-laravel-plain text-sm"></i> </span>
+      <span class="chip"><i class="devicon-mysql-plain text-sm"></i></span>
+      <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i></span>
+    </div>
+  </article>
 
-          <!-- NetSolar (UPDATED stack) -->
-          <button type="button" class="project-pill" data-project-pill="netsolar" data-category="latest netsolar">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>NetSolar — Corporate Platform</span>
-              <span class="project-pill-meta">Public • Brand</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Corporate platform rebuilt in Laravel with Graph API integrations.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
-            </div>
-          </button>
+  <!-- Solar Smart Calculator -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Solar Smart Calculator</h3>
+ 
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Estimates solar sizing and savings based on rooftop area and electricity bills.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-react-original text-sm"></i> </span>
+      <span class="chip"><i class="devicon-php-plain text-sm"></i> </span>
+      <span class="chip">SASS</span>
+      <span class="chip"><i class="devicon-tailwindcss-plain text-sm"></i> </span>
+    </div>
+  </article>
 
-          <!-- Waltermart (MOVED next to NetSolar + MongoDB -> MySQL) -->
-          <button type="button" class="project-pill" data-project-pill="waltermart" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Waltermart Monitoring</span>
-              <span class="project-pill-meta">Ops • Energy</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Multi-site production &amp; consumption analytics dashboard.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">API</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
-            </div>
-          </button>
+  <!-- Netvoice -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Netvoice — VoIP &amp; SMS</h3>
 
-          <!-- Email-to-SMS (UPDATED: Graph API + System Automation) -->
-          <button type="button" class="project-pill" data-project-pill="emailsms" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Email-to-SMS Alerts</span>
-              <span class="project-pill-meta">Infra • Alerts</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Converts critical inbox noise into focused SMS alerts.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-python-plain text-xs"></i> Python</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Flask</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-gear text-[10px] mr-1"></i> System Automation</span>
-            </div>
-          </button>
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Communications website for PH market with conversion-focused layout and responsive design.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip">Squarespace</span>
+      <span class="chip"><i class="devicon-javascript-plain text-sm"></i> </span>
+      <span class="chip"><i class="devicon-bootstrap-plain text-sm"></i> </span>
+    </div>
+  </article>
 
-          <!-- Bulk SMS (UPDATED: add Bootstrap) -->
-          <button type="button" class="project-pill" data-project-pill="smswebapp" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Bulk SMS Webapp</span>
-              <span class="project-pill-meta">Product • Comms</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              High-volume SMS sending with audit logs &amp; role-based access.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
-            </div>
-          </button>
+  <!-- Fuel -->
+  <article class="card p-5">
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-base font-bold">Fuel Management Webapp</h3>
+  
+    </div>
+    <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">
+      Rewards + usage tracking with dashboards and exportable reporting for audits.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+      <span class="chip"><i class="devicon-laravel-plain text-sm"></i> </span>
+      <span class="chip"><i class="devicon-react-original text-sm"></i></span>
+    </div>
+  </article>
 
-          <!-- Smart (UPDATED: add Tailwind) -->
-          <button type="button" class="project-pill" data-project-pill="smart" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Solar Smart Calculator</span>
-              <span class="project-pill-meta">Tool • Solar</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Estimates panels, savings, and capacity from quick form inputs.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">SASS</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
-            </div>
-          </button>
+</div>
 
-          <!-- Netvoice (MOVED: second to last) -->
-          <button type="button" class="project-pill" data-project-pill="netvoice" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Netvoice — VoIP &amp; SMS</span>
-              <span class="project-pill-meta">Public • B2B</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Enterprise-grade communications site for the PH market.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold">Squarespace</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
-            </div>
-          </button>
+<!-- ================= DESKTOP (keep your existing rail + spotlight exactly as-is) ================= -->
+<div class="projects-desktop">
+  <div class="projects-shell">
 
-          <!-- Fuel (MOVED: last) -->
-          <button type="button" class="project-pill" data-project-pill="fuel" data-category="closed">
-            <span class="project-pill-dot" aria-hidden="true"></span>
-            <div class="project-pill-title">
-              <span>Fuel Management Webapp</span>
-              <span class="project-pill-meta">Internal • HR</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300/80">
-              Rewards, usage tracking, and analytics for company perks.
-            </p>
-            <div class="mt-1 flex flex-wrap gap-1.5 text-[10px] !font-semibold">
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
-              <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
-            </div>
-          </button>
+    <!-- Left rail (UNCHANGED) -->
+    <aside class="card projects-rail p-4 md:p-6">
+      <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 mb-4">
+        Project Rail
+      </p>
 
-        </div>
-      </aside>
+      <div class="space-y-2.5 relative">
+
+        <!-- OMCRM -->
+        <button type="button" class="project-pill project-pill-active" data-project-pill="omcrm" data-category="latest ongoing">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>OMCRM — Operations CRM</span>
+            <span class="project-pill-meta">Internal • Ops</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Ticket workflows, client modules, design requests, real-time alerts.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-typescript-plain text-xs"></i> TS</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Supabase</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Bolt.new - AI</span>
+          </div>
+        </button>
+
+        <!-- EDW -->
+        <button type="button" class="project-pill" data-project-pill="edw" data-category="latest edw">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>EDW — Asana to Azure DW</span>
+            <span class="project-pill-meta">Internal • Data</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Centralized enterprise data warehouse integrating Asana tasks to Azure SQL and Power BI.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Azure</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Power BI</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Data Warehouse</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">MS Sql</span>
+          </div>
+        </button>
+
+        <!-- NetSolar -->
+        <button type="button" class="project-pill" data-project-pill="netsolar" data-category="latest netsolar">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>NetSolar — Corporate Platform</span>
+            <span class="project-pill-meta">Public • Brand</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Corporate platform rebuilt in Laravel with Graph API integrations.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
+          </div>
+        </button>
+
+        <!-- Waltermart -->
+        <button type="button" class="project-pill" data-project-pill="waltermart" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Waltermart Monitoring</span>
+            <span class="project-pill-meta">Ops • Energy</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Multi-site production &amp; consumption analytics dashboard.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">API</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
+          </div>
+        </button>
+
+        <!-- Email-to-SMS -->
+        <button type="button" class="project-pill" data-project-pill="emailsms" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Email-to-SMS Alerts</span>
+            <span class="project-pill-meta">Infra • Alerts</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Converts critical inbox noise into focused SMS alerts.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-python-plain text-xs"></i> Python</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Flask</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-envelope text-[10px] mr-1"></i> Graph API</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="fa-solid fa-gear text-[10px] mr-1"></i> System Automation</span>
+          </div>
+        </button>
+
+        <!-- Bulk SMS -->
+        <button type="button" class="project-pill" data-project-pill="smswebapp" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Bulk SMS Webapp</span>
+            <span class="project-pill-meta">Product • Comms</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            High-volume SMS sending with audit logs &amp; role-based access.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-mysql-plain text-xs"></i> MySQL</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
+          </div>
+        </button>
+
+        <!-- Smart -->
+        <button type="button" class="project-pill" data-project-pill="smart" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Solar Smart Calculator</span>
+            <span class="project-pill-meta">Tool • Solar</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Estimates panels, savings, and capacity from quick form inputs.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-php-plain text-xs"></i> PHP</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">SASS</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-tailwindcss-plain text-xs"></i> Tailwind</span>
+          </div>
+        </button>
+
+        <!-- Netvoice -->
+        <button type="button" class="project-pill" data-project-pill="netvoice" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Netvoice — VoIP &amp; SMS</span>
+            <span class="project-pill-meta">Public • B2B</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Enterprise-grade communications site for the PH market.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px]">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold">Squarespace</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-javascript-plain text-xs"></i> JS</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-bootstrap-plain text-xs"></i> Bootstrap</span>
+          </div>
+        </button>
+
+        <!-- Fuel -->
+        <button type="button" class="project-pill" data-project-pill="fuel" data-category="closed">
+          <span class="project-pill-dot" aria-hidden="true"></span>
+          <div class="project-pill-title">
+            <span>Fuel Management Webapp</span>
+            <span class="project-pill-meta">Internal • HR</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300/80">
+            Rewards, usage tracking, and analytics for company perks.
+          </p>
+          <div class="mt-1 flex flex-wrap gap-1.5 text-[10px] !font-semibold">
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-laravel-plain text-xs"></i> Laravel</span>
+            <span class="chip px-2 py-1 !text-[10px] !font-semibold"><i class="devicon-react-original text-xs"></i> React</span>
+          </div>
+        </button>
+
+      </div>
+    </aside>
 
       <!-- Right spotlight -->
       <section class="projects-spotlight" id="projectsSpotlight">
