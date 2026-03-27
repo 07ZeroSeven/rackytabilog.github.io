@@ -107,10 +107,40 @@
     #theme-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-bg);}
     #hamburger{display:none;width:35px;height:35px;border-radius:9px;background:var(--surface);border:1px solid var(--border2);align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:.88rem;}
     @media(max-width:767px){.nav-links{display:none;}#hamburger{display:flex;}}
-    #mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;z-index:99;background:var(--bg2);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.9rem;flex-direction:column;gap:.1rem;}
-    #mobile-menu.open{display:flex;}
-    #mobile-menu a{display:block;padding:.65rem 1rem;border-radius:9px;text-decoration:none;color:var(--muted2);font-weight:500;font-size:.9rem;transition:all .15s;}
+    #mobile-menu{
+      display:none;position:fixed;top:56px;left:.75rem;right:.75rem;z-index:99;
+      background:var(--bg2);backdrop-filter:blur(24px);
+      border:1px solid var(--border2);border-radius:18px;
+      padding:.6rem;flex-direction:column;gap:.25rem;
+      box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06);
+      transform:translateY(-12px) scale(.97);opacity:0;
+      transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .25s ease;
+      pointer-events:none;
+    }
+    html.light #mobile-menu{background:rgba(255,255,255,.95);box-shadow:0 20px 60px rgba(10,22,40,.14),0 0 0 1px rgba(99,120,180,.18);}
+    #mobile-menu.open{display:flex;transform:translateY(0) scale(1);opacity:1;pointer-events:auto;}
+    #mobile-menu .menu-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.5rem .75rem .65rem;border-bottom:1px solid var(--border);margin-bottom:.2rem;
+    }
+    #mobile-menu .menu-logo{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:700;letter-spacing:.08em;}
+    #mobile-menu .menu-close{width:26px;height:26px;border-radius:7px;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted2);font-size:.7rem;transition:all .18s;}
+    #mobile-menu .menu-close:hover{background:var(--accent-bg);color:var(--accent);}
+    #mobile-menu a{
+      display:flex;align-items:center;gap:.75rem;
+      padding:.72rem 1rem;border-radius:12px;
+      text-decoration:none;color:var(--muted2);font-weight:600;font-size:.88rem;
+      transition:all .18s;position:relative;overflow:hidden;
+    }
+    #mobile-menu a .menu-num{font-family:var(--mono);font-size:.58rem;color:var(--muted);letter-spacing:.06em;min-width:1.4rem;}
+    #mobile-menu a .menu-arrow{margin-left:auto;font-size:.6rem;color:var(--muted);opacity:0;transform:translateX(-4px);transition:all .18s;}
     #mobile-menu a:hover{background:var(--surface);color:var(--accent);}
+    #mobile-menu a:hover .menu-num{color:var(--accent);}
+    #mobile-menu a:hover .menu-arrow{opacity:1;transform:translateX(0);}
+    #mobile-menu a.active-link{color:var(--accent);}
+    #mobile-menu .menu-footer{padding:.65rem .75rem .35rem;border-top:1px solid var(--border);margin-top:.2rem;display:flex;align-items:center;justify-content:space-between;}
+    #mobile-menu .menu-footer-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(16,185,129,.5);}
+    #mobile-menu .menu-footer-txt{font-family:var(--mono);font-size:.58rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
 
     /* HERO */
     #home{min-height:100svh;width:100%;display:flex;align-items:center;padding-top:4.5rem;padding-bottom:3.5rem;position:relative;overflow:hidden;}
@@ -121,7 +151,7 @@
     @media(min-width:900px){.hero-grid{grid-template-columns:1fr 410px;gap:3.5rem;}}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.66rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;}
     .hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);}
-    .hero-title span.grad{background:linear-gradient(120deg,var(--accent) 0%,#7c3aed 55%,#f43f5e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .grad{background:linear-gradient(120deg,#22d3ee 0%,#818cf8 45%,#f472b6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:brightness(1.15);}
     .hero-desc{color:var(--muted2);font-size:.97rem;max-width:470px;margin:.9rem 0 1.6rem;line-height:1.7;}
     .hero-btns{display:flex;flex-wrap:wrap;gap:.55rem;}
     .social-row{display:flex;gap:.55rem;margin-top:1.4rem;flex-wrap:wrap;}
@@ -132,7 +162,7 @@
     .hs-l{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.18rem;}
     /* Terminal */
     .terminal{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rl);overflow:hidden;box-shadow:0 0 0 1px rgba(0,212,255,.06),0 28px 56px rgba(0,0,0,.55);}
-    html.light .terminal{background:#1e293b;}
+    html.light .terminal{background:#0b1422;}
     .tbar{display:flex;align-items:center;gap:.42rem;padding:.65rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);}
     .td{width:10px;height:10px;border-radius:50%;}
     .td.r{background:#f97373;}.td.a{background:#facc6b;}.td.g{background:#4ade80;}
@@ -415,15 +445,16 @@
       border-color:rgba(3,105,161,.3);
       box-shadow:0 4px 6px rgba(10,22,40,.04),0 20px 48px rgba(10,22,40,.12);
     }
-    html.light .term{background:#0d1626;}
-    html.light .term .tbar{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);}
-    html.light .term .ttl{color:#8ba3c7;}
-    html.light .term .tbody{color:#cdd9ed;}
-    html.light .term .tp{color:#38bdf8;opacity:.85;}
-    html.light .term .tc{color:#c4b5fd;}
-    html.light .term .to{color:#a8bfd8;}
-    html.light .term .to span{color:#38d4ff;}
-    html.light .term .to[style*="color:var(--mu)"]{color:#6e84a3!important;}
+    html.light .term{background:#0b1422;}
+    html.light .term *{color:#eef4ff!important;}
+    html.light .term .tbar{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+    html.light .term .ttl{color:#7fa8cc!important;}
+    html.light .term .tp{color:#38bdf8!important;}
+    html.light .term .tc{color:#c4b5fd!important;}
+    html.light .term .to{color:#ddeeff!important;}
+    html.light .term .to span{color:#38d9ff!important;}
+    .motto-line{color:var(--muted);}
+    html.light .term .motto-line{color:#8ab4cc!important;}
     html.light .tag{background:rgba(99,120,180,.08);border-color:rgba(99,120,180,.22);color:var(--muted2);}
     html.light .tag.c{background:rgba(3,105,161,.08);border-color:rgba(3,105,161,.22);color:var(--accent);}
     html.light .tag.g{background:rgba(4,120,87,.08);border-color:rgba(4,120,87,.22);color:var(--green);}
@@ -654,9 +685,21 @@
     </div>
   </div>
 </nav>
-<div id="mobile-menu">
-  <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
-  <a href="#certifications">Certifications</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+<div id="mobile-menu" role="dialog" aria-label="Navigation">
+  <div class="menu-header">
+    <span class="menu-logo">R.C.T</span>
+    <button class="menu-close" id="menu-close-btn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+  <a href="#home"><span class="menu-num">01</span>Home<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <a href="#about"><span class="menu-num">02</span>About<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <a href="#skills"><span class="menu-num">03</span>Skills<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <a href="#certifications"><span class="menu-num">04</span>Certifications<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <a href="#projects"><span class="menu-num">05</span>Projects<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <a href="#contact"><span class="menu-num">06</span>Contact<i class="fas fa-chevron-right menu-arrow"></i></a>
+  <div class="menu-footer">
+    <div style="display:flex;align-items:center;gap:.5rem"><span class="menu-footer-dot"></span><span class="menu-footer-txt">Available for work</span></div>
+    <span class="menu-footer-txt">GMT +8 · PH</span>
+  </div>
 </div>
 
 <main>
@@ -703,7 +746,7 @@
             <div class="tl"><span class="tp">$</span><span class="tc">role --current</span></div>
             <div class="to"><span id="rotating-role">Full-Stack Developer</span><span class="cursor"></span></div><br>
             <div class="tl"><span class="tp">$</span><span class="tc">motto</span></div>
-            <div class="to" style="color:var(--muted);font-style:italic">"Comfort is the silent killer of ambition."</div>
+            <div class="to motto-line" style="font-style:italic">"Comfort is the silent killer of ambition."</div>
           </div>
         </div>
       </div>
@@ -1089,8 +1132,13 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50)
 
 // MOBILE MENU
 const hbg=document.getElementById('hamburger'),mm=document.getElementById('mobile-menu');
-hbg.addEventListener('click',()=>mm.classList.toggle('open'));
-mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+function openMenu(){mm.style.display='flex';requestAnimationFrame(()=>mm.classList.add('open'));}
+function closeMenu(){mm.classList.remove('open');setTimeout(()=>{if(!mm.classList.contains('open'))mm.style.display='none';},300);}
+hbg.addEventListener('click',()=>mm.classList.contains('open')?closeMenu():openMenu());
+document.getElementById('menu-close-btn')?.addEventListener('click',closeMenu);
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+// Close on outside click
+document.addEventListener('click',e=>{if(mm.classList.contains('open')&&!mm.contains(e.target)&&!hbg.contains(e.target))closeMenu();});
 
 // ACTIVE NAV
 const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nav-links a');
