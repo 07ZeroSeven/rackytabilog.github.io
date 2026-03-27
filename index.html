@@ -60,6 +60,7 @@
     html.light .glow-c{background:radial-gradient(circle,rgba(2,132,199,.12),transparent 70%);}
     html.light .glow-p{background:radial-gradient(circle,rgba(124,58,237,.08),transparent 70%);}
     .grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.6;}
+    html.light .grid-bg{display:none;}
 
     /* CARDS */
     .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);backdrop-filter:blur(12px);transition:border-color .2s,box-shadow .2s,transform .2s;}
@@ -177,47 +178,32 @@
     .cert-badge{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.55rem;}
     .cert-card p{color:var(--muted2);font-size:.82rem;line-height:1.6;}
 
-    /* PROJECTS – CARD GRID */
+    /* PROJECTS — NUMBERED LIST */
     #projects{background:var(--bg);}
-    .pf-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.6rem;}
+    .pf-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.75rem;}
     .pf-btn{padding:.38rem .82rem;border-radius:8px;font-size:.7rem;font-weight:600;background:var(--surface);border:1px solid var(--border);cursor:pointer;color:var(--muted2);transition:all .2s;font-family:var(--mono);}
     .pf-btn.active{background:var(--accent-bg);border-color:rgba(0,212,255,.4);color:var(--accent);}
     .pf-btn:hover:not(.active){border-color:var(--border2);color:var(--text);}
-
-    .proj-grid{display:grid;gap:1rem;grid-template-columns:1fr;}
-    @media(min-width:600px){.proj-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(min-width:1024px){.proj-grid{grid-template-columns:repeat(3,1fr);}}
-
-    /* featured spans 2 cols on lg */
-    .proj-card{border-radius:var(--rl);overflow:hidden;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;transition:all .22s ease;cursor:default;}
-    .proj-card:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:var(--shadow);}
-    html.light .proj-card{box-shadow:0 2px 12px rgba(0,0,0,.07);}
-    @media(min-width:1024px){.proj-card.feat{grid-column:span 2;}}
-
-    .proj-img{position:relative;overflow:hidden;height:155px;background:var(--bg3);flex-shrink:0;}
-    .proj-card.feat .proj-img{height:195px;}
-    .proj-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1);transition:transform .4s;}
-    .proj-card:hover .proj-img img{transform:scale(1.05);}
-    .proj-img-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(8,12,20,.72) 100%);}
-    html.light .proj-img-ov{background:linear-gradient(180deg,transparent 30%,rgba(15,23,42,.5) 100%);}
-    .proj-badge{position:absolute;top:.6rem;left:.7rem;font-family:var(--mono);font-size:.57rem;text-transform:uppercase;letter-spacing:.07em;padding:.22rem .5rem;border-radius:5px;background:rgba(0,0,0,.52);color:rgba(255,255,255,.78);backdrop-filter:blur(4px);}
-    .proj-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:var(--muted);}
-    .proj-no-img i{font-size:1.5rem;opacity:.3;}
-    .proj-no-img span{font-family:var(--mono);font-size:.62rem;}
-
-    .proj-body{padding:1rem 1.1rem;display:flex;flex-direction:column;flex:1;}
-    .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.45rem;margin-bottom:.42rem;}
-    .proj-name{font-size:.92rem;font-weight:700;line-height:1.3;}
-    .proj-card.feat .proj-name{font-size:1rem;}
-    .proj-meta{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.12rem;}
-    .proj-desc{font-size:.79rem;color:var(--muted2);line-height:1.65;margin-bottom:.75rem;flex:1;}
-    .proj-tags{display:flex;flex-wrap:wrap;gap:.32rem;margin-bottom:.85rem;}
-    .proj-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;border-top:1px solid var(--border);margin-top:auto;}
-    .proj-links{display:flex;gap:.35rem;align-items:center;}
-    .proj-status{display:flex;align-items:center;gap:.38rem;font-family:var(--mono);font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
-    .pdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-    .pdot.live{background:var(--green);box-shadow:0 0 5px rgba(16,185,129,.5);}
+    .plist{display:flex;flex-direction:column;gap:.38rem;}
+    .prow{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:1.1rem;padding:1.05rem 1.2rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:all .22s ease;position:relative;overflow:hidden;}
+    .prow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(0,212,255,.06),transparent);transition:width .25s ease;}
+    .prow:hover{background:var(--surface);border-color:var(--border2);box-shadow:0 4px 24px rgba(0,0,0,.18);}
+    html.light .prow:hover{background:rgba(255,255,255,.95);box-shadow:0 4px 20px rgba(0,0,0,.07);}
+    .prow:hover::before{width:100%;}
+    .pnum{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:700;text-align:center;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.28rem;}
+    .prow:hover .pnum{color:var(--accent);}
+    .pdot{width:7px;height:7px;border-radius:50%;}
+    .pdot.live{background:var(--green);box-shadow:0 0 6px rgba(16,185,129,.5);}
     .pdot.off{background:var(--muted);}
+    .pinfo{min-width:0;position:relative;z-index:1;}
+    .prow-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .prow-sub{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;}
+    .prow-meta{font-family:var(--mono);font-size:.59rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+    .prow-tags{display:flex;gap:.28rem;flex-wrap:wrap;}
+    .pright{display:flex;align-items:center;gap:.6rem;flex-shrink:0;position:relative;z-index:1;}
+    .parr{width:30px;height:30px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:.68rem;flex-shrink:0;transition:all .2s;}
+    .prow:hover .parr{background:var(--accent-bg);border-color:rgba(0,212,255,.35);color:var(--accent);}
+    @media(max-width:479px){.prow{grid-template-columns:38px 1fr;gap:.7rem;padding:.85rem .9rem;}.pright{display:none;}}
 
     /* CONTACT */
     #contact{background:var(--bg2);}
@@ -242,34 +228,57 @@
     .avail-list li i{color:var(--green);margin-top:.18rem;flex-shrink:0;}
     .avail-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:auto;}
 
-    /* MODALS */
-    .modal-ov{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
-    .modal-ov.open{display:flex;}
-    .modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--rl);width:100%;max-width:660px;max-height:90svh;overflow-y:auto;box-shadow:0 36px 90px rgba(0,0,0,.75);transform:scale(.97);opacity:0;transition:all .22s;}
-    .modal-ov.open .modal-box{transform:scale(1);opacity:1;}
-    html.light .modal-box{background:#fff;}
-    .modal-head{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.15rem;border-bottom:1px solid var(--border);background:rgba(0,212,255,.03);}
-    .mh-l{display:flex;align-items:center;gap:.65rem;}
-    .mh-dots{display:flex;gap:.28rem;}
-    .mh-dots span{width:9px;height:9px;border-radius:50%;}
-    .mh-dots span:nth-child(1){background:#f97373;}.mh-dots span:nth-child(2){background:#facc6b;}.mh-dots span:nth-child(3){background:#4ade80;}
-    .modal-head h4{font-family:var(--mono);font-size:.77rem;font-weight:600;}
-    .modal-close{background:none;border:1px solid var(--border);border-radius:7px;color:var(--muted2);cursor:pointer;width:29px;height:29px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:.78rem;}
-    .modal-close:hover{background:var(--surface);color:var(--text);}
-    .modal-body{padding:1.05rem;}
-    .modal-main{border-radius:var(--r);overflow:hidden;margin-bottom:.85rem;}
-    .modal-main img{width:100%;height:210px;object-fit:cover;display:block;}
-    @media(min-width:640px){.modal-main img{height:270px;}}
-    .modal-txt h4{font-size:.83rem;font-weight:700;margin-bottom:.38rem;}
-    .modal-txt p{font-size:.79rem;color:var(--muted2);line-height:1.7;margin-bottom:.6rem;}
-    .modal-txt ul{list-style:none;display:flex;flex-direction:column;gap:.28rem;}
-    .modal-txt ul li{font-size:.77rem;color:var(--muted2);display:flex;gap:.42rem;}
-    .modal-txt ul li::before{content:'▸';color:var(--accent);flex-shrink:0;}
-    .thumbs-row{display:flex;gap:.42rem;flex-wrap:wrap;justify-content:center;margin-top:.85rem;}
-    .thumb{width:58px;height:38px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.65;transition:all .2s;}
-    .thumb:hover,.thumb.active{border-color:var(--accent);opacity:1;}
-    .thumb img{width:100%;height:100%;object-fit:cover;}
-    .modal-foot{display:flex;justify-content:flex-end;gap:.38rem;padding:.85rem 1.05rem;border-top:1px solid var(--border);}
+    /* DRAWER MODAL */
+    .pdrawer{position:fixed;inset:0;z-index:200;display:flex;align-items:stretch;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    .pdrawer.open{opacity:1;pointer-events:auto;}
+    .pdrawer-bg{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);cursor:pointer;}
+    .pdrawer-panel{position:relative;z-index:1;width:100%;max-width:540px;background:var(--bg2);border-left:1px solid var(--border2);display:flex;flex-direction:column;overflow:hidden;transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);box-shadow:-20px 0 60px rgba(0,0,0,.55);}
+    html.light .pdrawer-panel{background:#fff;}
+    .pdrawer.open .pdrawer-panel{transform:translateX(0);}
+    .pd-bar{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.2rem;border-bottom:1px solid var(--border);background:var(--bg3);flex-shrink:0;}
+    html.light .pd-bar{background:var(--bg3);}
+    .pd-bar-l{display:flex;align-items:center;gap:.6rem;}
+    .pd-dots{display:flex;gap:.28rem;}
+    .pd-dots span{width:9px;height:9px;border-radius:50%;}
+    .pd-dots span:nth-child(1){background:#f97373;}.pd-dots span:nth-child(2){background:#facc6b;}.pd-dots span:nth-child(3){background:#4ade80;}
+    .pd-title{font-family:var(--mono);font-size:.74rem;font-weight:700;color:var(--text);}
+    .pd-close{width:30px;height:30px;border-radius:8px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted2);display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:all .2s;}
+    .pd-close:hover{background:var(--surface);color:var(--text);}
+    .pd-body{flex:1;overflow-y:auto;}
+    .pd-body::-webkit-scrollbar{width:3px;}
+    .pd-body::-webkit-scrollbar-thumb{background:var(--accent);border-radius:9px;}
+    .pd-img-wrap{position:relative;height:230px;background:var(--bg3);overflow:hidden;flex-shrink:0;}
+    @media(min-width:500px){.pd-img-wrap{height:270px;}}
+    .pd-img-wrap img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1);display:block;}
+    .pd-img-grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,12,20,.88) 100%);}
+    html.light .pd-img-grad{background:linear-gradient(180deg,transparent 45%,rgba(15,23,42,.65) 100%);}
+    .pd-img-ov{position:absolute;bottom:1rem;left:1.2rem;right:1.2rem;display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem;}
+    .pd-img-name{font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+    .pd-img-badge{font-family:var(--mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .5rem;border-radius:5px;background:rgba(0,0,0,.5);color:rgba(255,255,255,.8);backdrop-filter:blur(4px);white-space:nowrap;flex-shrink:0;}
+    .pd-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--muted);}
+    .pd-no-img i{font-size:2.2rem;opacity:.22;}
+    .pd-no-img span{font-family:var(--mono);font-size:.64rem;}
+    .pd-thumbs{display:flex;gap:.42rem;padding:.7rem 1.2rem;background:var(--bg3);border-bottom:1px solid var(--border);}
+    html.light .pd-thumbs{background:var(--bg3);}
+    .pd-thumb{width:54px;height:36px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.6;transition:all .2s;flex-shrink:0;}
+    .pd-thumb:hover,.pd-thumb.on{border-color:var(--accent);opacity:1;}
+    .pd-thumb img{width:100%;height:100%;object-fit:cover;}
+    .pd-content{padding:1.2rem;}
+    .pd-sec{margin-bottom:1.3rem;}
+    .pd-sec:last-child{margin-bottom:0;}
+    .pd-lbl{font-family:var(--mono);font-size:.59rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.55rem;}
+    .pd-desc{font-size:.86rem;color:var(--muted2);line-height:1.72;}
+    .pd-bullets{list-style:none;display:flex;flex-direction:column;gap:.38rem;}
+    .pd-bullets li{font-size:.83rem;color:var(--muted2);display:flex;gap:.48rem;}
+    .pd-bullets li::before{content:'→';color:var(--accent);flex-shrink:0;}
+    .pd-tags{display:flex;flex-wrap:wrap;gap:.33rem;}
+    .pd-mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+    .pd-mbox{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:.8rem;}
+    html.light .pd-mbox{background:var(--bg3);}
+    .pd-mbox .ml{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.28rem;}
+    .pd-mbox .mv{font-size:.81rem;color:var(--muted2);}
+    .pd-foot{padding:.85rem 1.2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;flex-shrink:0;background:var(--bg3);}
+    html.light .pd-foot{background:var(--bg3);}
 
     /* FOOTER */
     footer{background:var(--bg);border-top:1px solid var(--border);padding:1.5rem 0;}
@@ -513,7 +522,7 @@
     <div class="sec-hdr">
       <div class="sec-label">04 — Projects</div>
       <h2>What I've Built</h2>
-      <p class="sec-sub">Every project designed and developed by me, end-to-end.</p>
+      <p class="sec-sub">Every project designed and developed by me, end-to-end. Click any row to explore.</p>
     </div>
     <div class="pf-wrap">
       <button class="pf-btn active" data-pf="all">All</button>
@@ -521,205 +530,123 @@
       <button class="pf-btn" data-pf="closed">Closed</button>
     </div>
 
-    <div class="proj-grid" id="projGrid">
+    <div class="plist" id="plist">
 
-      <!-- OMCRM – featured -->
-      <div class="proj-card feat" data-pf-cat="latest">
-        <div class="proj-img">
-          <img src="omcrm.png" alt="OMCRM">
-          <div class="proj-img-ov"></div>
-          <span class="proj-badge">Internal · Ops</span>
+      <div class="prow" data-pfcat="latest" onclick="openDrawer('omcrm')">
+        <div class="pnum"><span class="pdot live"></span>01</div>
+        <div class="pinfo">
+          <div class="prow-name">OMCRM — Operations CRM Platform</div>
+          <div class="prow-sub"><span class="prow-meta">Internal · Ops</span><div class="prow-tags"><span class="tag c">React</span><span class="tag c">TypeScript</span><span class="tag c">Supabase</span></div></div>
         </div>
-        <div class="proj-body">
-          <div class="proj-top">
-            <div><div class="proj-name">OMCRM — Operations CRM Platform</div><div class="proj-meta">React · TypeScript · Supabase · Bolt.ai</div></div>
-            <span class="tag g">Latest</span>
-          </div>
-          <p class="proj-desc">Internal CRM centralizing tickets, client accounts, design requests, and activity logs. Real-time notifications, role-based access, and a modular structure built for daily ops use.</p>
-          <div class="proj-tags">
-            <span class="tag c"><i class="devicon-react-original" style="font-size:.8em"></i> React</span>
-            <span class="tag c">TypeScript</span><span class="tag c">Supabase</span><span class="tag">Bolt.ai</span>
-          </div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot live"></span> Active</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('omcrm')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <span class="tag"><i class="fas fa-lock" style="font-size:.58rem"></i> Internal</span>
-            </div>
-          </div>
-        </div>
+        <div class="pright"><span class="tag g">Latest</span><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- EDW -->
-      <div class="proj-card" data-pf-cat="latest">
-        <div class="proj-img">
-          <div class="proj-no-img"><i class="fas fa-database"></i><span>No preview yet</span></div>
-          <span class="proj-badge">Data Warehouse</span>
+      <div class="prow" data-pfcat="latest" onclick="openDrawer('edw')">
+        <div class="pnum"><span class="pdot live"></span>02</div>
+        <div class="pinfo">
+          <div class="prow-name">EDW — Asana to Azure Data Warehouse</div>
+          <div class="prow-sub"><span class="prow-meta">Data · Analytics</span><div class="prow-tags"><span class="tag c">Azure SQL</span><span class="tag">Power BI</span><span class="tag">Asana API</span></div></div>
         </div>
-        <div class="proj-body">
-          <div class="proj-top">
-            <div><div class="proj-name">EDW — Asana → Azure DW</div><div class="proj-meta">Azure SQL · Asana API · Power BI</div></div>
-            <span class="tag g">Latest</span>
-          </div>
-          <p class="proj-desc">Enterprise DW ingesting Asana work items into Azure SQL with star-schema modeling, powering Power BI analytics across the org.</p>
-          <div class="proj-tags"><span class="tag c">Azure SQL</span><span class="tag">Asana API</span><span class="tag">Power BI</span><span class="tag">MS SQL</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot live"></span> Active</div>
-            <div class="proj-links"><span class="tag"><i class="fas fa-lock" style="font-size:.58rem"></i> Internal</span></div>
-          </div>
-        </div>
+        <div class="pright"><span class="tag g">Latest</span><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- NetSolar -->
-      <div class="proj-card" data-pf-cat="latest">
-        <div class="proj-img">
-          <img src="nets.png" alt="NetSolar">
-          <div class="proj-img-ov"></div>
-          <span class="proj-badge">Public · Solar</span>
+      <div class="prow" data-pfcat="latest" onclick="openDrawer('netsolar')">
+        <div class="pnum"><span class="pdot live"></span>03</div>
+        <div class="pinfo">
+          <div class="prow-name">NetSolar — Corporate Platform</div>
+          <div class="prow-sub"><span class="prow-meta">Public · Solar</span><div class="prow-tags"><span class="tag c">Laravel</span><span class="tag">JavaScript</span><span class="tag">Graph API</span></div></div>
         </div>
-        <div class="proj-body">
-          <div class="proj-top">
-            <div><div class="proj-name">NetSolar — Corporate Platform</div><div class="proj-meta">Laravel · JavaScript · Graph API</div></div>
-            <span class="tag g">Latest</span>
-          </div>
-          <p class="proj-desc">Corporate platform for a solar EPC rebuilt in Laravel with Graph API integrations for lead/contact routing and email workflows.</p>
-          <div class="proj-tags"><span class="tag c">Laravel</span><span class="tag">JavaScript</span><span class="tag">Graph API</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot live"></span> Live</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('netsolar')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <a href="https://netsolar.com.ph" target="_blank" class="btn btn-ghost btn-sm"><i class="fas fa-external-link-alt" style="font-size:.66rem"></i></a>
-            </div>
-          </div>
-        </div>
+        <div class="pright"><span class="tag g">Latest</span><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Waltermart -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="walt.png" alt="Waltermart"><div class="proj-img-ov"></div><span class="proj-badge">Ops · Energy</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Waltermart Solar Monitoring</div><div class="proj-meta">PHP · MySQL · Tailwind · API</div></div></div>
-          <p class="proj-desc">Multi-site solar production & consumption dashboard aggregating SolarEdge data across branches with historical reporting.</p>
-          <div class="proj-tags"><span class="tag c">PHP</span><span class="tag">MySQL</span><span class="tag">Tailwind</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot off"></span> Closed</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('waltermart')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn btn-ghost btn-sm"><i class="fas fa-external-link-alt" style="font-size:.66rem"></i></a>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('waltermart')">
+        <div class="pnum"><span class="pdot off"></span>04</div>
+        <div class="pinfo">
+          <div class="prow-name">Waltermart Solar Monitoring Dashboard</div>
+          <div class="prow-sub"><span class="prow-meta">Ops · Energy</span><div class="prow-tags"><span class="tag c">PHP</span><span class="tag">MySQL</span><span class="tag">Tailwind</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Email-to-SMS -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="emailsms.png" alt="Email-to-SMS"><div class="proj-img-ov"></div><span class="proj-badge">Infra · Alerts</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Email-to-SMS Alerts</div><div class="proj-meta">Python · Flask · Graph API</div></div></div>
-          <p class="proj-desc">Monitors key mailboxes via Graph API and forwards critical messages as SMS to on-call numbers. Resilient background daemon with retries.</p>
-          <div class="proj-tags"><span class="tag c">Python</span><span class="tag">Flask</span><span class="tag">Graph API</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot off"></span> Closed</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('emailsms')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <a href="http://sms.netsolar.com.ph" target="_blank" class="btn btn-ghost btn-sm"><i class="fas fa-external-link-alt" style="font-size:.66rem"></i></a>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('emailsms')">
+        <div class="pnum"><span class="pdot off"></span>05</div>
+        <div class="pinfo">
+          <div class="prow-name">Email-to-SMS Alert Platform</div>
+          <div class="prow-sub"><span class="prow-meta">Infra · Automation</span><div class="prow-tags"><span class="tag c">Python</span><span class="tag">Flask</span><span class="tag">Graph API</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Bulk SMS -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="smswebapp.png" alt="Bulk SMS"><div class="proj-img-ov"></div><span class="proj-badge">Product · Comms</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Bulk SMS Webapp</div><div class="proj-meta">Laravel · MySQL · Bootstrap</div></div></div>
-          <p class="proj-desc">Full platform for bulk SMS campaigns at scale. CSV/XLSX upload, campaign-level audit history, and role-based access control.</p>
-          <div class="proj-tags"><span class="tag c">Laravel</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot off"></span> Closed</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('smswebapp')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <span class="tag"><i class="fas fa-lock" style="font-size:.58rem"></i> Private</span>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('smswebapp')">
+        <div class="pnum"><span class="pdot off"></span>06</div>
+        <div class="pinfo">
+          <div class="prow-name">Bulk SMS Web Application</div>
+          <div class="prow-sub"><span class="prow-meta">Product · Comms</span><div class="prow-tags"><span class="tag c">Laravel</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Smart Calculator -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="smart1.png" alt="Solar Calculator"><div class="proj-img-ov"></div><span class="proj-badge">Tool · Solar</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Solar Smart Calculator</div><div class="proj-meta">React · PHP · SASS · Tailwind</div></div></div>
-          <p class="proj-desc">Multi-step calculator estimating solar system size, savings, and ROI from rooftop area and electricity bills. Turns proposals into clear stories.</p>
-          <div class="proj-tags"><span class="tag c">React</span><span class="tag">PHP</span><span class="tag">SASS</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot off"></span> Closed</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('smart')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <span class="tag"><i class="fas fa-lock" style="font-size:.58rem"></i> Private</span>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('smart')">
+        <div class="pnum"><span class="pdot off"></span>07</div>
+        <div class="pinfo">
+          <div class="prow-name">Solar Smart Calculator</div>
+          <div class="prow-sub"><span class="prow-meta">Tool · Solar</span><div class="prow-tags"><span class="tag c">React</span><span class="tag">PHP</span><span class="tag">SASS</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Netvoice -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="nvproject.png" alt="Netvoice"><div class="proj-img-ov"></div><span class="proj-badge">Public · B2B</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Netvoice — VoIP &amp; SMS</div><div class="proj-meta">Squarespace · JavaScript · Bootstrap</div></div></div>
-          <p class="proj-desc">Marketing site for enterprise VoIP &amp; SMS in the Philippines. Conversion-focused layout with clear product breakdown and custom JS interactions.</p>
-          <div class="proj-tags"><span class="tag">Squarespace</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot live"></span> Live</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('netvoice')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <a href="http://netvoice.com.ph" target="_blank" class="btn btn-ghost btn-sm"><i class="fas fa-external-link-alt" style="font-size:.66rem"></i></a>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('netvoice')">
+        <div class="pnum"><span class="pdot live"></span>08</div>
+        <div class="pinfo">
+          <div class="prow-name">Netvoice — VoIP &amp; SMS Website</div>
+          <div class="prow-sub"><span class="prow-meta">Public · B2B</span><div class="prow-tags"><span class="tag">Squarespace</span><span class="tag">JavaScript</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
-      <!-- Fuel -->
-      <div class="proj-card" data-pf-cat="closed">
-        <div class="proj-img"><img src="projectfuel1.png" alt="Fuel Management"><div class="proj-img-ov"></div><span class="proj-badge">Internal · HR</span></div>
-        <div class="proj-body">
-          <div class="proj-top"><div><div class="proj-name">Fuel Management &amp; Rewards</div><div class="proj-meta">Laravel · React · Azure</div></div></div>
-          <p class="proj-desc">Assigns fuel rewards, tracks consumption, and visualizes usage patterns for HR and admins. Exportable reports for finance and audits.</p>
-          <div class="proj-tags"><span class="tag c">Laravel</span><span class="tag c">React</span></div>
-          <div class="proj-footer">
-            <div class="proj-status"><span class="pdot off"></span> Closed</div>
-            <div class="proj-links">
-              <button class="btn btn-ghost btn-sm" onclick="openModal('fuel')"><i class="fas fa-images" style="font-size:.68rem"></i> Screens</button>
-              <span class="tag"><i class="fas fa-lock" style="font-size:.58rem"></i> Private</span>
-            </div>
-          </div>
+      <div class="prow" data-pfcat="closed" onclick="openDrawer('fuel')">
+        <div class="pnum"><span class="pdot off"></span>09</div>
+        <div class="pinfo">
+          <div class="prow-name">Fuel Management &amp; Rewards Webapp</div>
+          <div class="prow-sub"><span class="prow-meta">Internal · HR</span><div class="prow-tags"><span class="tag c">Laravel</span><span class="tag c">React</span></div></div>
         </div>
+        <div class="pright"><div class="parr"><i class="fas fa-chevron-right"></i></div></div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- MODALS -->
-<div id="modal-omcrm" class="modal-ov" onclick="closeModal('omcrm')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>OMCRM — Screens</h4></div><button class="modal-close" onclick="closeModal('omcrm')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-omcrm" src="omcrm.png" alt=""></div><div class="modal-txt"><h4>OMCRM — Operations CRM</h4><p>Internal CRM centralizing tickets, client accounts, design requests, and activity logs.</p><ul><li>Modular: tickets, clients, sites, design pulls.</li><li>Real-time notifications via Supabase.</li><li>Role-based access for support, design, management.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('omcrm',0,this)"><img src="omcrm.png" alt=""></div><div class="thumb" onclick="swapSlide('omcrm',1,this)"><img src="omcrm2.png" alt=""></div><div class="thumb" onclick="swapSlide('omcrm',2,this)"><img src="omcrm3.png" alt=""></div></div></div><div class="modal-foot"><button class="btn btn-ghost btn-sm" onclick="closeModal('omcrm')">Close</button></div></div></div>
-
-<div id="modal-netsolar" class="modal-ov" onclick="closeModal('netsolar')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>NetSolar — Screens</h4></div><button class="modal-close" onclick="closeModal('netsolar')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-netsolar" src="nets.png" alt=""></div><div class="modal-txt"><h4>NetSolar — Corporate Platform</h4><p>Corporate platform for a solar EPC rebuilt in Laravel for scalability and integrations.</p><ul><li>Laravel structure for maintainability.</li><li>JS interactive sections.</li><li>Graph API lead/contact routing.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('netsolar',0,this)"><img src="nets.png" alt=""></div><div class="thumb" onclick="swapSlide('netsolar',1,this)"><img src="nets2.png" alt=""></div><div class="thumb" onclick="swapSlide('netsolar',2,this)"><img src="nets3.png" alt=""></div></div></div><div class="modal-foot"><a href="https://netsolar.com.ph" target="_blank" class="btn btn-ghost btn-sm">Visit</a><button class="btn btn-ghost btn-sm" onclick="closeModal('netsolar')">Close</button></div></div></div>
-
-<div id="modal-waltermart" class="modal-ov" onclick="closeModal('waltermart')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Waltermart — Screens</h4></div><button class="modal-close" onclick="closeModal('waltermart')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-waltermart" src="walt.png" alt=""></div><div class="modal-txt"><h4>Waltermart Solar Monitoring</h4><p>Multi-site solar dashboard aggregating SolarEdge data across branches.</p><ul><li>API aggregation from multiple sites.</li><li>Tailwind layout for wall displays.</li><li>MySQL historical reporting.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('waltermart',0,this)"><img src="walt.png" alt=""></div><div class="thumb" onclick="swapSlide('waltermart',1,this)"><img src="walt2.png" alt=""></div></div></div><div class="modal-foot"><a href="http://monitoring.netsolar.com.ph/waltermart" target="_blank" class="btn btn-ghost btn-sm">Visit</a><button class="btn btn-ghost btn-sm" onclick="closeModal('waltermart')">Close</button></div></div></div>
-
-<div id="modal-emailsms" class="modal-ov" onclick="closeModal('emailsms')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Email-to-SMS — Screens</h4></div><button class="modal-close" onclick="closeModal('emailsms')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-emailsms" src="emailsms.png" alt=""></div><div class="modal-txt"><h4>Email-to-SMS Alerts</h4><p>Monitors key mailboxes and forwards critical messages as SMS via Graph API.</p><ul><li>Filtered mailbox monitoring.</li><li>System automation scheduling.</li><li>SMS gateway with tracking.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('emailsms',0,this)"><img src="emailsms.png" alt=""></div><div class="thumb" onclick="swapSlide('emailsms',1,this)"><img src="emailsms2.png" alt=""></div><div class="thumb" onclick="swapSlide('emailsms',2,this)"><img src="emailsms3.png" alt=""></div></div></div><div class="modal-foot"><a href="http://sms.netsolar.com.ph" target="_blank" class="btn btn-ghost btn-sm">Demo</a><button class="btn btn-ghost btn-sm" onclick="closeModal('emailsms')">Close</button></div></div></div>
-
-<div id="modal-smswebapp" class="modal-ov" onclick="closeModal('smswebapp')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Bulk SMS — Screens</h4></div><button class="modal-close" onclick="closeModal('smswebapp')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-smswebapp" src="smswebapp.png" alt=""></div><div class="modal-txt"><h4>Bulk SMS Webapp</h4><p>Full-featured bulk SMS platform with campaign logging and role-based access.</p><ul><li>CSV/XLSX upload with validation.</li><li>Campaign-level audit history.</li><li>Laravel + MySQL + Bootstrap.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('smswebapp',0,this)"><img src="smswebapp.png" alt=""></div><div class="thumb" onclick="swapSlide('smswebapp',1,this)"><img src="smswebapp2.png" alt=""></div><div class="thumb" onclick="swapSlide('smswebapp',2,this)"><img src="smswebapp3.png" alt=""></div></div></div><div class="modal-foot"><button class="btn btn-ghost btn-sm" onclick="closeModal('smswebapp')">Close</button></div></div></div>
-
-<div id="modal-smart" class="modal-ov" onclick="closeModal('smart')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Smart Calculator — Screens</h4></div><button class="modal-close" onclick="closeModal('smart')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-smart" src="smart1.png" alt=""></div><div class="modal-txt"><h4>Solar Smart Calculator</h4><p>Solar sizing and ROI calculator using rooftop area and electricity bill inputs.</p><ul><li>Multi-step React UI.</li><li>PHP sizing logic.</li><li>Tailwind premium styling.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('smart',0,this)"><img src="smart1.png" alt=""></div><div class="thumb" onclick="swapSlide('smart',1,this)"><img src="smart2.png" alt=""></div><div class="thumb" onclick="swapSlide('smart',2,this)"><img src="smart3.png" alt=""></div></div></div><div class="modal-foot"><button class="btn btn-ghost btn-sm" onclick="closeModal('smart')">Close</button></div></div></div>
-
-<div id="modal-netvoice" class="modal-ov" onclick="closeModal('netvoice')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Netvoice — Screens</h4></div><button class="modal-close" onclick="closeModal('netvoice')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-netvoice" src="nvproject.png" alt=""></div><div class="modal-txt"><h4>Netvoice — VoIP &amp; SMS</h4><p>Marketing site for enterprise VoIP &amp; SMS in the Philippines.</p><ul><li>Responsive for SMB to enterprise.</li><li>Featured pricing layout.</li><li>Custom JS navigation.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('netvoice',0,this)"><img src="nvproject.png" alt=""></div><div class="thumb" onclick="swapSlide('netvoice',1,this)"><img src="nvproject2.png" alt=""></div><div class="thumb" onclick="swapSlide('netvoice',2,this)"><img src="nvproject3.png" alt=""></div></div></div><div class="modal-foot"><a href="http://netvoice.com.ph" target="_blank" class="btn btn-ghost btn-sm">Visit</a><button class="btn btn-ghost btn-sm" onclick="closeModal('netvoice')">Close</button></div></div></div>
-
-<div id="modal-fuel" class="modal-ov" onclick="closeModal('fuel')"><div class="modal-box" onclick="event.stopPropagation()"><div class="modal-head"><div class="mh-l"><div class="mh-dots"><span></span><span></span><span></span></div><h4>Fuel Management — Screens</h4></div><button class="modal-close" onclick="closeModal('fuel')"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="modal-main"><img id="ms-fuel" src="projectfuel1.png" alt=""></div><div class="modal-txt"><h4>Fuel Management &amp; Rewards</h4><p>Fuel allocation, tracking, and rewards for HR and management.</p><ul><li>React dashboards.</li><li>Laravel allocation rules.</li><li>Exportable finance reports.</li></ul></div><div class="thumbs-row"><div class="thumb active" onclick="swapSlide('fuel',0,this)"><img src="projectfuel1.png" alt=""></div><div class="thumb" onclick="swapSlide('fuel',1,this)"><img src="projectfuel2.png" alt=""></div><div class="thumb" onclick="swapSlide('fuel',2,this)"><img src="projectfuel3.png" alt=""></div></div></div><div class="modal-foot"><button class="btn btn-ghost btn-sm" onclick="closeModal('fuel')">Close</button></div></div></div>
+<!-- DRAWER -->
+<div id="drawer" class="pdrawer" role="dialog" aria-modal="true">
+  <div class="pdrawer-bg" onclick="closeDrawer()"></div>
+  <div class="pdrawer-panel">
+    <div class="pd-bar">
+      <div class="pd-bar-l"><div class="pd-dots"><span></span><span></span><span></span></div><div class="pd-title" id="d-title">Project</div></div>
+      <button class="pd-close" onclick="closeDrawer()" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="pd-body">
+      <div class="pd-img-wrap" id="d-imgwrap">
+        <img id="d-img" src="" alt="" style="display:none">
+        <div class="pd-no-img" id="d-noimg"><i class="fas fa-layer-group"></i><span>No preview available</span></div>
+        <div class="pd-img-grad"></div>
+        <div class="pd-img-ov"><div class="pd-img-name" id="d-imgname"></div><div class="pd-img-badge" id="d-badge"></div></div>
+      </div>
+      <div class="pd-thumbs" id="d-thumbs" style="display:none"></div>
+      <div class="pd-content">
+        <div class="pd-sec"><div class="pd-lbl">Description</div><p class="pd-desc" id="d-desc"></p></div>
+        <div class="pd-sec"><div class="pd-lbl">Key Highlights</div><ul class="pd-bullets" id="d-bullets"></ul></div>
+        <div class="pd-sec"><div class="pd-lbl">Tech Stack</div><div class="pd-tags" id="d-tags"></div></div>
+        <div class="pd-sec"><div class="pd-mgrid" id="d-meta"></div></div>
+      </div>
+    </div>
+    <div class="pd-foot" id="d-foot"></div>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="glow glow-p" style="width:360px;height:360px;top:-30px;right:-40px;opacity:.42"></div>
+    <div class="glow glow-p" style="width:360px;height:360px;top:-30px;right:-40px;opacity:.42"></div>
   <div class="container">
     <div class="sec-hdr">
       <div class="sec-label">05 — Contact</div>
@@ -730,7 +657,7 @@
       <div class="card contact-card">
         <h3 style="font-size:.97rem;font-weight:700;margin-bottom:1rem">Get in touch</h3>
         <div class="ci"><div class="ci-icon c"><i class="fas fa-location-dot"></i></div><div><div class="ci-lbl">Location</div><div class="ci-val">Philippines — GMT +8</div></div></div>
-        <div class="ci"><div class="ci-icon g"><i class="fas fa-envelope"></i></div><div><div class="ci-lbl">Email</div><div class="ci-val">tabstabilog@gmail.com</div></div></div>
+        <div class="ci"><div class="ci-icon g"><i class="fas fa-envelope"></i></div><div><div class="ci-lbl">Email</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4908586979085868d888b83a48389858d88ca878b89">[email&#160;protected]</a></div></div></div>
         <div class="ci"><div class="ci-icon p"><i class="fab fa-linkedin"></i></div><div><div class="ci-lbl">LinkedIn</div><div class="ci-val"><a href="https://www.linkedin.com/in/racky-t-818127183/" target="_blank">racky-t-818127183</a></div></div></div>
         <div class="ci"><div class="ci-icon dk"><i class="fab fa-github"></i></div><div><div class="ci-lbl">GitHub</div><div class="ci-val"><a href="https://github.com/07ZeroSeven" target="_blank">07ZeroSeven</a></div></div></div>
         <div style="display:flex;flex-wrap:wrap;gap:.38rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
@@ -770,7 +697,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // THEME TOGGLE
 (function(){
   const html=document.documentElement, btn=document.getElementById('theme-btn'), icon=document.getElementById('theme-icon');
@@ -831,16 +758,50 @@ document.querySelectorAll('.stab').forEach(t=>t.addEventListener('click',()=>{
 document.querySelectorAll('.pf-btn').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   const f=btn.dataset.pf;
-  document.querySelectorAll('#projGrid .proj-card').forEach(c=>{c.style.display=(f==='all'||c.dataset.pfCat===f)?'':'none';});
+  document.querySelectorAll('#plist .prow').forEach(r=>{r.style.display=(f==='all'||r.dataset.pfcat===f)?'':'none';});
 }));
 
-// MODALS
-const IMGS={omcrm:['omcrm.png','omcrm2.png','omcrm3.png'],netsolar:['nets.png','nets2.png','nets3.png'],waltermart:['walt.png','walt2.png'],emailsms:['emailsms.png','emailsms2.png','emailsms3.png'],smswebapp:['smswebapp.png','smswebapp2.png','smswebapp3.png'],smart:['smart1.png','smart2.png','smart3.png'],netvoice:['nvproject.png','nvproject2.png','nvproject3.png'],fuel:['projectfuel1.png','projectfuel2.png','projectfuel3.png']};
-function openModal(id){const m=document.getElementById('modal-'+id);if(!m)return;m.classList.add('open');document.body.style.overflow='hidden';m.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===0));const ms=document.getElementById('ms-'+id);if(ms&&IMGS[id])ms.src=IMGS[id][0];}
-function closeModal(id){const m=document.getElementById('modal-'+id);if(!m)return;m.classList.remove('open');document.body.style.overflow='';}
-function swapSlide(id,idx,el){const ms=document.getElementById('ms-'+id);if(ms&&IMGS[id])ms.src=IMGS[id][idx];el.closest('.thumbs-row').querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===idx));}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-ov.open').forEach(m=>closeModal(m.id.replace('modal-','')));});
-window.openModal=openModal;window.closeModal=closeModal;window.swapSlide=swapSlide;
-</script>
+// DRAWER
+const PROJECTS={
+  omcrm:{title:'OMCRM — Operations CRM',badge:'Internal · Ops',imgs:['omcrm.png','omcrm2.png','omcrm3.png'],desc:'Internal CRM centralizing tickets, client accounts, design requests, and activity logs into one source of truth for the operations team.',bullets:['Modular: tickets, clients, sites, design pull requests, follow-ups.','Real-time notifications via Supabase channels and email.','Role-based access: support, design, and management views.'],tags:[{l:'React',c:'c'},{l:'TypeScript',c:'c'},{l:'Supabase',c:'c'},{l:'Bolt.ai',c:''}],meta:[{label:'Role',val:'Full-stack dev & architecture'},{label:'Impact',val:'Replaced email threads & spreadsheets'},{label:'Status',val:'🟢 Active'},{label:'Access',val:'🔒 Internal only'}],links:[]},
+  edw:{title:'EDW — Enterprise Data Warehouse',badge:'Data Warehouse',imgs:[],desc:'Centralized DW ingesting Asana work items into Azure SQL and powering Power BI organization-wide analytics.',bullets:['ETL pipeline from Asana API into Azure SQL tables.','Star-schema design for tasks, projects, users, and time.','Power BI dashboards for throughput, SLAs, and workload.'],tags:[{l:'Azure SQL',c:'c'},{l:'Asana API',c:''},{l:'Power BI',c:''},{l:'MS SQL',c:''}],meta:[{label:'Role',val:'Data model, ETL, BI reports'},{label:'Goal',val:'Single trusted data source'},{label:'Status',val:'🟢 Active'},{label:'Access',val:'🔒 Internal analytics'}],links:[]},
+  netsolar:{title:'NetSolar — Corporate Platform',badge:'Public · Solar',imgs:['nets.png','nets2.png','nets3.png'],desc:'Corporate presence for a solar EPC rebuilt in Laravel for richer content, better maintainability, and Graph API integrations.',bullets:['Rebuilt into a Laravel-powered site for scalability.','JS enhancements for smoother interactive sections.','Graph API integration for lead/contact routing and email.'],tags:[{l:'Laravel',c:'c'},{l:'JavaScript',c:''},{l:'Graph API',c:''}],meta:[{label:'Role',val:'Full build — UI to deployment'},{label:'Goal',val:'Premium solar brand presence'},{label:'Status',val:'🟢 Live'},{label:'URL',val:'netsolar.com.ph'}],links:[{label:'Visit Site',href:'https://netsolar.com.ph',icon:'fa-external-link-alt'}]},
+  waltermart:{title:'Waltermart Solar Monitoring',badge:'Ops · Energy',imgs:['walt.png','walt2.png'],desc:'Multi-site solar dashboard aggregating SolarEdge data across branches to show live production, consumption, and savings.',bullets:['Multi-site API aggregation and normalization.','Tailwind layout tuned for wall displays and laptops.','MySQL for historical reporting and trend analysis.'],tags:[{l:'PHP',c:'c'},{l:'MySQL',c:''},{l:'Tailwind',c:''},{l:'API',c:''}],meta:[{label:'Role',val:'Full-stack build'},{label:'Usage',val:'Internal branch monitoring'},{label:'Status',val:'⚪ Closed'},{label:'URL',val:'monitoring.netsolar.com.ph'}],links:[{label:'Visit',href:'http://monitoring.netsolar.com.ph/waltermart',icon:'fa-external-link-alt'}]},
+  emailsms:{title:'Email-to-SMS Alert Platform',badge:'Infra · Alerts',imgs:['emailsms.png','emailsms2.png','emailsms3.png'],desc:'Listens to key inboxes via Microsoft Graph API and forwards critical messages as SMS to on-call numbers as a resilient background daemon.',bullets:['Graph API integration for filtered mailbox monitoring.','System automation (service/daemon) for reliability.','SMS gateway with delivery tracking and retries.'],tags:[{l:'Python',c:'c'},{l:'Flask',c:''},{l:'Graph API',c:''},{l:'System Automation',c:''}],meta:[{label:'Role',val:'Architecture & full build'},{label:'Why',val:"Alerts can't wait for email checks"},{label:'Status',val:'⚪ Closed'},{label:'URL',val:'sms.netsolar.com.ph'}],links:[{label:'Demo',href:'http://sms.netsolar.com.ph',icon:'fa-external-link-alt'}]},
+  smswebapp:{title:'Bulk SMS Web Application',badge:'Product · Comms',imgs:['smswebapp.png','smswebapp2.png','smswebapp3.png'],desc:'Full platform for sending bulk SMS campaigns at scale with CSV/XLSX upload, campaign history, and role-based access.',bullets:['CSV/XLSX upload with validation for thousands of recipients.','Campaign-level audit history instead of per-SMS noise.','Admin and standard user roles.'],tags:[{l:'Laravel',c:'c'},{l:'MySQL',c:''},{l:'Bootstrap',c:''}],meta:[{label:'Role',val:'Full-stack build'},{label:'Stack',val:'Laravel on Azure VM'},{label:'Status',val:'⚪ Closed'},{label:'Access',val:'🔒 Private'}],links:[]},
+  smart:{title:'Solar Smart Calculator',badge:'Tool · Solar',imgs:['smart1.png','smart2.png','smart3.png'],desc:'Guided calculator estimating solar system size, expected savings, and ROI based on rooftop area and electricity billing data.',bullets:['React front-end with a smooth multi-step flow.','PHP backend logic for sizing and financial modeling.','Tailwind styling for a modern, premium UI.'],tags:[{l:'React',c:'c'},{l:'PHP',c:''},{l:'SASS',c:''},{l:'Tailwind',c:''}],meta:[{label:'Role',val:'Full build'},{label:'Outcome',val:'Turns proposals into stories'},{label:'Status',val:'⚪ Closed'},{label:'Access',val:'🔒 Private'}],links:[]},
+  netvoice:{title:'Netvoice — VoIP & SMS Website',badge:'Public · B2B',imgs:['nvproject.png','nvproject2.png','nvproject3.png'],desc:'Marketing site for enterprise-grade VoIP and SMS services in the Philippines, focused on clear product breakdown and conversions.',bullets:['Responsive sections for SMB to enterprise audiences.','Plans & pricing with highlighted featured offers.','Custom JS for smooth navigation and scroll behavior.'],tags:[{l:'Squarespace',c:''},{l:'JavaScript',c:''},{l:'Bootstrap',c:''}],meta:[{label:'Role',val:'Full design & build'},{label:'Focus',val:'Conversion-focused layout'},{label:'Status',val:'🟢 Live'},{label:'URL',val:'netvoice.com.ph'}],links:[{label:'Visit Site',href:'http://netvoice.com.ph',icon:'fa-external-link-alt'}]},
+  fuel:{title:'Fuel Management & Rewards Webapp',badge:'Internal · HR',imgs:['projectfuel1.png','projectfuel2.png','projectfuel3.png'],desc:'Laravel + React system for assigning fuel rewards, tracking consumption, and visualizing usage patterns for HR teams and admins.',bullets:['React dashboards for quick at-a-glance usage data.','Backend logic for allocation rules and redemptions.','Exportable reports for finance and audits.'],tags:[{l:'Laravel',c:'c'},{l:'React',c:'c'}],meta:[{label:'Role',val:'Full-stack dev'},{label:'Infra',val:'Hosted on Azure'},{label:'Status',val:'⚪ Closed'},{label:'Access',val:'🔒 Private'}],links:[]},
+};
+function openDrawer(id){
+  const p=PROJECTS[id];if(!p)return;
+  document.getElementById('d-title').textContent=p.title;
+  document.getElementById('d-imgname').textContent=p.title;
+  document.getElementById('d-badge').textContent=p.badge;
+  document.getElementById('d-desc').textContent=p.desc;
+  const imgEl=document.getElementById('d-img'),noImg=document.getElementById('d-noimg');
+  if(p.imgs&&p.imgs.length){imgEl.src=p.imgs[0];imgEl.style.display='block';noImg.style.display='none';}
+  else{imgEl.style.display='none';noImg.style.display='flex';}
+  const tw=document.getElementById('d-thumbs');
+  if(p.imgs&&p.imgs.length>1){tw.innerHTML=p.imgs.map((s,i)=>`<div class="pd-thumb ${i===0?'on':''}" onclick="swapThumb('${id}',${i},this)"><img src="${s}" alt=""></div>`).join('');tw.style.display='flex';}
+  else{tw.innerHTML='';tw.style.display='none';}
+  document.getElementById('d-bullets').innerHTML=p.bullets.map(b=>`<li>${b}</li>`).join('');
+  document.getElementById('d-tags').innerHTML=p.tags.map(t=>`<span class="tag ${t.c}">${t.l}</span>`).join('');
+  document.getElementById('d-meta').innerHTML=p.meta.map(m=>`<div class="pd-mbox"><div class="ml">${m.label}</div><div class="mv">${m.val}</div></div>`).join('');
+  let ft='';
+  if(p.links&&p.links.length)p.links.forEach(l=>{ft+=`<a href="${l.href}" target="_blank" class="btn btn-ghost btn-sm"><i class="fas ${l.icon}" style="font-size:.7rem"></i> ${l.label}</a>`;});
+  ft+=`<button class="btn btn-ghost btn-sm" onclick="closeDrawer()">Close</button>`;
+  document.getElementById('d-foot').innerHTML=ft;
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function swapThumb(id,idx,el){
+  const p=PROJECTS[id];if(!p||!p.imgs)return;
+  document.getElementById('d-img').src=p.imgs[idx];
+  el.closest('.pd-thumbs').querySelectorAll('.pd-thumb').forEach((t,i)=>t.classList.toggle('on',i===idx));
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+window.openDrawer=openDrawer;window.closeDrawer=closeDrawer;window.swapThumb=swapThumb;</script>
 </body>
 </html>
